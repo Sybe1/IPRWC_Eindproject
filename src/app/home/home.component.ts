@@ -7,14 +7,21 @@ import { NgModule } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  serverId = 10;
-  serverStatus = 'offline'
+  serverStatus = ''
+  homename = 'Sybe'
+  buttonClicked = false
+  amountButtonClicked: number[] = []
 
-  getServerStatus(){
-    return this.serverStatus
+  constructor() {
+    this.serverStatus = Math.random() > 0.5 ? 'online' : 'offline'
   }
 
   onCreateServer(){
-    this.serverStatus = "Server created!"
+    this.buttonClicked = true;
+    this.amountButtonClicked.push(this.amountButtonClicked.length + 1)
+  }
+
+  getColor(){
+    return this.serverStatus === 'online' ? 'green' : 'red'
   }
 }
