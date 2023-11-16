@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from "@angular/forms";
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ExtraComponent } from './extra/extra.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ExtraComponent
   ],
   imports: [
     BrowserModule,
