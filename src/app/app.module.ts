@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MatIconModule } from '@angular/material/icon';
     AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
