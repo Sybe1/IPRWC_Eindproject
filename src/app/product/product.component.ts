@@ -32,9 +32,6 @@ export class ProductComponent implements OnInit{
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.productService.getProducts().subscribe((data) => {
-      this.products = data;
-    });
     this.getProducts();
   }
 
@@ -42,17 +39,20 @@ export class ProductComponent implements OnInit{
     for (let i = 0; i < this.selectedClothingTypes.length; i++) {
       if (product === this.selectedClothingTypes[i]){
         this.selectedClothingTypes.splice(i, 1);
+        this.getProducts()
         return;
       }
     }
     this.selectedClothingTypes.push(product)
+    this.getProducts()
   }
 
   public getProducts(): void {
     this.productService.getProducts().subscribe(
       (response: Product[]) => {
-        this.products = response;
-        console.log(this.products)
+        this.products = response.filter(product =>
+          this.selectedClothingTypes.includes(product.clothingType)
+        );
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
