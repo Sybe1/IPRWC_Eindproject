@@ -56,18 +56,37 @@
     </div>
   </div>
 
-  <div *ngFor="let product of allClothingTypes" class="col-md-6 col-xl-3">
-    <section class="example-section">
-      <mat-checkbox class="example-margin"
-                    (change)="onCheckboxChange(product)"
-                    checked="true">
-        {{product}}
-      </mat-checkbox>
-    </section>
+  <div class="row">
+    <hr>
+    <h2>Audience:</h2>
+    <div *ngFor="let product of allTargetAudience" class="col-md-6 col-xl-3">
+      <section class="example-section">
+        <mat-checkbox class="example-margin"
+                      (change)="onCheckboxChangeTargetAudience(product)"
+                      checked="true">
+          {{product}}
+        </mat-checkbox>
+      </section>
+    </div>
+  </div>
+
+  <div class="row">
+    <hr>
+    <h2>Clothing type:</h2>
+    <div *ngFor="let product of allClothingTypes" class="col-md-6 col-xl-3">
+      <section class="example-section">
+        <mat-checkbox class="example-margin"
+                      (change)="onCheckboxChangeClothingType(product)"
+                      checked="true">
+          {{product}}
+        </mat-checkbox>
+      </section>
+    </div>
   </div>
 
 
   <div class="row">
+    <hr>
     <div *ngFor="let product of products" class="col-md-6 col-xl-3">
       <div class="card m-b-30">
         <div class="card-body row">

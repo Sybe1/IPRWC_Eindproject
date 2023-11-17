@@ -18,6 +18,9 @@ export class ProductComponent implements OnInit{
   selectedClothingTypes: string[] = [ "HOODIE", "SHIRT", "PANTS", "UNDERWEAR",
     "SOCKS", "SHOES", "JACKET", "HAT"]
 
+  allTargetAudience: string[] = [ "MEN", "WOMEN", "UNISEX", "CHILDREN"]
+  selectedTargetAudience: string[] = [ "MEN", "WOMEN", "UNISEX", "CHILDREN"]
+
   productToUpdate = {
     id: 0,
     productName: '',
@@ -35,7 +38,19 @@ export class ProductComponent implements OnInit{
     this.getProducts();
   }
 
-  public onCheckboxChange(product: string): void{
+  public onCheckboxChangeTargetAudience(product: string): void{
+    for (let i = 0; i < this.selectedTargetAudience.length; i++) {
+      if (product === this.selectedTargetAudience[i]){
+        this.selectedTargetAudience.splice(i, 1);
+        this.getProducts()
+        return;
+      }
+    }
+    this.selectedTargetAudience.push(product)
+    this.getProducts()
+  }
+
+  public onCheckboxChangeClothingType(product: string): void{
     for (let i = 0; i < this.selectedClothingTypes.length; i++) {
       if (product === this.selectedClothingTypes[i]){
         this.selectedClothingTypes.splice(i, 1);
@@ -51,7 +66,8 @@ export class ProductComponent implements OnInit{
     this.productService.getProducts().subscribe(
       (response: Product[]) => {
         this.products = response.filter(product =>
-          this.selectedClothingTypes.includes(product.clothingType)
+          this.selectedClothingTypes.includes(product.clothingType) &&
+          this.selectedTargetAudience.includes(product.targetAudience)
         );
       },
       (error: HttpErrorResponse) => {
