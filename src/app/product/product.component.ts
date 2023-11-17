@@ -13,6 +13,11 @@ import { NgForm } from '@angular/forms';
 export class ProductComponent implements OnInit{
   products: any[] = [];
 
+  allClothingTypes: string[] = [ "HOODIE", "SHIRT", "PANTS", "UNDERWEAR",
+    "SOCKS", "SHOES", "JACKET", "HAT"]
+  selectedClothingTypes: string[] = [ "HOODIE", "SHIRT", "PANTS", "UNDERWEAR",
+    "SOCKS", "SHOES", "JACKET", "HAT"]
+
   productToUpdate = {
     id: 0,
     productName: '',
@@ -33,10 +38,21 @@ export class ProductComponent implements OnInit{
     this.getProducts();
   }
 
+  public onCheckboxChange(product: string): void{
+    for (let i = 0; i < this.selectedClothingTypes.length; i++) {
+      if (product === this.selectedClothingTypes[i]){
+        this.selectedClothingTypes.splice(i, 1);
+        return;
+      }
+    }
+    this.selectedClothingTypes.push(product)
+  }
+
   public getProducts(): void {
     this.productService.getProducts().subscribe(
       (response: Product[]) => {
         this.products = response;
+        console.log(this.products)
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
