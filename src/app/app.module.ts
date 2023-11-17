@@ -12,6 +12,9 @@ import { FormsModule } from "@angular/forms";
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ExtraComponent } from './extra/extra.component';
 import { LikedComponent } from './liked/liked.component';
+import { ProductComponent } from './product/product.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -21,7 +24,8 @@ import { LikedComponent } from './liked/liked.component';
     HomeComponent,
     ShoppingCartComponent,
     ExtraComponent,
-    LikedComponent
+    LikedComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,8 @@ import { LikedComponent } from './liked/liked.component';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
