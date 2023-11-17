@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from "@angular/forms";
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ExtraComponent } from './extra/extra.component';
+import { LikedComponent } from './liked/liked.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ExtraComponent } from './extra/extra.component';
     NavbarComponent,
     HomeComponent,
     ShoppingCartComponent,
-    ExtraComponent
+    ExtraComponent,
+    LikedComponent
   ],
   imports: [
     BrowserModule,
