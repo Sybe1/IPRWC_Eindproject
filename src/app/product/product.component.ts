@@ -32,7 +32,9 @@ export class ProductComponent implements OnInit{
     imageUrl: '',
   };
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService){
+
+  }
 
   ngOnInit() {
     this.getProducts();
