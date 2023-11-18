@@ -15,6 +15,9 @@ import { LikedComponent } from './liked/liked.component';
 import { ProductComponent } from './product/product.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MatDialogModule} from "@angular/material/dialog";
+import { PopUpUpdateProductComponent } from './pop-up-update-product/pop-up-update-product.component';
 
 
 @NgModule({
@@ -25,7 +28,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ShoppingCartComponent,
     ExtraComponent,
     LikedComponent,
-    ProductComponent
+    ProductComponent,
+    PageNotFoundComponent,
+    PopUpUpdateProductComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatIconModule,
     FormsModule,
     HttpClientModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

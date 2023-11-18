@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {PopUpUpdateProductComponent} from "../pop-up-update-product/pop-up-update-product.component";
 
 @Component({
   selector: 'app-liked',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class LikedComponent {
 
+  constructor(private dialogRef: MatDialog) {
+  }
+  openDialog(){
+    this.dialogRef.open(PopUpUpdateProductComponent)
+  }
 }
