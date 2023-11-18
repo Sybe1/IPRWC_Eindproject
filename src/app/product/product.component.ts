@@ -3,8 +3,6 @@ import { ProductService } from './product.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Product } from './product';
 import { NgForm } from '@angular/forms';
-import {MatDialog} from "@angular/material/dialog";
-import {LikedComponent} from "../liked/liked.component";
 
 
 @Component({
