@@ -30,7 +30,7 @@ import { PopUpUpdateProductComponent } from './pop-up-update-product/pop-up-upda
     LikedComponent,
     ProductComponent,
     PageNotFoundComponent,
-    PopUpUpdateProductComponent
+    PopUpUpdateProductComponent,
   ],
   imports: [
     BrowserModule,

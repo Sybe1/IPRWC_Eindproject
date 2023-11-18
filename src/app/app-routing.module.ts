@@ -4,7 +4,6 @@ import {HomeComponent} from "./home/home.component";
 import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
 import {ExtraComponent} from "./extra/extra.component";
 import {LikedComponent} from "./liked/liked.component";
-import {ProductComponent} from "./product/product.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
 const routes: Routes = [
