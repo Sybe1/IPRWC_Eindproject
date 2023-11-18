@@ -1,10 +1,66 @@
 <div mat-dialog-content>
-    <!-- Hier plaats je de inhoud van je dialoogvenster -->
-    <p>Voeg hier de inhoud van je dialoogvenster toe.</p>
+    <button type="button" class="close" mat-button mat-dialog-close>
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <p>Product aanpassen:</p>
+
+    <form #updateForm="ngForm">
+        <div class="form-group">
+            <label for="id">Product ID:</label>
+            <input type="text" disabled="true" #id  name="id" id="id" class="form-control" placeholder="Product id">
+        </div>
+        <div class="form-group">
+            <label for="productName">Product name:</label>
+            <input type="text" #productName  name="productName" id="productName" class="form-control" placeholder="Product name">
+        </div>
+        <div class="form-group">
+            <label for="description">Product description:</label>
+            <input type="text" #description name="description" id="description" class="form-control" placeholder="Product description">
+        </div>
+        <div class="form-group">
+            <label for="price">Product price:</label>
+            <input type="number" #price  name="price" id="price" class="form-control" placeholder="Product price">
+        </div>
+        <div class="form-group">
+            <label for="stock">Product stock:</label>
+            <input type="stock" name="stock" id="stock" class="form-control" placeholder="Product stock">
+        </div>
+        <div class="form-group">
+            <label for="clothingType">Product type:</label>
+            <select #clothingType  name="clothingType" id="clothingType" class="form-control">
+                <option value="HOODIE">Hoodie</option>
+                <option value="SHIRT">Shirt</option>
+                <option value="PANTS">Pants</option>
+                <option value="UNDERWEAR">Underwear</option>
+                <option value="SOCKS">Socks</option>
+                <option value="SHOES">Shoes</option>
+                <option value="JACKET">Jacket</option>
+                <option value="HAT">Hat</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="targetAudience">Target audience:</label>
+            <select #targetAudience  name="targetAudience" id="targetAudience" class="form-control">
+                <option value="WOMEN">Women</option>
+                <option value="MEN">Men</option>
+                <option value="UNISEX">Unisex</option>
+                <option value="CHILDREN">Children</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="imageUrl">Product image URL:</label>
+            <input type="text" disabled="true" #imageUrl  name="imageUrl" id="imageUrl" class="form-control" placeholder="Product image URL">
+        </div>
+
+    </form>
 </div>
 
 <div mat-dialog-actions>
-    <!-- Voeg de knop toe om het dialoogvenster te sluiten -->
-    <button mat-button mat-dialog-close>Sluiten</button>
-    <!-- Eventuele andere knoppen of acties die je wilt toevoegen -->
+    <button type="button" class="btn btn-primary w-100" (click)="updateProduct()"  data-dismiss="modal" >Update</button>
 </div>
+
+
+
+
+
+
