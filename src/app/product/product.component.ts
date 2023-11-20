@@ -3,6 +3,8 @@ import { ProductService } from './product.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Product } from './product';
 import { NgForm } from '@angular/forms';
+import {MatDialog} from "@angular/material/dialog";
+import {PopUpUpdateProductComponent} from "../pop-up-update-product/pop-up-update-product.component";
 
 
 @Component({
@@ -32,13 +34,15 @@ export class ProductComponent implements OnInit{
     imageUrl: '',
   };
 
-  constructor(private productService: ProductService){
+  constructor(private productService: ProductService, private dialog: MatDialog){
 
   }
 
   ngOnInit() {
     this.getProducts();
   }
+
+
 
   public onCheckboxChangeTargetAudience(product: string): void{
     for (let i = 0; i < this.selectedTargetAudience.length; i++) {
@@ -104,9 +108,7 @@ export class ProductComponent implements OnInit{
       );
   }
 
-  public editProduct(product: Product){
-    this.productToUpdate = product;
-  }
+
 
   public updateProduct(){
     this.productService.updateProduct(this.productToUpdate).subscribe(
@@ -118,5 +120,22 @@ export class ProductComponent implements OnInit{
         console.log(err);
       }
     );
+  }
+
+  public editProduct(code: any){
+    this.openPopup(code, 'Edit Product')
+  }
+
+  public addProduct(){
+    this.openPopup(0, 'Add Product')
+  }
+  public openPopup(code:any, title:any){
+    this.dialog.open(PopUpUpdateProductComponent,{
+      width:'60%',
+      data: {
+        title: title,
+        code: code
+      }
+    });
   }
 }

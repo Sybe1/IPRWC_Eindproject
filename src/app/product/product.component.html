@@ -108,7 +108,10 @@
         </ul>
         <div class="card-body">
           <div class="float-right btn-group btn-group-sm">
-            <a (click)="editProduct(product)" class="btn btn-primary" data-toggle="modal" data-target="#updatemodal"><i class="fa fa-pencil"></i> </a>
+            <button (click)="addProduct()">
+              Click
+            </button>
+            <a (click)="editProduct(product?.id)" class="btn btn-primary" data-toggle="modal" data-target="#updatemodal"><i class="fa fa-pencil"></i> </a>
             <a class="btn btn-secondary tooltips" data-original-title="Delete" (click)="deleteProduct(product)"><i class="fa fa-times"></i></a>
           </div>
         </div>

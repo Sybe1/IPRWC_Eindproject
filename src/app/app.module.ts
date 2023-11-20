@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ExtraComponent } from './extra/extra.component';
 import { LikedComponent } from './liked/liked.component';
@@ -18,7 +18,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MatDialogModule} from "@angular/material/dialog";
 import { PopUpUpdateProductComponent } from './pop-up-update-product/pop-up-update-product.component';
-
+import {MatInputModule} from "@angular/material/input";
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PopUpUpdateProductComponent } from './pop-up-update-product/pop-up-upda
     ProductComponent,
     PageNotFoundComponent,
     PopUpUpdateProductComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -41,8 +43,11 @@ import { PopUpUpdateProductComponent } from './pop-up-update-product/pop-up-upda
     FormsModule,
     HttpClientModule,
     MatCheckboxModule,
-    MatDialogModule
-  ],
+    MatDialogModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    NoopAnimationsModule,
+],
   providers: [],
   bootstrap: [AppComponent]
 })
