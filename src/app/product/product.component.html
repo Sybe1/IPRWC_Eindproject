@@ -1,63 +1,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container" id="main-container">
-  <div class="container">
-    <div class="card mt-5" style="align-items: center;">
-      <h1>Product Dashboard</h1>
-    </div>
-
-    <div class="card mt-5" style="padding: 20px;">
-      <form #registerForm="ngForm" (ngSubmit)="addProducts(registerForm)">
-        <div class="form-group">
-          <label for="productName">Product name:</label>
-          <input type="text" #productName (ngModel)="productName" name="productName" id="productName" class="form-control" placeholder="Product name">
-        </div>
-        <div class="form-group">
-          <label for="description">Product description:</label>
-          <input type="text" #description (ngModel)="description" name="description" id="description" class="form-control" placeholder="Product description">
-        </div>
-        <div class="form-group">
-          <label for="price">Product price:</label>
-          <input type="number" #price (ngModel)="price" name="price" id="price" class="form-control" placeholder="Product price">
-        </div>
-        <div class="form-group">
-          <label for="stock">Product stock:</label>
-          <input type="stock" #stock (ngModel)="stock" name="stock" id="stock" class="form-control" placeholder="Product stock">
-        </div>
-        <div class="form-group">
-          <label for="clothingType">Product type:</label>
-          <select #clothingType [(ngModel)]="productToUpdate.clothingType" name="clothingType" id="clothingType" class="form-control">
-            <option value="HOODIE">Hoodie</option>
-            <option value="SHIRT">Shirt</option>
-            <option value="PANTS">Pants</option>
-            <option value="UNDERWEAR">Underwear</option>
-            <option value="SOCKS">Socks</option>
-            <option value="SHOES">Shoes</option>
-            <option value="JACKET">Jacket</option>
-            <option value="HAT">Hat</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="targetAudience">Target audience:</label>
-          <select #targetAudience [(ngModel)]="productToUpdate.targetAudience" name="targetAudience" id="targetAudience" class="form-control">
-            <option value="WOMEN">Women</option>
-            <option value="MEN">Men</option>
-            <option value="UNISEX">Unisex</option>
-            <option value="CHILDREN">Children</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="imageUrl">Image URL:</label>
-          <input type="text" #imageUrl (ngModel)="imageUrl" name="imageUrl" id="imageUrl" class="form-control" placeholder="Image URL">
-        </div>
-        <div class="form-group">
-          <input type="submit" value="Register" class="btn btn-primary w-100">
-        </div>
-      </form>
-    </div>
-  </div>
-
+  <br>
   <div class="row">
-    <hr>
     <h2>Audience:</h2>
     <div *ngFor="let product of allTargetAudience" class="col-md-6 col-xl-3">
       <section class="example-section">
@@ -84,9 +28,17 @@
     </div>
   </div>
 
+  <hr>
+  <div>
+    <h1>Add Product</h1>
+    <button class="btn btn-primary btn-block" (click)="addProduct()">
+      Add
+    </button>
+    <br>
+  </div>
 
   <div class="row">
-    <hr>
+
     <div *ngFor="let product of products" class="col-md-6 col-xl-3">
       <div class="card m-b-30">
         <div class="card-body row">
@@ -104,15 +56,11 @@
           <li class="list-group-item"><i></i>Type : <br> {{product?.clothingType}}</li>
           <li class="list-group-item"><i></i>Stock : <br> {{product?.stock}}</li>
           <li class="list-group-item"><i></i>Audience : <br> {{product?.targetAudience}}</li>
-
         </ul>
         <div class="card-body">
           <div class="float-right btn-group btn-group-sm">
-            <button (click)="addProduct()">
-              Click
-            </button>
-            <a (click)="editProduct(product?.id)" class="btn btn-primary" data-toggle="modal" data-target="#updatemodal"><i class="fa fa-pencil"></i> </a>
-            <a class="btn btn-secondary tooltips" data-original-title="Delete" (click)="deleteProduct(product)"><i class="fa fa-times"></i></a>
+            <a (click)="editProduct(product?.id)" class="btn btn-primary"><i class="fa fa-pencil"></i> </a>
+            <a class="btn btn-danger tooltips" data-original-title="Delete" (click)="deleteProduct(product)"><i class="fa fa-times"></i></a>
           </div>
         </div>
       </div>
@@ -121,79 +69,4 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="updateModalLabel">Update Product</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form #updateForm="ngForm">
-          <div class="form-group">
-            <label for="id">Product ID:</label>
-            <input type="text" disabled="true" #id [(ngModel)]="productToUpdate.id" name="id" id="id" class="form-control" placeholder="Product id">
-          </div>
-          <div class="form-group">
-            <label for="productName">Product name:</label>
-            <input type="text" #productName (ngModel)="productName" name="productName" id="productName" class="form-control" placeholder="Product name">
-          </div>
-          <div class="form-group">
-            <label for="description">Product description:</label>
-            <input type="text" #description (ngModel)="description" name="description" id="description" class="form-control" placeholder="Product description">
-          </div>
-          <div class="form-group">
-            <label for="price">Product price:</label>
-            <input type="number" #price (ngModel)="price" name="price" id="price" class="form-control" placeholder="Product price">
-          </div>
-          <div class="form-group">
-            <label for="stock">Product stock:</label>
-            <input type="stock" #stock (ngModel)="stock" name="stock" id="stock" class="form-control" placeholder="Product stock">
-          </div>
-          <div class="form-group">
-            <label for="clothingType">Product type:</label>
-            <select #clothingType [(ngModel)]="productToUpdate.clothingType" name="clothingType" id="clothingType" class="form-control">
-              <option value="HOODIE">Hoodie</option>
-              <option value="SHIRT">Shirt</option>
-              <option value="PANTS">Pants</option>
-              <option value="UNDERWEAR">Underwear</option>
-              <option value="SOCKS">Socks</option>
-              <option value="SHOES">Shoes</option>
-              <option value="JACKET">Jacket</option>
-              <option value="HAT">Hat</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="targetAudience">Target audience:</label>
-            <select #targetAudience [(ngModel)]="productToUpdate.targetAudience" name="targetAudience" id="targetAudience" class="form-control">
-              <option value="WOMEN">Women</option>
-              <option value="MEN">Men</option>
-              <option value="UNISEX">Unisex</option>
-              <option value="CHILDREN">Children</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="imageUrl">Product image URL:</label>
-            <input type="text" disabled="true" #imageUrl [(ngModel)]="productToUpdate.imageUrl" name="imageUrl" id="imageUrl" class="form-control" placeholder="Product image URL">
-          </div>
-          <div class="form-group">
-            <button type="button" class="btn btn-primary w-100" (click)="updateProduct()" data-dismiss="modal" >Update</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 

@@ -23,17 +23,6 @@ export class ProductComponent implements OnInit{
   allTargetAudience: string[] = [ "MEN", "WOMEN", "UNISEX", "CHILDREN"]
   selectedTargetAudience: string[] = [ "MEN", "WOMEN", "UNISEX", "CHILDREN"]
 
-  productToUpdate = {
-    id: 0,
-    productName: '',
-    description: '',
-    price: 0,
-    stock: 0,
-    clothingType: '',
-    targetAudience: '',
-    imageUrl: '',
-  };
-
   constructor(private productService: ProductService, private dialog: MatDialog){
 
   }
@@ -82,19 +71,6 @@ export class ProductComponent implements OnInit{
     );
   }
 
-  public addProducts(registerForm: NgForm): void {
-    this.productService.addProducts(registerForm.value).subscribe(
-      (resp) => {
-        console.log(resp);
-        this.getProducts();
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
-
-
   public deleteProduct(product: Product){
     if(confirm('Are you sure you want to delete this product?'))
       this.productService.deleteProduct(product.id).subscribe(
@@ -106,20 +82,6 @@ export class ProductComponent implements OnInit{
           console.log(err);
         }
       );
-  }
-
-
-
-  public updateProduct(){
-    this.productService.updateProduct(this.productToUpdate).subscribe(
-      (resp) => {
-        console.log(resp)
-        this.getProducts();
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
   }
 
   public editProduct(code: any){
@@ -138,4 +100,5 @@ export class ProductComponent implements OnInit{
       }
     });
   }
+
 }

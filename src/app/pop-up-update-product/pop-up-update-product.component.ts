@@ -1,10 +1,9 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, Output, EventEmitter} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
-import {FormBuilder} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ProductService} from "../product/product.service";
 import {Product} from "../product/product";
-
-
+import {ProductComponent} from "../product/product.component";
 
 @Component({
   selector: 'app-pop-up-update-product',
@@ -15,13 +14,24 @@ export class PopUpUpdateProductComponent implements OnInit{
   inputdata: any;
   editdata: any
 
+  myform = this.buildr.group({
+    id: this.buildr.control(0),
+    productName: this.buildr.control('', Validators.required),
+    description: this.buildr.control('', Validators.required),
+    price: this.buildr.control(0, [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]),
+    stock: this.buildr.control(0, [Validators.required, Validators.pattern(/^\d+$/)]),
+    clothingType: this.buildr.control('', Validators.required),
+    targetAudience: this.buildr.control('', Validators.required),
+    imageUrl: this.buildr.control('', Validators.required),
+  });
+
   constructor(@Inject(MAT_DIALOG_DATA) public data:any, private ref:MatDialogRef<PopUpUpdateProductComponent>,
               private buildr:FormBuilder, private service:ProductService) {
   }
   ngOnInit(): void {
     this.inputdata = this.data;
-    if (this.inputdata.code>0){
-      this.updateProduct(this.inputdata.code)
+    if (this.inputdata.code > 0) {
+      this.updateProduct(this.inputdata.code);
     }
   }
 
@@ -29,24 +39,15 @@ export class PopUpUpdateProductComponent implements OnInit{
     this.ref.close('Closed using function');
   }
 
-  myform = this.buildr.group({
-    id:this.buildr.control(0),
-    productName:this.buildr.control(''),
-    description:this.buildr.control(''),
-    price:this.buildr.control(0),
-    stock:this.buildr.control(0),
-    clothingType:this.buildr.control(''),
-    targetAudience:this.buildr.control(''),
-    imageUrl:this.buildr.control('')
-  });
+
 
   public saveProduct() {
     const productData: Product = {
       id: this.myform.value.id || 0, // Handle the case where id is null or undefined
       productName: this.myform.value.productName || '',
       description: this.myform.value.description || '',
-      price: this.myform.value.price || 0,
-      stock: this.myform.value.stock || 0,
+      price: this.myform.value.price || 0, // Ensure 2 decimal places
+      stock: this.myform.value.stock || 0, // Ensure it's a valid integer
       clothingType: this.myform.value.clothingType || '',
       targetAudience: this.myform.value.targetAudience || '',
       imageUrl: this.myform.value.imageUrl || ''

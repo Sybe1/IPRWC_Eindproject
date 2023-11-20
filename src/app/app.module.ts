@@ -20,6 +20,8 @@ import { MatDialogModule} from "@angular/material/dialog";
 import { PopUpUpdateProductComponent } from './pop-up-update-product/pop-up-update-product.component';
 import {MatInputModule} from "@angular/material/input";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     ReactiveFormsModule,
     NoopAnimationsModule,
-],
+    MatOptionModule,
+    MatSelectModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
