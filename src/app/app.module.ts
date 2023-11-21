@@ -22,6 +22,7 @@ import {MatInputModule} from "@angular/material/input";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {MatSelectModule} from "@angular/material/select";
     NoopAnimationsModule,
     MatOptionModule,
     MatSelectModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

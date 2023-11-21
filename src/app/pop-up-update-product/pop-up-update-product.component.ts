@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ProductService} from "../product/product.service";
 import {Product} from "../product/product";
 import {ProductComponent} from "../product/product.component";
-
 @Component({
   selector: 'app-pop-up-update-product',
   templateUrl: './pop-up-update-product.component.html',
@@ -52,7 +51,6 @@ export class PopUpUpdateProductComponent implements OnInit{
       targetAudience: this.myform.value.targetAudience || '',
       imageUrl: this.myform.value.imageUrl || ''
     };
-
     this.service.updateProduct(productData).subscribe(res => {
       this.closePopup();
     });
