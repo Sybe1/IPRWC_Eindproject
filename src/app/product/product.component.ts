@@ -31,31 +31,16 @@ export class ProductComponent implements OnInit{
     this.getProducts();
   }
 
-
-
-  public onCheckboxChangeTargetAudience(product: string): void{
-    for (let i = 0; i < this.selectedTargetAudience.length; i++) {
-      if (product === this.selectedTargetAudience[i]){
-        this.selectedTargetAudience.splice(i, 1);
-        this.getProducts()
-        return;
-      }
-    }
-    this.selectedTargetAudience.push(product)
-    this.getProducts()
+  public onClothingTypeFilterChange(selectedClothingTypes: string[]): void {
+    this.selectedClothingTypes = selectedClothingTypes;
+    this.getProducts();
   }
 
-  public onCheckboxChangeClothingType(product: string): void{
-    for (let i = 0; i < this.selectedClothingTypes.length; i++) {
-      if (product === this.selectedClothingTypes[i]){
-        this.selectedClothingTypes.splice(i, 1);
-        this.getProducts()
-        return;
-      }
-    }
-    this.selectedClothingTypes.push(product)
-    this.getProducts()
+  public onCheckboxChangeTargetAudience(selectedTargetAudience: string[]): void {
+    this.selectedTargetAudience = selectedTargetAudience;
+    this.getProducts();
   }
+
 
   public getProducts(): void {
     this.productService.getProducts().subscribe(

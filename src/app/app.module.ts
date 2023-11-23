@@ -23,6 +23,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FilterClothingTypeComponent } from './filter-clothing-type/filter-clothing-type.component';
+import { FilterTargetAudienceComponent } from './filter-target-audience/filter-target-audience.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProductComponent,
     PageNotFoundComponent,
     PopUpUpdateProductComponent,
-
+    FilterClothingTypeComponent,
+    FilterTargetAudienceComponent
   ],
   imports: [
     BrowserModule,

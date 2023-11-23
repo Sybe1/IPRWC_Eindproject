@@ -2,37 +2,15 @@
 
 <br><br>
 <div class="col-lg-3">
-  <div class="card">
-    <div class="card-heading" data-toggle="collapse" data-target="#clothingTypeFilters">
-      <br>
-      <b> <span id="clothingTypeHeading">CLOTHING TYPE</span> &nbsp;<i id="clothingTypeIcon" class="fa fa-angle-down"></i></b>
-    </div>
-    <div class="card-body collapse" id="clothingTypeFilters">
-      <div *ngFor="let product of allClothingTypes">
-        <section>
-          <mat-checkbox (change)="onCheckboxChangeClothingType(product)" checked="true">
-            {{product}}
-          </mat-checkbox>
-        </section>
-      </div>
-    </div>
-  </div>
+  <app-filter-clothing-type
+    [allClothingTypes]="allClothingTypes"
+    (clothingTypeFilterChange)="onClothingTypeFilterChange($event)">
+  </app-filter-clothing-type>
 
-  <div class="card">
-    <div class="card-heading" data-toggle="collapse" data-target="#categoriesFilters">
-      <br>
-      <b> <span id="categoriesHeading">CATEGORIES</span> &nbsp;<i id="categoriesIcon" class="fa fa-angle-down"></i></b>
-    </div>
-    <div class="card-body collapse" id="categoriesFilters">
-      <div *ngFor="let product of allTargetAudience">
-        <section>
-          <mat-checkbox (change)="onCheckboxChangeTargetAudience(product)" checked="true">
-            {{product}}
-          </mat-checkbox>
-        </section>
-      </div>
-    </div>
-  </div>
+  <app-filter-target-audience
+    [allTargetAudience]="allTargetAudience"
+    (targetAudienceFilterChange)="onCheckboxChangeTargetAudience($event)">
+  </app-filter-target-audience>
 </div>
 
 
