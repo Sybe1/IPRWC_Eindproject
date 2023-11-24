@@ -19,9 +19,7 @@ export class LoginComponent {
 
   onLogin() {
     this.http.post('http://localhost:8080/auth/authenticate', this.loginObj).subscribe((res:any)=>{
-      console.log(res);
       localStorage.setItem('loginToken', res.token);
-      console.log(localStorage.getItem('loginToken'))
       this.router.navigateByUrl('/home')
     })
   }
