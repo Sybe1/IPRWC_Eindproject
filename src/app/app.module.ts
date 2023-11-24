@@ -13,7 +13,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ExtraComponent } from './extra/extra.component';
 import { LikedComponent } from './liked/liked.component';
 import { ProductComponent } from './product/product.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MatDialogModule} from "@angular/material/dialog";
@@ -25,6 +25,9 @@ import {MatSelectModule} from "@angular/material/select";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterClothingTypeComponent } from './filter-clothing-type/filter-clothing-type.component';
 import { FilterTargetAudienceComponent } from './filter-target-audience/filter-target-audience.component';
+import { LoginComponent } from './login/login.component';
+import {CustomerInterceptorInterceptor} from "./interceptor/customer-interceptor.interceptor";
+import {ProductService} from "./product/product.service";
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { FilterTargetAudienceComponent } from './filter-target-audience/filter-t
     PageNotFoundComponent,
     PopUpUpdateProductComponent,
     FilterClothingTypeComponent,
-    FilterTargetAudienceComponent
+    FilterTargetAudienceComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,13 @@ import { FilterTargetAudienceComponent } from './filter-target-audience/filter-t
     MatSelectModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomerInterceptorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
