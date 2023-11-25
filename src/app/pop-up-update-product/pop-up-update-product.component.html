@@ -2,10 +2,6 @@
 
   <h1 mat-dialog-title>{{inputdata.title}}</h1>
   <div mat-dialog-content>
-<!--    <mat-form-field>-->
-<!--      <mat-label>ID</mat-label>-->
-<!--      <input formControlName="id" matInput>-->
-<!--    </mat-form-field>-->
     <mat-form-field>
       <mat-label>Name</mat-label>
       <input formControlName="productName" matInput>
@@ -24,7 +20,6 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>ClothingType</mat-label>
-<!--      <input formControlName="clothingType" matInput>-->
       <mat-select formControlName="clothingType">
         <mat-option value="HOODIE">Hoodie</mat-option>
         <mat-option value="SHIRT">Shirt</mat-option>
@@ -44,7 +39,6 @@
         <mat-option value="UNISEX">Unisex</mat-option>
         <mat-option value="CHILDREN">Children</mat-option>
       </mat-select>
-<!--      <input formControlName="targetAudience" matInput>-->
     </mat-form-field>
     <mat-form-field>
       <mat-label>ImageURL</mat-label>

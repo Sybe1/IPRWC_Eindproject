@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ProductService} from "../product/product.service";
 import {Product} from "../product/product";
 import {ProductComponent} from "../product/product.component";
+import {HttpErrorResponse} from "@angular/common/http";
 @Component({
   selector: 'app-pop-up-update-product',
   templateUrl: './pop-up-update-product.component.html',
@@ -12,6 +13,8 @@ import {ProductComponent} from "../product/product.component";
 export class PopUpUpdateProductComponent implements OnInit{
   inputdata: any;
   editdata: any
+  @Output() onClose: EventEmitter<void> = new EventEmitter<void>();
+
 
   myform = this.buildr.group({
     id: this.buildr.control(0),
@@ -36,6 +39,7 @@ export class PopUpUpdateProductComponent implements OnInit{
 
   public closePopup(){
     this.ref.close('Closed using function');
+    this.onClose.emit();
   }
 
 
@@ -64,4 +68,5 @@ export class PopUpUpdateProductComponent implements OnInit{
       imageUrl: this.editdata.imageUrl})
     })
   }
+
 }

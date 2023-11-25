@@ -77,12 +77,15 @@ export class ProductComponent implements OnInit{
     this.openPopup(0, 'Add Product')
   }
   public openPopup(code:any, title:any){
-    this.dialog.open(PopUpUpdateProductComponent,{
+    const dialogRef = this.dialog.open(PopUpUpdateProductComponent,{
       width:'60%',
       data: {
         title: title,
         code: code
       }
+    });
+    dialogRef.componentInstance.onClose.subscribe(() => {
+      this.getProducts(); // Roep getProducts op wanneer het dialoogvenster wordt gesloten.
     });
   }
 
