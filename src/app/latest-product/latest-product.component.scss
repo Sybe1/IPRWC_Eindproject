@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 33.33%;
+  padding: 20px;
+}
+
+.general {
+  background-color: #e0efff;
+}
+
+.product-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.product-info {
+  flex: 1; /* Neem de beschikbare ruimte in beslag, zodat de afbeelding aan de zijkant wordt geplaatst */
+}
+
+.product-image {
+  margin-left: 20px; /* Voeg indien nodig marge toe tussen de tekst en afbeelding */
+}

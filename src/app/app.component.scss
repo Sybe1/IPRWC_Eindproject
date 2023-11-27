@@ -6,16 +6,9 @@ $danger-color: #f15e5e;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh; // Optioneel, afhankelijk van je ontwerpbehoeften
+  height: 100vh;
 }
 
-.centered-content {
-  text-align: center; // Optioneel, afhankelijk van je ontwerpbehoeften
-}
-
-body {
-  font-family: 'Varela Round', sans-serif;
-}
 
 .trigger-btn {
   display: inline-block;

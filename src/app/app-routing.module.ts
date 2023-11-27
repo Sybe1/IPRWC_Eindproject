@@ -6,7 +6,7 @@ import {ExtraComponent} from "./extra/extra.component";
 import {LikedComponent} from "./liked/liked.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {LoginComponent} from "./login/login.component";
-import {NavbarComponent} from "./navbar/navbar.component";
+import {ProductComponent} from "./product/product.component";
 
 const routes: Routes = [
   { path:'login', component:LoginComponent},
@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'extra', component: ExtraComponent},
   { path: 'shoppingcart', component: ShoppingCartComponent},
   { path: 'liked', component: LikedComponent},
+  { path: 'shop', component: ProductComponent},
   { path: '**', component: PageNotFoundComponent}
 ];
 

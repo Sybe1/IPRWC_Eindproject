@@ -1,10 +1,16 @@
-<mat-toolbar color="primary" class="mat-elevation-z6">
-  <span routerLink="home"><mat-icon>language</mat-icon></span>
+<mat-toolbar class="mat-elevation-z6">
+  <a mat-button routerLink="home" class="margin-button2 no-underline">WorldWideFashion</a>
 
   <div class="spacer"></div>
 
-  <a mat-button routerLink="extra">Extra</a>
-  <a mat-button routerLink="liked"><mat-icon>favorite</mat-icon></a>
-  <a mat-button routerLink="shoppingcart"><mat-icon>shopping_cart</mat-icon></a>
+  <div class="centered-link">
+    <a mat-button routerLink="home" routerLinkActive="router-link-active" class="no-underline hover-underline">Home</a>
+    <a mat-button routerLink="shop" routerLinkActive="router-link-active" class="no-underline hover-underline">Shop</a>
+    <a mat-button routerLink="extra" routerLinkActive="router-link-active" class="no-underline hover-underline">Extra</a>
+  </div>
 
+  <div class="spacer"></div>
+
+  <a mat-button routerLink="liked" ><mat-icon>favorite</mat-icon></a>
+  <a mat-button routerLink="shoppingcart" class="margin-button"><mat-icon>shopping_cart</mat-icon></a>
 </mat-toolbar>

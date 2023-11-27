@@ -85,7 +85,7 @@ export class ProductComponent implements OnInit{
       }
     });
     dialogRef.componentInstance.onClose.subscribe(() => {
-      this.getProducts(); // Roep getProducts op wanneer het dialoogvenster wordt gesloten.
+      this.getProducts();
     });
   }
 

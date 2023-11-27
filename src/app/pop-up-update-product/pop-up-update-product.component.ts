@@ -3,8 +3,6 @@ import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ProductService} from "../product/product.service";
 import {Product} from "../product/product";
-import {ProductComponent} from "../product/product.component";
-import {HttpErrorResponse} from "@angular/common/http";
 @Component({
   selector: 'app-pop-up-update-product',
   templateUrl: './pop-up-update-product.component.html',
@@ -41,8 +39,6 @@ export class PopUpUpdateProductComponent implements OnInit{
     this.ref.close('Closed using function');
     this.onClose.emit();
   }
-
-
 
   public saveProduct() {
     const productData: Product = {
