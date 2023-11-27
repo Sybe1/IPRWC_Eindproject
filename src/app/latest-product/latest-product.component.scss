@@ -16,9 +16,21 @@
 }
 
 .product-info {
-  flex: 1; /* Neem de beschikbare ruimte in beslag, zodat de afbeelding aan de zijkant wordt geplaatst */
+  flex: 1;
 }
 
 .product-image {
-  margin-left: 20px; /* Voeg indien nodig marge toe tussen de tekst en afbeelding */
+  margin-left: 20px;
+}
+
+button{
+  color: white;
+  background-color: black;
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+  max-height: 200px;
 }

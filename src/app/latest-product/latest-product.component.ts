@@ -27,4 +27,8 @@ export class LatestProductComponent implements OnInit {
       }
     );
   }
+
+  goToShop() {
+    console.log("df")
+  }
 }
