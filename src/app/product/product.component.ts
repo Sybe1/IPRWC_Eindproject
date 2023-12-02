@@ -43,8 +43,7 @@ export class ProductComponent implements OnInit{
 
 
   public getProducts(): void {
-    this.productService.getProducts().subscribe(
-      (response: Product[]) => {
+    this.productService.getProducts().subscribe((response: Product[]) => {
         this.products = response.filter(product =>
           this.selectedClothingTypes.includes(product.clothingType) &&
           this.selectedTargetAudience.includes(product.targetAudience)
