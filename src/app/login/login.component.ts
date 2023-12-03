@@ -25,7 +25,7 @@ export class LoginComponent {
       "password": "",
       "firstName": "",
       "lastName": "",
-      "role": "",
+      "role": "CUSTOMER",
       "email": "",
       "address": "",
       "postalCode": ""
