@@ -15,6 +15,8 @@ import {PopUpUpdateProductComponent} from "../pop-up-update-product/pop-up-updat
 export class ProductComponent implements OnInit{
   products: any[] = [];
 
+  role: boolean = false;
+
   allClothingTypes: string[] = [ "HOODIE", "SHIRT", "PANTS", "UNDERWEAR",
     "SOCKS", "SHOES", "JACKET", "HAT"]
   selectedClothingTypes: string[] = [ "HOODIE", "SHIRT", "PANTS", "UNDERWEAR",
@@ -29,6 +31,9 @@ export class ProductComponent implements OnInit{
 
   ngOnInit() {
     this.getProducts();
+    if (localStorage.getItem('role') === 'ADMIN'){
+      this.role = true;
+    }
   }
 
   public onClothingTypeFilterChange(selectedClothingTypes: string[]): void {
@@ -88,4 +93,5 @@ export class ProductComponent implements OnInit{
     });
   }
 
+  protected readonly localStorage = localStorage;
 }

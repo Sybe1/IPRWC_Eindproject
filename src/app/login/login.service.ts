@@ -13,4 +13,9 @@ export class LoginService {
   public postUser(loginObj: any) {
     return this.http.post(`${this.apiServerUrl}/auth/authenticate`, loginObj);
   }
+
+  public registerUser(registerObj: any) {
+    console.log(registerObj)
+    return this.http.post(`${this.apiServerUrl}/auth/register`, registerObj );
+  }
 }

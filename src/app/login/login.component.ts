@@ -11,24 +11,57 @@ import {UserService} from "../user/user.service";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+    isLoginMode = true;
+    private usernameHelp: string = "";
+    private passwordHelp: string = "";
 
     loginObj: any = {
+        "username": "",
+        "password": ""
+    }
+
+    signUpObj: any = {
       "username": "",
-      "password": ""
+      "password": "",
+      "firstName": "",
+      "lastName": "",
+      "role": "",
+      "email": "",
+      "address": "",
+      "postalCode": ""
     }
 
     constructor(private http:HttpClient, private router: Router, private loginService: LoginService,
                 private userService: UserService) {
     }
 
-  onLogin() {
-    this.loginService.postUser(this.loginObj).subscribe((res:any ) => {
-      localStorage.setItem('loginToken', res.token);
-      console.log(res.token);
-      this.userService.getUserByUsername(this.loginObj.username).subscribe((resUser:any)=> {
-        console.log("role: " + resUser.role);
-      })
-      this.router.navigateByUrl('/home');
-    })
-  }
+    onSwitchMode(){
+      this.isLoginMode = !this.isLoginMode;
+    }
+
+    onLogin() {
+        if (this.isLoginMode) {
+          this.loginService.postUser(this.loginObj).subscribe((res: any) => {
+            localStorage.setItem('loginToken', res.token);
+            console.log(res.token);
+            this.userService.getUserByUsername(this.loginObj.username).subscribe((resUser: any) => {
+              localStorage.setItem('role', resUser.role);
+              console.log("role: " + localStorage.getItem('role'));
+
+            })
+            this.router.navigateByUrl('/home');
+
+          })
+        }
+        else if (!this.isLoginMode) {
+          this.loginService.registerUser(this.signUpObj).subscribe((res: any) => {
+            this.usernameHelp = this.signUpObj.username;
+            this.passwordHelp = this.signUpObj.password;
+            this.onSwitchMode();
+            this.loginObj.username = this.usernameHelp;
+            this.loginObj.password = this.passwordHelp;
+          })
+        }
+    }
+
 }
