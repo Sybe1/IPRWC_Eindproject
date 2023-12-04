@@ -25,8 +25,10 @@ export class ProductComponent implements OnInit{
   allTargetAudience: string[] = [ "MEN", "WOMEN", "UNISEX", "CHILDREN"]
   selectedTargetAudience: string[] = [ "MEN", "WOMEN", "UNISEX", "CHILDREN"]
 
-  constructor(private productService: ProductService, private dialog: MatDialog){
+  isClothingTypeCollapsed = true;
+  isTargetAudienceCollapsed = true;
 
+  constructor(private productService: ProductService, private dialog: MatDialog){
   }
 
   ngOnInit() {
@@ -46,6 +48,19 @@ export class ProductComponent implements OnInit{
     this.getProducts();
   }
 
+  public toggleClothingTypeCollapse() {
+    this.isClothingTypeCollapsed = !this.isClothingTypeCollapsed;
+    if (!this.isTargetAudienceCollapsed && !this.isClothingTypeCollapsed){
+      this.isTargetAudienceCollapsed = !this.isTargetAudienceCollapsed;
+    }
+  }
+
+  public toggleTargetAudienceCollapse(){
+    this.isTargetAudienceCollapsed = !this.isTargetAudienceCollapsed;
+    if (!this.isClothingTypeCollapsed && !this.isTargetAudienceCollapsed){
+      this.isClothingTypeCollapsed = !this.isClothingTypeCollapsed;
+    }
+  }
 
   public getProducts(): void {
     this.productService.getProducts().subscribe((response: Product[]) => {
@@ -92,6 +107,4 @@ export class ProductComponent implements OnInit{
       this.getProducts();
     });
   }
-
-  protected readonly localStorage = localStorage;
 }

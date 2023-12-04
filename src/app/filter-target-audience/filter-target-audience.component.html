@@ -1,14 +1,13 @@
+<!--filter-target-audience.component.html-->
+
+
+
 <div class="card">
-  <div class="card-heading" data-toggle="collapse" data-target="#categoriesFilters">
-    <br>
-    <b> <span id="categoriesHeading">CATEGORIES</span> &nbsp;<i id="categoriesIcon" class="fa fa-angle-down"></i></b>
-  </div>
-  <div class="card-body collapse" id="categoriesFilters">
+  <div class="card-body">
     <div *ngFor="let product of allTargetAudience">
       <section>
-        <mat-checkbox (change)="onCheckboxChangeTargetAudience(product)" checked="true">
-          {{product}}
-        </mat-checkbox>
+        <input type="checkbox" (change)="onCheckboxChangeTargetAudience(product)" [checked]="selectedTargetAudience.includes(product)">
+        {{product}}
       </section>
     </div>
   </div>

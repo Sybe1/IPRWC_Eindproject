@@ -1,14 +1,11 @@
+<!--filter-clothing-type.component.html-->
+
 <div class="card">
-  <div class="card-heading" data-toggle="collapse" data-target="#clothingTypeFilters">
-    <br>
-    <b> <span id="clothingTypeHeading">CLOTHING TYPE</span> &nbsp;<i id="clothingTypeIcon" class="fa fa-angle-down"></i></b>
-  </div>
-  <div class="card-body collapse" id="clothingTypeFilters">
+  <div class="card-body">
     <div *ngFor="let product of allClothingTypes">
       <section>
-        <mat-checkbox (change)="onCheckboxChangeClothingType(product)" checked="true">
-          {{product}}
-        </mat-checkbox>
+        <input type="checkbox" (change)="onCheckboxChangeClothingType(product)" [checked]="selectedClothingTypes.includes(product)">
+        {{product}}
       </section>
     </div>
   </div>
