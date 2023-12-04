@@ -1,5 +1,4 @@
 @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css';
-git remote -v
 
 .card {
   border: none;
@@ -19,16 +18,19 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
+@media (max-width: 768px) {
+  .col-lg-3 {
+    position: static;
+    width: auto;
+  }
 
-.col-lg-3 {
-  width: 300px;
-  position: fixed;
+  .container {
+    margin-left: 0;
+  }
 }
 
-.container {
-  margin-left: 320px;
-}
-
-.row {
-  height: 150px;
+@media (max-width: 576px) {
+  .col-6 {
+    width: 100%;
+  }
 }

@@ -1,18 +1,33 @@
 <mat-toolbar class="mat-elevation-z6">
-  <a mat-button routerLink="home" class="margin-button2 no-underline">WorldWideFashion</a>
+  <div class="normaal-menu">
+    <a mat-button routerLink="home" class="margin-button2 no-underline">WorldWideFashion</a>
+  </div>
 
   <div class="spacer"></div>
 
   <div class="centered-link">
-    <a mat-button routerLink="home" routerLinkActive="router-link-active" class="no-underline hover-underline">Home</a>
-    <a mat-button routerLink="shop" routerLinkActive="router-link-active" class="no-underline hover-underline">Shop</a>
-    <a mat-button routerLink="extra" routerLinkActive="router-link-active" class="no-underline hover-underline">Extra</a>
+    <div class="normaal-menu">
+      <a mat-button routerLink="home" routerLinkActive="router-link-active" class="no-underline hover-underline">Home</a>
+      <a mat-button routerLink="shop" routerLinkActive="router-link-active" class="no-underline hover-underline">Shop</a>
+      <a mat-button routerLink="extra" routerLinkActive="router-link-active" class="no-underline hover-underline">Extra</a>
+    </div>
+  </div>
+
+
+  <div class="dropdown">
+    <button class="dropbtn">&#8801;</button>
+    <div class="dropdown-content">
+      <a routerLink="home" routerLinkActive="router-link-active">Home</a>
+      <a routerLink="shop" routerLinkActive="router-link-active">Shop</a>
+      <a routerLink="extra" routerLinkActive="router-link-active" >Extra</a>
+
+    </div>
   </div>
 
   <div class="spacer"></div>
 
   <a mat-button routerLink="login" routerLinkActive="router-link-active" class="no-underline">Login</a>
-  <a mat-button routerLink="liked" ><mat-icon>favorite</mat-icon></a>
+  <a mat-button routerLink="liked"><mat-icon>favorite</mat-icon></a>
   <a mat-button routerLink="shoppingcart" class="margin-button"><mat-icon>shopping_cart</mat-icon></a>
 
 </mat-toolbar>

@@ -1,50 +1,52 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
 <br><br>
-<div class="col-lg-3">
-  <app-filter-clothing-type
-    [allClothingTypes]="allClothingTypes"
-    (clothingTypeFilterChange)="onClothingTypeFilterChange($event)">
-  </app-filter-clothing-type>
-
-  <app-filter-target-audience
-    [allTargetAudience]="allTargetAudience"
-    (targetAudienceFilterChange)="onCheckboxChangeTargetAudience($event)">
-  </app-filter-target-audience>
-</div>
-
-<div class="container" id="main-container">
-  <div *ngIf=role>
-    <h1>Add Product</h1>
-    <button class="btn btn-primary btn-block" (click)="addProduct()">
-      Add
-    </button>
-    <br>
-  </div>
-
+<div class="container-fluid">
   <div class="row">
-    <div *ngFor="let product of products" class="col-md-6 col-xl-4">
-      <div class="card m-b-30">
-        <div class="card-body row">
-          <div class="col-6">
-            <a><img src="{{product?.imageUrl}}" alt="" class="img-fluid w-60"></a>
-          </div>
-          <div class="col-6 card-title align-self-center mb-0">
-            <h5>{{product?.productName}}</h5>
-            <p class="m-0">
-              €{{product?.price}}
-            </p>
-          </div>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><i></i>Type : <br> {{product?.clothingType}}</li>
-          <li class="list-group-item"><i></i>Stock : <br> {{product?.stock}}</li>
-          <li class="list-group-item"><i></i>Audience : <br> {{product?.targetAudience}}</li>
-        </ul>
-        <div class="card-body">
-          <div *ngIf=role class="float-right btn-group btn-group-sm">
-            <a (click)="editProduct(product?.id)" class="btn btn-primary"><i class="fa fa-pencil"></i> </a>
-            <a class="btn btn-danger tooltips" data-original-title="Delete" (click)="deleteProduct(product)"><i class="fa fa-times"></i></a>
+    <div class="col-lg-3">
+      <app-filter-clothing-type
+        [allClothingTypes]="allClothingTypes"
+        (clothingTypeFilterChange)="onClothingTypeFilterChange($event)">
+      </app-filter-clothing-type>
+
+      <app-filter-target-audience
+        [allTargetAudience]="allTargetAudience"
+        (targetAudienceFilterChange)="onCheckboxChangeTargetAudience($event)">
+      </app-filter-target-audience>
+    </div>
+
+    <div class="col-lg-9" id="main-container">
+      <div *ngIf="role">
+        <h1>Add Product</h1>
+        <button class="btn btn-primary btn-block" (click)="addProduct()">
+          Add
+        </button>
+        <br>
+      </div>
+
+      <div class="row">
+        <div *ngFor="let product of products" class="col-md-6 col-xl-4">
+          <div class="card m-b-30">
+            <div class="card-body row">
+              <div class="col-6">
+                <a><img src="{{product?.imageUrl}}" alt="" class="img-fluid w-60"></a>
+              </div>
+              <div class="col-6 card-title align-self-center mb-0">
+                <h5>{{product?.productName}}</h5>
+                <p class="m-0">
+                  €{{product?.price}}
+                </p>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i></i>Type : <br> {{product?.clothingType}}</li>
+              <li class="list-group-item"><i></i>Stock : <br> {{product?.stock}}</li>
+              <li class="list-group-item"><i></i>Audience : <br> {{product?.targetAudience}}</li>
+            </ul>
+            <div class="card-body">
+              <div *ngIf=role class="float-right btn-group btn-group-sm">
+                <a (click)="editProduct(product?.id)" class="btn btn-primary"><i class="fa fa-pencil"></i> </a>
+                <a class="btn btn-danger tooltips" data-original-title="Delete" (click)="deleteProduct(product)"><i class="fa fa-times"></i></a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

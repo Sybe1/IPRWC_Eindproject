@@ -10,14 +10,14 @@ import {ProductComponent} from "./product/product.component";
 
 const routes: Routes = [
   { path:'login', component:LoginComponent},
-  { path: '', redirectTo:'login', pathMatch:'full'},
+  { path: '', redirectTo:'home', pathMatch:'full'},
   { path: '', component:HomeComponent},
   { path: 'home', component: HomeComponent},
   { path: 'extra', component: ExtraComponent},
   { path: 'shoppingcart', component: ShoppingCartComponent},
   { path: 'liked', component: LikedComponent},
   { path: 'shop', component: ProductComponent},
-  { path: '**', component: PageNotFoundComponent}
+  { path: '**', component: HomeComponent}
 ];
 
 @NgModule({
