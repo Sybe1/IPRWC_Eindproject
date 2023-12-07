@@ -7,12 +7,14 @@ import {LikedComponent} from "./liked/liked.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {LoginComponent} from "./login/login.component";
 import {ProductComponent} from "./product/product.component";
+import {ProductInformationComponent} from "./product-information/product-information.component";
 
 const routes: Routes = [
   { path:'login', component:LoginComponent},
   { path: '', redirectTo:'home', pathMatch:'full'},
   { path: '', component:HomeComponent},
   { path: 'home', component: HomeComponent},
+  { path: 'productinfo', component: ProductInformationComponent},
   { path: 'extra', component: ExtraComponent},
   { path: 'shoppingcart', component: ShoppingCartComponent},
   { path: 'liked', component: LikedComponent},

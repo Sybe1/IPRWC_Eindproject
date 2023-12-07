@@ -28,6 +28,7 @@ import { FilterTargetAudienceComponent } from './filter-target-audience/filter-t
 import { LoginComponent } from './login/login.component';
 import {CustomerInterceptorInterceptor} from "./interceptor/customer-interceptor.interceptor";
 import { LatestProductComponent } from './latest-product/latest-product.component';
+import { ProductInformationComponent } from './product-information/product-information.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { LatestProductComponent } from './latest-product/latest-product.componen
     FilterClothingTypeComponent,
     FilterTargetAudienceComponent,
     LoginComponent,
-    LatestProductComponent
+    LatestProductComponent,
+    ProductInformationComponent
   ],
   imports: [
     BrowserModule,

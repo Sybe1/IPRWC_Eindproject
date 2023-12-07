@@ -40,25 +40,27 @@
 
         <div class="flex flex-wrap">
           <div *ngFor="let product of products" class="w-full md:w-1/2 xl:w-1/3 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <a><img src="{{product?.imageUrl}}" alt="" class="img-fluid w-full product-image"></a>
-                <h5 class="card-title">{{product?.productName}}</h5>
-                <p class="card-text">
-                  €{{product?.price}}
-                </p>
-              </div>
-              <div class="card-body">
-                <div *ngIf="role" class="float-right btn-group btn-group-sm">
-                  <a (click)="editProduct(product?.id)" class="btn btn-primary">
-                    <i class="fas fa-pencil-alt text-white" ></i>
-                  </a>
-                  <a class="btn btn-danger tooltips" data-original-title="Delete" (click)="deleteProduct(product)">
-                    <i class="fas fa-times text-white"></i>
-                  </a>
+              <div class="card">
+                <a routerLink="/productinfo">
+                  <div class="card-body">
+                    <a><img src="{{product?.imageUrl}}" alt="" class="img-fluid w-full product-image"></a>
+                    <h5 class="card-title">{{product?.productName}}</h5>
+                    <p class="card-text">
+                      €{{product?.price}}
+                    </p>
+                  </div>
+                </a>
+                <div class="card-body">
+                  <div *ngIf="role" class="float-right btn-group btn-group-sm">
+                    <a (click)="editProduct(product?.id)" class="btn btn-primary">
+                      <i class="fas fa-pencil-alt text-white" ></i>
+                    </a>
+                    <a class="btn btn-danger tooltips" data-original-title="Delete" (click)="deleteProduct(product)">
+                      <i class="fas fa-times text-white"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </div>

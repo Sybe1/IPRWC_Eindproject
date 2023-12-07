@@ -8,7 +8,7 @@
         <h2>{{ product.productName }}</h2>
         <p>Description: {{ product.description }}</p>
         <p>Price: {{ product.price | currency:'EUR':'symbol':'1.2-2' }}</p>
-        <button routerLink="/shop" (click)="goToShop()">SHOP NOW →</button>
+        <button routerLink="/shop" >SHOP NOW →</button>
       </div>
       <div class="product-image">
         <a><img src="{{product?.imageUrl}}" alt=""></a>

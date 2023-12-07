@@ -4,7 +4,7 @@
 .card {
   border: none;
   margin-bottom: 5px;
-  max-width: 250px; /* Pas dit aan naar wens, bijvoorbeeld 60% of een andere waarde */
+  max-width: 250px;
   margin-left: 0;
   margin-right: 30px;
 }
@@ -26,6 +26,10 @@ h1, h2, h3, h4, h5, h6 {
   object-position: left;
 }
 
+a{
+  text-decoration: none;
+  color: black;
+}
 
 @media (max-width: 768px) {
   .col-lg-3 {
