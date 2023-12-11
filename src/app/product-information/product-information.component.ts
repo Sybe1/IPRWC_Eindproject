@@ -12,7 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ProductInformationComponent implements OnInit{
   products: any[] = [];
-
+  image = 'assets/images/achtergrondBlauw.jpg';
   constructor(private productService: ProductService, private route: ActivatedRoute){
   }
 

@@ -1,0 +1,32 @@
+.width-tekst{
+  width: 350px;
+}
+
+.wrapper{
+  height: 50px;
+  width: 150px;
+  align-items: center;
+}
+
+
+.padding-left {
+  padding-left: 38vw;
+}
+
+@media (max-width: 1000px) {
+  .padding-left {
+    padding-left: 32vw;
+  }
+}
+
+@media (max-width: 750px) {
+  .padding-left {
+    padding-left: 24vw;
+  }
+}
+
+@media (max-width: 544px) {
+  .padding-left {
+    padding-left: 10vw;
+  }
+}
