@@ -1,1 +1,16 @@
-<p>product-information works!</p>
+<div *ngFor="let product of products" class="card flex">
+  <div class="card-body flex">
+    <a>
+      <img src="{{ product?.imageUrl }}" class="mr-4 h-50 object-cover" alt="{{ product?.productName }}">
+    </a>
+    <div class="flex-1">
+      <h5>{{ product?.productName }}</h5>
+      <h5>€{{ product?.price }}
+      </h5>
+<!--      <p class="text-right">-->
+<!--        €{{ product?.price }}-->
+<!--      </p>-->
+      <!-- Voeg hier de hoeveelheid toe indien nodig -->
+    </div>
+  </div>
+</div>

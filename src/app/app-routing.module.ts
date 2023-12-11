@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full'},
   { path: '', component:HomeComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'productinfo', component: ProductInformationComponent},
+  { path: 'productinfo/:id', component: ProductInformationComponent },
   { path: 'extra', component: ExtraComponent},
   { path: 'shoppingcart', component: ShoppingCartComponent},
   { path: 'liked', component: LikedComponent},

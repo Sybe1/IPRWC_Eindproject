@@ -1,19 +1,10 @@
-<div class="general">
-  <div class="container">
-    <h1>Winter Collection 23/24</h1>
-    <h1><hr>Latest product</h1>
+<!--latest-product.component.html-->
 
-    <div *ngFor="let product of products" class="product-container">
-      <div class="product-info">
-        <h2>{{ product.productName }}</h2>
-        <p>Description: {{ product.description }}</p>
-        <p>Price: {{ product.price | currency:'EUR':'symbol':'1.2-2' }}</p>
-        <button routerLink="/shop" >SHOP NOW →</button>
-      </div>
-      <div class="product-image">
-        <a><img src="{{product?.imageUrl}}" alt=""></a>
-      </div>
-    </div>
-    <br><br><br>
-  </div>
+
+
+<div *ngFor="let product of products" class="text-center">
+    <a routerLink="/productinfo/{{product?.id}}"><img src="{{product?.imageUrl}}" alt=""></a>
+    <br/>
 </div>
+
+

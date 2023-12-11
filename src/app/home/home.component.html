@@ -1,1 +1,54 @@
-<app-latest-product></app-latest-product>
+<!--home.component.html-->
+
+<section class="w-full flex xl:flex-row flex-col justify-center min-h-screen gap-10">
+
+  <div class="relative pl-10 xl:w-2/5 flex flex-col justify-center items-start w-full max-xl:padding-x pt-28">
+    <p class="text-xl text-red-400"
+    >Our Winter Collection</p>
+    <div class="mt-10 font-bold text-7xl max-sm:text-[72px]">
+      <span class="xl:bg-white xl:whitespace-nowrap relative
+                    z-10 pr-10">
+        The New Arrivals
+      </span>
+      <br/>
+      <span class="text-red-400 inline-block mt-3">
+        High End
+      </span> Collection
+    </div>
+  <br/>
+  <p class="text-gray-400 text-lg leading-8 mt-6 mb-12">
+    Discover stylish arrivals, quality comfort, and innovation for your active life.
+  </p>
+  <br/>
+
+
+  <div>
+    <button class="flex justify-center items-center gap-2 px-10 py-3
+                        border font-light text-lg leading-none bg-red-400
+                        rounded-full text-white"
+            routerLink="/shop" >Shop now →
+    </button>
+  </div>
+
+
+    <div class="justify-start items-start w-full mt-20 ">
+      <div class="flex flex-wrap text-4xl font-bold">
+        <p class="flex-1">1k+</p>
+        <p class="flex-1">500+</p>
+        <p class="flex-1">250k+</p>
+      </div>
+      <div class="flex flex-wrap leading-7 text-gray-400">
+        <p class="flex-1">Brands</p>
+        <p class="flex-1">Shops</p>
+        <p class="flex-1">Customers</p>
+      </div>
+    </div>
+  </div>
+  <div class="relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40" [ngStyle]="{ 'background-image': 'url(' + image + ')', 'background-size': 'cover'}">
+    <app-latest-product></app-latest-product>
+    <br/>
+  </div>
+
+
+</section>
+

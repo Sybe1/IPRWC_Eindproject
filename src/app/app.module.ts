@@ -29,6 +29,7 @@ import { LoginComponent } from './login/login.component';
 import {CustomerInterceptorInterceptor} from "./interceptor/customer-interceptor.interceptor";
 import { LatestProductComponent } from './latest-product/latest-product.component';
 import { ProductInformationComponent } from './product-information/product-information.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -47,23 +48,24 @@ import { ProductInformationComponent } from './product-information/product-infor
     LatestProductComponent,
     ProductInformationComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    FormsModule,
-    HttpClientModule,
-    MatCheckboxModule,
-    MatDialogModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    NoopAnimationsModule,
-    MatOptionModule,
-    MatSelectModule,
-    NgbModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        FormsModule,
+        HttpClientModule,
+        MatCheckboxModule,
+        MatDialogModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        NoopAnimationsModule,
+        MatOptionModule,
+        MatSelectModule,
+        NgbModule,
+        NgOptimizedImage,
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
