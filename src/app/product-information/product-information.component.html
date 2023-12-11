@@ -1,5 +1,5 @@
 <div *ngFor="let product of products" class="mb-4 pt-28">
-  <div class="flex items-center">
+  <div class="flex flex-wrap items-center">
     <div class="padding-left">
         <img src="{{ product?.imageUrl }}" class=" border-4 h-96 mr-4" alt="{{ product?.productName }}" [ngStyle]="{ 'background-image': 'url(' + image + ')', 'background-size': 'cover'}">
     </div>
@@ -10,15 +10,15 @@
       <div class="mb-3 text-2xl">€{{ product?.price }}</div>
       <div class="flex">
         <div class="mr-2 wrapper flex justify-center bg-gray-100">
-          <button class="pr-10">-</button>
-          <span >0</span>
-          <button class="pl-10">+</button>
+          <button (click)="minProduct()" class="pr-10">-</button>
+          <span>{{hoeveelheidProduct}}</span>
+          <button (click)="maxProduct()" class="pl-10">+</button>
         </div>
         <div>
           <button class="flex justify-center items-center gap-2 px-10 py-3
                         border font-light text-lg leading-none bg-red-400
                         rounded-2xl text-white"
-                  routerLink="/shop" >Add to card
+                  >Add to card
 
           </button>
         </div>

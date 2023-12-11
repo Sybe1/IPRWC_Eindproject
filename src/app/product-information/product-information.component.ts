@@ -13,6 +13,7 @@ import {ActivatedRoute} from "@angular/router";
 export class ProductInformationComponent implements OnInit{
   products: any[] = [];
   image = 'assets/images/achtergrondBlauw.jpg';
+  hoeveelheidProduct:number = 0;
   constructor(private productService: ProductService, private route: ActivatedRoute){
   }
 
@@ -32,6 +33,16 @@ export class ProductInformationComponent implements OnInit{
       (error: HttpErrorResponse) => {
         alert(error.message);
       })
+  }
+
+  minProduct() {
+    if (this.hoeveelheidProduct > 0){
+      this.hoeveelheidProduct -= 1;
+    }
+  }
+
+  maxProduct() {
+    this.hoeveelheidProduct += 1;
   }
 }
 

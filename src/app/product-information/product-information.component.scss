@@ -13,20 +13,25 @@
   padding-left: 38vw;
 }
 
+@media (max-width: 1250px) {
+  .padding-left {
+    padding-left: 20vw;
+  }
+}
+
 @media (max-width: 1000px) {
-  .padding-left {
-    padding-left: 32vw;
-  }
-}
-
-@media (max-width: 750px) {
-  .padding-left {
-    padding-left: 24vw;
-  }
-}
-
-@media (max-width: 544px) {
   .padding-left {
     padding-left: 10vw;
   }
 }
+
+@media (max-width: 840px) {
+  .padding-left {
+    margin-bottom: 30px;
+    padding-left: 25vw;
+  }
+  .width-tekst{
+    align-items: center;
+  }
+}
+
