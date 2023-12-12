@@ -10,7 +10,7 @@
 
 
 .padding-left {
-  padding-left: 38vw;
+  padding-left: 31vw;
 }
 
 @media (max-width: 1250px) {
@@ -31,7 +31,18 @@
     padding-left: 25vw;
   }
   .width-tekst{
-    align-items: center;
+    padding-left: 25vw;
+    width: 550px;
   }
 }
 
+@media (max-width: 550px) {
+  .padding-left {
+    margin-bottom: 30px;
+    padding-left: 1vw;
+  }
+  .width-tekst{
+    padding-left: 1vw;
+    width: 350px;
+  }
+}
