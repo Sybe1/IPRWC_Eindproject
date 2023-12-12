@@ -9,9 +9,7 @@ import {PopUpUpdateProductComponent} from "../pop-up-update-product/pop-up-updat
 })
 export class LikedComponent {
 
-  constructor(private dialogRef: MatDialog) {
+  constructor() {
   }
-  openDialog(){
-    this.dialogRef.open(PopUpUpdateProductComponent)
-  }
+
 }

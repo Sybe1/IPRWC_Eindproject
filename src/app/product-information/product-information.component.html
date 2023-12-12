@@ -1,4 +1,11 @@
-<div *ngFor="let product of products" class="mb-4 pt-28">
+<div class="bg-red-100 ">
+  <p class="pt-10 pl-80 text-2xl font-semibold">Product</p>
+  <div class="pb-10">
+    <p class="pl-80 inline">Home > </p>
+    <p class="pb-10 inline text-gray-400">Product</p>
+  </div>
+</div>
+<div *ngFor="let product of products" class="mb-4 pt-16">
   <div class="flex flex-wrap items-center">
     <div class="padding-left">
         <img src="{{ product?.imageUrl }}" class=" border-4 h-96 mr-4" alt="{{ product?.productName }}" [ngStyle]="{ 'background-image': 'url(' + image + ')', 'background-size': 'cover'}">

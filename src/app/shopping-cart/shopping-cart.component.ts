@@ -6,15 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent {
-  allTargetAudience: string[] = [ "MEN", "WOMEN", "UNISEX", "CHILDREN"];
-  allClothingTypes: string[] = [ "HOODIE", "SHIRT", "PANTS", "UNDERWEAR",
-    "SOCKS", "SHOES", "JACKET", "HAT"]
 
-  onCheckboxChangeClothingType(product: string) {
-    console.log("test")
-  }
-
-  onCheckboxChangeTargetAudience(product: string) {
-    console.log("string")
-  }
 }

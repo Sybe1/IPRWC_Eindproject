@@ -1,21 +1,27 @@
 
 <!--product.component.html-->
-<br><br>
 <body>
+  <div class="bg-red-100 ">
+    <p class="pt-10 pl-80 text-2xl font-semibold">Shop</p>
+    <div class="pb-10">
+      <p class="pl-80 inline">Home > </p>
+      <p class="pb-10 inline text-gray-400">Shop</p>
+    </div>
+  </div>
   <div class="container mx-auto mt-8">
     <div class="flex flex-wrap">
-      <div class="w-full lg:w-4/4 pr-4">
+      <div class="w-full lg:w-6/6 pr-4">
         <div *ngIf="role" class="mb-4">
-          <button class="bg-blue-500 text-white py-2 px-4 block w-full" (click)="addProduct()">
+          <button class="bg-red-400 text-white py-2 px-4 block w-full" (click)="addProduct()">
             Add Product
           </button>
         </div>
       </div>
 
-      <div class="w-full lg:w-1/4 pr-4">
+      <div class="w-full lg:w-1/4 pr-4 pt-5">
         <div (click)="toggleClothingTypeCollapse()" class="cursor-pointer mb-2">
-          <b>CLOTHING TYPE ▼</b>
-
+          <b class="inline">CLOTHING TYPE</b>
+          <p class="inline pl-24">▼</p>
         </div>
         <div *ngIf="!isClothingTypeCollapsed">
           <app-filter-clothing-type
@@ -25,13 +31,14 @@
         </div>
 
         <div (click)="toggleTargetAudienceCollapse()" class="cursor-pointer mb-2">
-          <b>TARGET AUDIENCE ▼</b>
+          <b class="inline">TARGET AUDIENCE</b>
+          <p class="inline paddingFilters">▼</p>
         </div>
         <div *ngIf="!isTargetAudienceCollapsed">
         <app-filter-target-audience
             [allTargetAudience]="allTargetAudience"
             (targetAudienceFilterChange)="onCheckboxChangeTargetAudience($event)">
-          </app-filter-target-audience>
+        </app-filter-target-audience>
         </div>
       </div>
 
@@ -41,7 +48,7 @@
               <div class="card">
                 <a routerLink="/productinfo/{{product?.id}}">
                   <div class="card-body">
-                    <a><img src="{{product?.imageUrl}}" alt="" class="img-fluid w-full product-image"></a>
+                    <a><img src="{{product?.imageUrl}}" alt="" class="img-fluid w-full product-image" ></a>
                     <h5 class="card-title">{{product?.productName}}</h5>
                     <p class="card-text">
                       €{{product?.price}}
@@ -62,6 +69,11 @@
           </div>
         </div>
       </div>
+      <div>
+        <p>eee</p>
+      </div>
     </div>
+
   </div>
+
 </body>

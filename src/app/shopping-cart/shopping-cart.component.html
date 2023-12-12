@@ -1,44 +1,7 @@
-<!-- Include Bootstrap CSS and Font Awesome (if not already included) -->
-<!--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">-->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
-<br><br>
-<div class="col-lg-3">
-  <div class="card">
-    <div class="card-heading" data-toggle="collapse" data-target="#clothingTypeFilters">
-      <br>
-      <b> <span id="clothingTypeHeading">CLOTHING TYPE</span> &nbsp;<i id="clothingTypeIcon" class="fa fa-angle-down"></i></b>
-    </div>
-    <div class="card-body collapse" id="clothingTypeFilters">
-      <div *ngFor="let product of allClothingTypes">
-        <section class="example-section">
-          <mat-checkbox class="example-margin" (change)="onCheckboxChangeClothingType(product)" checked="true">
-            {{product}}
-          </mat-checkbox>
-        </section>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-heading" data-toggle="collapse" data-target="#categoriesFilters">
-      <br>
-      <b> <span id="categoriesHeading">CATEGORIES</span> &nbsp;<i id="categoriesIcon" class="fa fa-angle-down"></i></b>
-    </div>
-    <div class="card-body collapse" id="categoriesFilters">
-      <div *ngFor="let product of allTargetAudience">
-        <section class="example-section">
-          <mat-checkbox class="example-margin" (change)="onCheckboxChangeTargetAudience(product)" checked="true">
-            {{product}}
-          </mat-checkbox>
-        </section>
-      </div>
-    </div>
+<div class="bg-red-100 ">
+  <p class="pt-10 pl-80 text-2xl font-semibold">Shopping Cart</p>
+  <div class="pb-10">
+    <p class="pl-80 inline">Home > </p>
+    <p class="pb-10 inline text-gray-400">Shopping Cart</p>
   </div>
 </div>
-
-<!-- Rest of your HTML code -->
-
-<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
-<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->

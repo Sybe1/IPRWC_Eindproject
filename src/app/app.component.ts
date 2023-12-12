@@ -9,13 +9,7 @@ import {NavigationEnd, Router} from "@angular/router";
 export class AppComponent {
   title = 'iprwcEindproject';
 
-  isLoginPage: boolean = true;
+  constructor() {
 
-  constructor(private router: Router) {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.isLoginPage = this.router.url === '/login';
-      }
-    });
   }
 }
