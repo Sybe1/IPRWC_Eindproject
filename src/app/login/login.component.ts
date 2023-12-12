@@ -14,8 +14,9 @@ export class LoginComponent {
     isLoginMode = true;
     private usernameHelp: string = "";
     private passwordHelp: string = "";
+    // image = 'assets/images/achtergrondBlauw.jpg';
 
-    loginObj: any = {
+  loginObj: any = {
         "username": "",
         "password": ""
     }
