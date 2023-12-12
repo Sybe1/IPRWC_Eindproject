@@ -14,6 +14,7 @@ export class ProductInformationComponent implements OnInit{
   products: any[] = [];
   image = 'assets/images/achtergrondBlauw.jpg';
   hoeveelheidProduct:number = 0;
+
   constructor(private productService: ProductService, private route: ActivatedRoute){
   }
 
@@ -44,6 +45,39 @@ export class ProductInformationComponent implements OnInit{
   maxProduct() {
     this.hoeveelheidProduct += 1;
   }
+
+  aantalToevoegen() {
+    const productId = this.route.snapshot.paramMap.get('id');
+
+    if (localStorage.getItem("shoppingCart") == null && this.hoeveelheidProduct != 0) {
+      const obj = [{
+        id: productId,
+        amount: this.hoeveelheidProduct
+      }];
+
+      localStorage.setItem("shoppingCart", JSON.stringify(obj));
+    }
+    else if (localStorage.getItem("shoppingCart") != null && this.hoeveelheidProduct != 0) {
+
+      const currentCartValue = JSON.parse(localStorage.getItem("shoppingCart") ?? "[]");
+
+      const existingProduct = currentCartValue.find((item: { id: string | null; }) => item.id === productId);
+
+      if (existingProduct) {
+        existingProduct.amount += this.hoeveelheidProduct;
+      }
+      else {
+        currentCartValue.push({
+          id: productId,
+          amount: this.hoeveelheidProduct
+        });
+      }
+
+      localStorage.setItem("shoppingCart", JSON.stringify(currentCartValue));
+    }
+  }
+
+
 }
 
 

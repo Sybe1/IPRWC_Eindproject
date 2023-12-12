@@ -5,3 +5,44 @@
     <p class="pb-10 inline text-gray-400">Shopping Cart</p>
   </div>
 </div>
+
+<div class="flex flex-col items-center justify-center pt-12">
+  <div class="w-full rounded-lg shadow border max-w-md border-gray-700">
+    <div class="space-y-4 p-8">
+      <p class="text-xl text-center">Shopping Cart</p>
+
+      <div *ngIf="shoppingCartItems.length === 0">
+        <p>Your shopping cart is empty.</p>
+      </div>
+
+      <div *ngIf="shoppingCartItems.length > 0">
+        <div class="grid grid-cols-4 gap-4 content-start">
+          <b>Product </b>
+          <b>Amount</b>
+          <b>Product Price</b>
+          <b>Total Price</b>
+        </div>
+        <hr>
+        <div *ngFor="let product of itemInformation">
+          <div *ngFor="let item of shoppingCartItems">
+            <div *ngIf="item.id == product.id">
+              <div class=" grid grid-cols-4 gap-4 content-start">
+                <div>{{product.productName}} </div>
+                <div>{{item.amount}}</div>
+                <div>${{product.price}}</div>
+                <div>${{item.amount * product?.price}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class=" grid grid-cols-4 gap-4 content-start">
+          <div> </div>
+          <div></div>
+          <div></div>
+          <div>${{priceAccumalated}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
