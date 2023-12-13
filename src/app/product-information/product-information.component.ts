@@ -104,9 +104,10 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
     }
   }
 
-
-
-
+  public toggleFavoriteProductInformation(){
+    const productId = this.route.snapshot.paramMap.get('id');
+    this.toggleFavorite(productId)
+  }
 
 }
 

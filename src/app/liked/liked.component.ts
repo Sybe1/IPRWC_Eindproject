@@ -49,4 +49,9 @@ export class LikedComponent extends LikedSuperComponent implements OnInit{
       return [];
     }
   }
+
+  toggleFavoriteLiked(productId: string | number | null) {
+    const productIdString = productId ? productId.toString() : null;
+    this.toggleFavorite(productIdString);
+  }
 }

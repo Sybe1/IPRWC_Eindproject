@@ -20,7 +20,7 @@
       <div class="mb-3 text-md">{{ product?.description }}</div>
       <div class="grid grid-cols-3 gap-4 content-start">
         <div class="mb-3 text-2xl col-span-2">€{{ product?.price }}</div>
-        <div class="pl-12"><button (click)="toggleFavorite()"><mat-icon>{{ isFavorite ? 'favorite' : 'favorite_outline' }}</mat-icon></button></div>
+        <div class="pl-12"><button (click)="toggleFavoriteProductInformation()"><mat-icon>{{ isFavorite ? 'favorite' : 'favorite_outline' }}</mat-icon></button></div>
       </div>
       <div class="flex">
         <div class="mr-2 wrapper flex justify-center bg-gray-100">

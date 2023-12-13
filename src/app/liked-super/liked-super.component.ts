@@ -28,10 +28,10 @@ export class LikedSuperComponent {
       });
     }
     localStorage.setItem(storageKey, JSON.stringify(currentLikedValue));
+    window.location.reload();
   }
 
-  toggleFavorite() {
-    const productId = this.route.snapshot.paramMap.get('id');
+  toggleFavorite(productId: string | null) {
     this.isFavorite = !this.isFavorite;
     this.addLiked(productId, 'liked'); // 'liked' is the storage key for liked items
   }
