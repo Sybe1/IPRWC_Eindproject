@@ -1,3 +1,5 @@
+<!--liked.component.html-->
+
 <div class="bg-red-100 ">
   <p class="pt-10 pl-80 text-2xl font-semibold">Liked</p>
   <div class="pb-10">
@@ -6,3 +8,33 @@
   </div>
 </div>
 
+<div class="flex flex-col items-center justify-center pt-12">
+  <div class="w-full rounded-lg shadow border max-w-xl border-gray-700">
+    <div class="space-y-4 p-8">
+      <p class="text-xl text-center">Liked</p>
+
+      <div *ngIf="likedItems.length === 0">
+        <p>No items liked.</p>
+      </div>
+
+      <div *ngIf="likedItems.length > 0">
+        <div *ngFor="let product of itemInformation">
+          <div *ngFor="let item of likedItems">
+            <div *ngIf="item.id == product.id">
+              <div class="grid grid-cols-3 gap-32 content-start">
+                <div>{{product.productName}} </div>
+                <div>${{product.price}}</div>
+                <div>
+                  <button (click)="toggleFavorite()">
+                    <mat-icon>{{ item.isFavorite ? 'favorite' : 'favorite_outline' }}</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+  </div>
+</div>

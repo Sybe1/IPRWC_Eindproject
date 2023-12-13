@@ -1,3 +1,5 @@
+<!--product-information.component.html-->
+
 <div class="bg-red-100 ">
   <p class="pt-10 pl-80 text-2xl font-semibold">Product</p>
   <div class="pb-10">
@@ -16,7 +18,10 @@
       <div class="mb-2 text-red-400">WorldWideFashion</div>
       <div class="mb-3 text-3xl font-semibold">{{ product?.productName }}</div>
       <div class="mb-3 text-md">{{ product?.description }}</div>
-      <div class="mb-3 text-2xl">€{{ product?.price }}</div>
+      <div class="grid grid-cols-3 gap-4 content-start">
+        <div class="mb-3 text-2xl col-span-2">€{{ product?.price }}</div>
+        <div class="pl-12"><button (click)="toggleFavorite()"><mat-icon>{{ isFavorite ? 'favorite' : 'favorite_outline' }}</mat-icon></button></div>
+      </div>
       <div class="flex">
         <div class="mr-2 wrapper flex justify-center bg-gray-100">
           <button (click)="minProduct()" class="pr-10">-</button>

@@ -10,7 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { ExtraComponent } from './extra/extra.component';
 import { LikedComponent } from './liked/liked.component';
 import { ProductComponent } from './product/product.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -32,6 +31,7 @@ import { ProductInformationComponent } from './product-information/product-infor
 import {NgOptimizedImage} from "@angular/common";
 import { ItemAddedToShoppingCartComponent } from './item-added-to-shopping-cart/item-added-to-shopping-cart.component';
 import { BoughtItemsComponent } from './bought-items/bought-items.component';
+import { LikedSuperComponent } from './liked-super/liked-super.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,6 @@ import { BoughtItemsComponent } from './bought-items/bought-items.component';
     NavbarComponent,
     HomeComponent,
     ShoppingCartComponent,
-    ExtraComponent,
     LikedComponent,
     ProductComponent,
     PageNotFoundComponent,
@@ -50,7 +49,8 @@ import { BoughtItemsComponent } from './bought-items/bought-items.component';
     LatestProductComponent,
     ProductInformationComponent,
     ItemAddedToShoppingCartComponent,
-    BoughtItemsComponent
+    BoughtItemsComponent,
+    LikedSuperComponent
   ],
     imports: [
         BrowserModule,

@@ -5,25 +5,34 @@ import {Product} from "../product/product";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {ItemAddedToShoppingCartComponent} from "../item-added-to-shopping-cart/item-added-to-shopping-cart.component";
+import {LikedSuperComponent} from "../liked-super/liked-super.component";
 
 @Component({
   selector: 'app-product-information',
   templateUrl: './product-information.component.html',
   styleUrls: ['./product-information.component.scss']
 })
-export class ProductInformationComponent implements OnInit{
+export class ProductInformationComponent extends LikedSuperComponent implements OnInit{
   products: any[] = [];
   image = 'assets/images/achtergrondBlauw.jpg';
   amountShoppingCartNow = 0;
   amountProduct:number = 0;
   shoppingCartItems: any[] = [];
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, public dialog: MatDialog){
+  constructor(private productService: ProductService, public override route: ActivatedRoute, public dialog: MatDialog){
+    super(route);
   }
 
   ngOnInit() {
     const productId = this.route.snapshot.paramMap.get('id');
     this.getProduct(productId);
+    this.isFavorite = this.checkIfLiked(productId);
+  }
+
+  private checkIfLiked(productId: string | null): boolean {
+    const likedItems = JSON.parse(localStorage.getItem("liked") ?? "[]");
+    const existingProduct = likedItems.find((item: { id: string | null; }) => item.id === productId);
+    return existingProduct ? true : false;
   }
 
   public getProduct(id:any){
@@ -94,6 +103,9 @@ export class ProductInformationComponent implements OnInit{
       this.amountProduct = 0;
     }
   }
+
+
+
 
 
 }
