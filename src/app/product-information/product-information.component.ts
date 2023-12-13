@@ -14,7 +14,9 @@ import {ItemAddedToShoppingCartComponent} from "../item-added-to-shopping-cart/i
 export class ProductInformationComponent implements OnInit{
   products: any[] = [];
   image = 'assets/images/achtergrondBlauw.jpg';
-  hoeveelheidProduct:number = 0;
+  amountShoppingCartNow = 0;
+  amountProduct:number = 0;
+  shoppingCartItems: any[] = [];
 
   constructor(private productService: ProductService, private route: ActivatedRoute, public dialog: MatDialog){
   }
@@ -37,24 +39,37 @@ export class ProductInformationComponent implements OnInit{
       })
   }
 
-  minProduct() {
-    if (this.hoeveelheidProduct > 0){
-      this.hoeveelheidProduct -= 1;
+  public minProduct() {
+    if (this.amountProduct > 0){
+      this.amountProduct -= 1;
     }
   }
 
-  maxProduct() {
-    this.hoeveelheidProduct += 1;
+  public maxProduct() {
+    const shoppingCartString = localStorage.getItem("shoppingCart");
+    if (shoppingCartString){
+      this.shoppingCartItems = JSON.parse(shoppingCartString);
+    }
+    for (let i = 0; i < this.shoppingCartItems.length; i++){
+      if (this.shoppingCartItems[i].id == this.products[0].id){
+        this.amountShoppingCartNow = this.shoppingCartItems[i].amount;
+      }
+    }
+
+    if (this.products[0].stock != this.amountProduct){
+      if (this.amountProduct + this.amountShoppingCartNow + 1 <= this.products[0].stock)
+      this.amountProduct += 1;
+    }
   }
 
-  aantalToevoegen() {
+  public addAmount() {
     const productId = this.route.snapshot.paramMap.get('id');
 
-    if (this.hoeveelheidProduct != 0) {
+    if (this.amountProduct != 0) {
       if (localStorage.getItem("shoppingCart") == null) {
         const obj = [{
           id: productId,
-          amount: this.hoeveelheidProduct
+          amount: this.amountProduct
         }];
 
         localStorage.setItem("shoppingCart", JSON.stringify(obj));
@@ -65,17 +80,18 @@ export class ProductInformationComponent implements OnInit{
         const existingProduct = currentCartValue.find((item: { id: string | null; }) => item.id === productId);
 
         if (existingProduct) {
-          existingProduct.amount += this.hoeveelheidProduct;
+          existingProduct.amount += this.amountProduct;
         } else {
           currentCartValue.push({
             id: productId,
-            amount: this.hoeveelheidProduct
+            amount: this.amountProduct
           });
         }
 
         localStorage.setItem("shoppingCart", JSON.stringify(currentCartValue));
       }
       const dialogRef = this.dialog.open(ItemAddedToShoppingCartComponent);
+      this.amountProduct = 0;
     }
   }
 

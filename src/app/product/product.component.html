@@ -53,7 +53,7 @@
                 </a>
                 <div class="card-body">
                   <div *ngIf="role" class="float-right btn-group btn-group-sm">
-                    <button class="bg-blue-800" data-original-title="Delete" (click)="deleteProduct(product)">
+                    <button class="bg-blue-800" data-original-title="edit" (click)="editProduct(product.id)">
                       <span class="text-white pr-2 pl-2 pb-2 pt-2">edit</span>
                     </button>
                     <button class="bg-red-400" data-original-title="Delete" (click)="deleteProduct(product)">

@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../product/product.service";
 import {Product} from "../product/product";
 import {HttpErrorResponse} from "@angular/common/http";
+import {MatDialog} from "@angular/material/dialog";
+import {ItemAddedToShoppingCartComponent} from "../item-added-to-shopping-cart/item-added-to-shopping-cart.component";
+import {BoughtItemsComponent} from "../bought-items/bought-items.component";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -13,7 +16,7 @@ export class ShoppingCartComponent implements OnInit{
   itemInformation: any[] = [];
   priceAccumalated: number = 0;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, public dialog: MatDialog) {
   }
   ngOnInit() {
     this.shoppingCartItems = this.getShoppingCartItems();
@@ -30,7 +33,7 @@ export class ShoppingCartComponent implements OnInit{
     }
   }
 
-  getInformationItems(items: any[]) {
+  public getInformationItems(items: any[]) {
     this.itemInformation = [];
     for (let i = 0; i < items.length; i++) {
       const itemId = items[i].id;
@@ -48,7 +51,7 @@ export class ShoppingCartComponent implements OnInit{
     }
   }
 
-  getShoppingCartItems(): any[] {
+  public getShoppingCartItems(): any[] {
     const shoppingCartString = localStorage.getItem("shoppingCart");
     if (shoppingCartString) {
       return JSON.parse(shoppingCartString);
@@ -56,4 +59,27 @@ export class ShoppingCartComponent implements OnInit{
       return [];
     }
   }
+
+  public boughtProducts() {
+    const dialogRef = this.dialog.open(BoughtItemsComponent);
+    localStorage.removeItem('shoppingCart')
+  }
+
+  public deleteProductFromShoppingCart(productId: number) {
+    console.log(productId)
+    const shoppingCartToString = localStorage.getItem('shoppingCart');
+
+    if (shoppingCartToString) {
+      this.shoppingCartItems = JSON.parse(shoppingCartToString);
+
+      for (let i = 0; i < this.shoppingCartItems.length; i++) {
+        if (this.shoppingCartItems[i].id == productId) {
+          this.shoppingCartItems.splice(i, 1);
+        }
+      }
+      localStorage.setItem("shoppingCart", JSON.stringify(this.shoppingCartItems));
+
+    }
+  }
+
 }

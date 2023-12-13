@@ -31,6 +31,7 @@ import { LatestProductComponent } from './latest-product/latest-product.componen
 import { ProductInformationComponent } from './product-information/product-information.component';
 import {NgOptimizedImage} from "@angular/common";
 import { ItemAddedToShoppingCartComponent } from './item-added-to-shopping-cart/item-added-to-shopping-cart.component';
+import { BoughtItemsComponent } from './bought-items/bought-items.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ItemAddedToShoppingCartComponent } from './item-added-to-shopping-cart/
     LoginComponent,
     LatestProductComponent,
     ProductInformationComponent,
-    ItemAddedToShoppingCartComponent
+    ItemAddedToShoppingCartComponent,
+    BoughtItemsComponent
   ],
     imports: [
         BrowserModule,

@@ -7,7 +7,7 @@
 </div>
 
 <div class="flex flex-col items-center justify-center pt-12">
-  <div class="w-full rounded-lg shadow border max-w-xl border-gray-700">
+  <div class="w-full rounded-lg shadow border max-w-2xl border-gray-700">
     <div class="space-y-4 p-8">
       <p class="text-xl text-center">Shopping Cart</p>
 
@@ -16,7 +16,7 @@
       </div>
 
       <div *ngIf="shoppingCartItems.length > 0">
-        <div class="grid grid-cols-4 gap-4 content-start">
+        <div class="grid grid-cols-5 gap-4 content-start">
           <b>Product </b>
           <b>Amount</b>
           <b>Product Price</b>
@@ -26,21 +26,25 @@
         <div *ngFor="let product of itemInformation">
           <div *ngFor="let item of shoppingCartItems">
             <div *ngIf="item.id == product.id">
-              <div class=" grid grid-cols-4 gap-4 content-start">
+              <div class=" grid grid-cols-5 gap-4 content-start">
                 <div>{{product.productName}} </div>
                 <div>{{item.amount}}</div>
                 <div>${{product.price}}</div>
                 <div>${{item.amount * product?.price}}</div>
+                <div><button (click)="deleteProductFromShoppingCart(product.id)"><mat-icon>delete</mat-icon></button></div>
               </div>
             </div>
           </div>
         </div>
         <hr>
-        <div class=" grid grid-cols-4 gap-4 content-start">
-          <div> </div>
-          <div></div>
-          <div></div>
+        <div class=" grid grid-cols-5 gap-4 content-start">
+          <div class="col-span-3"></div>
           <div>${{priceAccumalated}}</div>
+          <div><button (click)="boughtProducts()"><mat-icon>shopping_cart</mat-icon></button></div>
+        </div>
+        <div class=" grid grid-cols-5 gap-4 content-start">
+          <br>
+          <div class="col-span-3"></div>
         </div>
       </div>
     </div>
