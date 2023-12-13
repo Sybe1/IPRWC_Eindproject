@@ -4,6 +4,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Product} from "../product/product";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
+import {ItemAddedToShoppingCartComponent} from "../item-added-to-shopping-cart/item-added-to-shopping-cart.component";
 
 @Component({
   selector: 'app-product-information',
@@ -15,7 +16,7 @@ export class ProductInformationComponent implements OnInit{
   image = 'assets/images/achtergrondBlauw.jpg';
   hoeveelheidProduct:number = 0;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute){
+  constructor(private productService: ProductService, private route: ActivatedRoute, public dialog: MatDialog){
   }
 
   ngOnInit() {
@@ -49,31 +50,32 @@ export class ProductInformationComponent implements OnInit{
   aantalToevoegen() {
     const productId = this.route.snapshot.paramMap.get('id');
 
-    if (localStorage.getItem("shoppingCart") == null && this.hoeveelheidProduct != 0) {
-      const obj = [{
-        id: productId,
-        amount: this.hoeveelheidProduct
-      }];
-
-      localStorage.setItem("shoppingCart", JSON.stringify(obj));
-    }
-    else if (localStorage.getItem("shoppingCart") != null && this.hoeveelheidProduct != 0) {
-
-      const currentCartValue = JSON.parse(localStorage.getItem("shoppingCart") ?? "[]");
-
-      const existingProduct = currentCartValue.find((item: { id: string | null; }) => item.id === productId);
-
-      if (existingProduct) {
-        existingProduct.amount += this.hoeveelheidProduct;
-      }
-      else {
-        currentCartValue.push({
+    if (this.hoeveelheidProduct != 0) {
+      if (localStorage.getItem("shoppingCart") == null) {
+        const obj = [{
           id: productId,
           amount: this.hoeveelheidProduct
-        });
-      }
+        }];
 
-      localStorage.setItem("shoppingCart", JSON.stringify(currentCartValue));
+        localStorage.setItem("shoppingCart", JSON.stringify(obj));
+      } else if (localStorage.getItem("shoppingCart") != null) {
+
+        const currentCartValue = JSON.parse(localStorage.getItem("shoppingCart") ?? "[]");
+
+        const existingProduct = currentCartValue.find((item: { id: string | null; }) => item.id === productId);
+
+        if (existingProduct) {
+          existingProduct.amount += this.hoeveelheidProduct;
+        } else {
+          currentCartValue.push({
+            id: productId,
+            amount: this.hoeveelheidProduct
+          });
+        }
+
+        localStorage.setItem("shoppingCart", JSON.stringify(currentCartValue));
+      }
+      const dialogRef = this.dialog.open(ItemAddedToShoppingCartComponent);
     }
   }
 

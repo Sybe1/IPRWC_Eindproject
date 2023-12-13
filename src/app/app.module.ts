@@ -30,6 +30,7 @@ import {CustomerInterceptorInterceptor} from "./interceptor/customer-interceptor
 import { LatestProductComponent } from './latest-product/latest-product.component';
 import { ProductInformationComponent } from './product-information/product-information.component';
 import {NgOptimizedImage} from "@angular/common";
+import { ItemAddedToShoppingCartComponent } from './item-added-to-shopping-cart/item-added-to-shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {NgOptimizedImage} from "@angular/common";
     FilterTargetAudienceComponent,
     LoginComponent,
     LatestProductComponent,
-    ProductInformationComponent
+    ProductInformationComponent,
+    ItemAddedToShoppingCartComponent
   ],
     imports: [
         BrowserModule,
