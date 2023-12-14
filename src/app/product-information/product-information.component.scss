@@ -13,6 +13,13 @@
   padding-left: 31vw;
 }
 
+@media (max-width: 1000px) {
+  .responsiveShoppingCart {
+    padding-left: 100px;
+  }
+}
+
+
 @media (max-width: 1250px) {
   .padding-left {
     padding-left: 20vw;

@@ -34,6 +34,13 @@ a{
   color: black;
 }
 
+@media (max-width: 1000px) {
+  .responsiveShoppingCart {
+    padding-left: 100px;
+  }
+}
+
+
 @media (max-width: 768px) {
   .col-lg-3 {
     position: static;
