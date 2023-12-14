@@ -87,15 +87,7 @@ export class ProductComponent implements OnInit{
         }
       );
   }
-
-  public editProduct(code: any){
-    this.openPopup(code, 'Edit Product')
-  }
-
-  public addProduct(){
-    this.openPopup(0, 'Add Product')
-  }
-  public openPopup(code:any, title:any){
+  public openPopup(code:any, title :any){
     const dialogRef = this.dialog.open(PopUpUpdateProductComponent,{
       width:'60%',
       data: {
