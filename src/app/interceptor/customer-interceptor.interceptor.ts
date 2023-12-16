@@ -11,7 +11,6 @@ export class CustomerInterceptorInterceptor implements HttpInterceptor {
     const isAuthenticationRequest = request.url.endsWith('/auth/authenticate');
     const isRegister = request.url.endsWith('/auth/register');
     const getProduct = request.url.endsWith('/product/all');
-    // const getLatestProduct = request.url.endsWith('/product/findHighestId');
     const getProductById = request.url.startsWith('http://localhost:8080/product/find');
 
     if (!isAuthenticationRequest && !getProduct && !getProductById && !isRegister) {
