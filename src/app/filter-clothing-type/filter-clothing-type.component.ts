@@ -9,8 +9,8 @@ export class FilterClothingTypeComponent {
   @Input() allClothingTypes: string[] = [];
   @Output() clothingTypeFilterChange: EventEmitter<string[]> = new EventEmitter<string[]>();
 
-  selectedClothingTypes: string[] = ["HOODIE", "SHIRT", "PANTS", "UNDERWEAR",
-    "SOCKS", "SHOES", "JACKET", "HAT"];
+  selectedClothingTypes: string[] = ["Hoodie", "Shirt", "Pants", "Underwear",
+    "Socks", "Shoes", "Jacket", "Hat"];
 
   public onCheckboxChangeClothingType(product: string): void {
     for (let i = 0; i < this.selectedClothingTypes.length; i++) {

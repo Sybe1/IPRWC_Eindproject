@@ -13,7 +13,7 @@ export class LatestProductComponent implements OnInit {
 
   constructor(private service: ProductService) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.service.getLatestProduct().subscribe(
       (response: Product | Product[]) => {
         if (Array.isArray(response)) {

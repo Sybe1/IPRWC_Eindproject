@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class BoughtItemsComponent {
 
-  pageRefreshing(){
+  public pageRefreshing(): void{
     window.location.reload();
   }
 }

@@ -34,11 +34,11 @@ export class LoginComponent {
                 private userService: UserService) {
     }
 
-    onSwitchMode(){
+    public onSwitchMode(): void{
       this.isLoginMode = !this.isLoginMode;
     }
 
-    onLogin() {
+    public onLogin(): void {
         if (this.isLoginMode) {
           this.loginService.postUser(this.loginObj).subscribe((res: any) => {
             localStorage.setItem('loginToken', res.token);

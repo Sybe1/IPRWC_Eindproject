@@ -17,13 +17,13 @@ export class ProductComponent implements OnInit{
   image = 'assets/images/achtergrondBlauw.jpg';
   role: boolean = false;
 
-  allClothingTypes: string[] = [ "HOODIE", "SHIRT", "PANTS", "UNDERWEAR",
-    "SOCKS", "SHOES", "JACKET", "HAT"]
-  selectedClothingTypes: string[] = [ "HOODIE", "SHIRT", "PANTS", "UNDERWEAR",
-    "SOCKS", "SHOES", "JACKET", "HAT"]
+  allClothingTypes: string[] = ["Hoodie", "Shirt", "Pants", "Underwear",
+    "Socks", "Shoes", "Jacket", "Hat"];
+  selectedClothingTypes: string[] = ["Hoodie", "Shirt", "Pants", "Underwear",
+    "Socks", "Shoes", "Jacket", "Hat"];
 
-  allTargetAudience: string[] = [ "MEN", "WOMEN", "UNISEX", "CHILDREN"]
-  selectedTargetAudience: string[] = [ "MEN", "WOMEN", "UNISEX", "CHILDREN"]
+  allTargetAudience: string[] = ["Men", "Women", "Unisex", "Children"];
+  selectedTargetAudience: string[] = ["Men", "Women", "Unisex", "Children"];
 
   isClothingTypeCollapsed = true;
   isTargetAudienceCollapsed = true;
@@ -31,7 +31,7 @@ export class ProductComponent implements OnInit{
   constructor(private productService: ProductService, private dialog: MatDialog){
   }
 
-  ngOnInit() {
+  public ngOnInit(): void{
     this.getProducts();
     if (localStorage.getItem('role') === 'ADMIN'){
       this.role = true;
@@ -48,25 +48,37 @@ export class ProductComponent implements OnInit{
     this.getProducts();
   }
 
-  public toggleClothingTypeCollapse() {
+  public toggleClothingTypeCollapse(): void {
     this.isClothingTypeCollapsed = !this.isClothingTypeCollapsed;
     if (!this.isTargetAudienceCollapsed && !this.isClothingTypeCollapsed){
       this.isTargetAudienceCollapsed = !this.isTargetAudienceCollapsed;
     }
   }
 
-  public toggleTargetAudienceCollapse(){
+  public toggleTargetAudienceCollapse(): void{
     this.isTargetAudienceCollapsed = !this.isTargetAudienceCollapsed;
     if (!this.isClothingTypeCollapsed && !this.isTargetAudienceCollapsed){
       this.isClothingTypeCollapsed = !this.isClothingTypeCollapsed;
     }
   }
 
+  public setToUpper(list: string[]): string[]{
+    let newList: string[] = []
+    for (let i = 0; i < list.length; i++) {
+      newList[i] = list[i].toUpperCase();
+    }
+    console.log(list)
+    console.log(newList)
+    return newList;
+  }
+
   public getProducts(): void {
+    let upperSelectedTargetAudience: string[] = this.setToUpper(this.selectedTargetAudience);
+    let upperSelectedClothingTypes: string[] = this.setToUpper(this.selectedClothingTypes);
     this.productService.getProducts().subscribe((response: Product[]) => {
         this.products = response.filter(product =>
-          this.selectedClothingTypes.includes(product.clothingType) &&
-          this.selectedTargetAudience.includes(product.targetAudience)
+          upperSelectedClothingTypes.includes(product.clothingType) &&
+          upperSelectedTargetAudience.includes(product.targetAudience)
         );
       },
       (error: HttpErrorResponse) => {
@@ -75,7 +87,7 @@ export class ProductComponent implements OnInit{
     );
   }
 
-  public deleteProduct(product: Product){
+  public deleteProduct(product: Product): void{
     if(confirm('Are you sure you want to delete this product?'))
       this.productService.deleteProduct(product.id).subscribe(
         (resp) => {
@@ -87,7 +99,7 @@ export class ProductComponent implements OnInit{
         }
       );
   }
-  public openPopup(code:any, title :any){
+  public openPopup(code:any, title :any): void{
     const dialogRef = this.dialog.open(PopUpUpdateProductComponent,{
       width:'60%',
       data: {

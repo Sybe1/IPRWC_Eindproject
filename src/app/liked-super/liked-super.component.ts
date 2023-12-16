@@ -11,7 +11,7 @@ export class LikedSuperComponent {
 
   constructor(public route: ActivatedRoute) {}
 
-  public addLiked(productId: string | null, storageKey: string) {
+  public addLiked(productId: string | null, storageKey: string): void {
     let currentLikedValue = JSON.parse(localStorage.getItem(storageKey) ?? '[]');
 
     if (!Array.isArray(currentLikedValue)) {
@@ -28,11 +28,10 @@ export class LikedSuperComponent {
       });
     }
     localStorage.setItem(storageKey, JSON.stringify(currentLikedValue));
-    window.location.reload();
   }
 
-  toggleFavorite(productId: string | null) {
+  public toggleFavorite(productId: string | null): void {
     this.isFavorite = !this.isFavorite;
-    this.addLiked(productId, 'liked'); // 'liked' is the storage key for liked items
+    this.addLiked(productId, 'liked');
   }
 }

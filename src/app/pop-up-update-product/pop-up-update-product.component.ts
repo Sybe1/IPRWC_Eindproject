@@ -28,19 +28,19 @@ export class PopUpUpdateProductComponent implements OnInit{
   constructor(@Inject(MAT_DIALOG_DATA) public data:any, private ref:MatDialogRef<PopUpUpdateProductComponent>,
               private buildr:FormBuilder, private service:ProductService) {
   }
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.inputdata = this.data;
     if (this.inputdata.code > 0) {
       this.updateProduct(this.inputdata.code);
     }
   }
 
-  public closePopup(){
+  public closePopup(): void{
     this.ref.close('Closed using function');
     this.onClose.emit();
   }
 
-  public saveProduct() {
+  public saveProduct(): void {
     const productData: Product = {
       id: this.myform.value.id || 0, // Handle the case where id is null or undefined
       productName: this.myform.value.productName || '',
@@ -56,7 +56,7 @@ export class PopUpUpdateProductComponent implements OnInit{
     });
   }
 
-  public updateProduct(code:any){
+  public updateProduct(code:any): void{
     this.service.getProductsById(code).subscribe(item=>{
       this.editdata = item;
       this.myform.setValue({id:this.editdata.id, productName:this.editdata.productName, description:this.editdata.description,

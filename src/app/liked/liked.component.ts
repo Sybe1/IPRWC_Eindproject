@@ -20,13 +20,13 @@ export class LikedComponent extends LikedSuperComponent implements OnInit{
     super(route);
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.likedItems = this.getLikedItems();
     this.getInformationItems(this.likedItems);
   }
 
 
-  public getInformationItems(items: any[]) {
+  public getInformationItems(items: any[]): void {
     this.itemInformation = [];
     for (let i = 0; i < items.length; i++) {
       const itemId = items[i].id;
@@ -50,8 +50,9 @@ export class LikedComponent extends LikedSuperComponent implements OnInit{
     }
   }
 
-  toggleFavoriteLiked(productId: string | number | null) {
+  public toggleFavoriteLiked(productId: string | number | null): void {
     const productIdString = productId ? productId.toString() : null;
     this.toggleFavorite(productIdString);
+    window.location.reload();
   }
 }

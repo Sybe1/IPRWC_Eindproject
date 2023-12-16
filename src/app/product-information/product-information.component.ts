@@ -23,7 +23,7 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
     super(route);
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
     this.getProduct(productId);
     this.isFavorite = this.checkIfLiked(productId);
@@ -35,7 +35,7 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
     return existingProduct ? true : false;
   }
 
-  public getProduct(id:any){
+  public getProduct(id:any): void{
     this.productService.getProductsById(id).subscribe((response: Product[]) => {
         if (Array.isArray(response)) {
           this.products = response;
@@ -48,13 +48,13 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
       })
   }
 
-  public minProduct() {
+  public minProduct(): void {
     if (this.amountProduct > 0){
       this.amountProduct -= 1;
     }
   }
 
-  public maxProduct() {
+  public maxProduct(): void {
     const shoppingCartString = localStorage.getItem("shoppingCart");
     if (shoppingCartString){
       this.shoppingCartItems = JSON.parse(shoppingCartString);
@@ -71,7 +71,7 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
     }
   }
 
-  public addAmount() {
+  public addAmount(): void {
     const productId = this.route.snapshot.paramMap.get('id');
 
     if (this.amountProduct != 0) {
@@ -104,7 +104,7 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
     }
   }
 
-  public toggleFavoriteProductInformation(){
+  public toggleFavoriteProductInformation(): void{
     const productId = this.route.snapshot.paramMap.get('id');
     this.toggleFavorite(productId)
   }

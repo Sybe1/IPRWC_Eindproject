@@ -9,7 +9,7 @@ export class FilterTargetAudienceComponent {
   @Input() allTargetAudience:string[] = [];
   @Output() targetAudienceFilterChange: EventEmitter<string[]> = new EventEmitter<string[]>();
 
-  selectedTargetAudience: string[] = [ "MEN", "WOMEN", "UNISEX", "CHILDREN"]
+  selectedTargetAudience: string[] = ["Men", "Women", "Unisex", "Children"];
 
   public onCheckboxChangeTargetAudience(product: string): void{
     for (let i = 0; i < this.selectedTargetAudience.length; i++) {
@@ -23,7 +23,7 @@ export class FilterTargetAudienceComponent {
     this.emitFilterChange()
   }
 
-  private emitFilterChange(){
+  private emitFilterChange(): void{
     this.targetAudienceFilterChange.emit(this.selectedTargetAudience)
   }
 }

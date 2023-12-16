@@ -18,12 +18,12 @@ export class ShoppingCartComponent implements OnInit{
 
   constructor(private productService: ProductService, public dialog: MatDialog) {
   }
-  ngOnInit() {
+  public ngOnInit(): void {
     this.shoppingCartItems = this.getShoppingCartItems();
     this.getInformationItems(this.shoppingCartItems);
   }
 
-  public totalPrice(items: any[]){
+  public totalPrice(items: any[]): void{
     for (let i = 0; i < items.length; i++) {
       for (let j = 0; j < this.shoppingCartItems.length; j++) {
         if (items[i].id == this.shoppingCartItems[j].id) {
@@ -33,7 +33,7 @@ export class ShoppingCartComponent implements OnInit{
     }
   }
 
-  public getInformationItems(items: any[]) {
+  public getInformationItems(items: any[]): void {
     this.itemInformation = [];
     for (let i = 0; i < items.length; i++) {
       const itemId = items[i].id;
@@ -60,12 +60,12 @@ export class ShoppingCartComponent implements OnInit{
     }
   }
 
-  public boughtProducts() {
+  public boughtProducts(): void {
     const dialogRef = this.dialog.open(BoughtItemsComponent);
     localStorage.removeItem('shoppingCart')
   }
 
-  public deleteProductFromShoppingCart(productId: number) {
+  public deleteProductFromShoppingCart(productId: number): void {
     console.log(productId)
     const shoppingCartToString = localStorage.getItem('shoppingCart');
 
