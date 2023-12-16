@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {Product} from "../product/product";
-import {LoginService} from "./login.service";
-import {UserService} from "../user/user.service";
+import {LoginService} from "../../services/login.service";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +13,6 @@ export class LoginComponent {
     isLoginMode = true;
     private usernameHelp: string = "";
     private passwordHelp: string = "";
-    // image = 'assets/images/achtergrondBlauw.jpg';
 
   loginObj: any = {
         "username": "",

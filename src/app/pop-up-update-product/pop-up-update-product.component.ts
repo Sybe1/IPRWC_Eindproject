@@ -1,8 +1,8 @@
 import {Component, Inject, OnInit, Output, EventEmitter} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {ProductService} from "../product/product.service";
-import {Product} from "../product/product";
+import {ProductService} from "../../services/product.service";
+import {Product} from "../../models/product";
 @Component({
   selector: 'app-pop-up-update-product',
   templateUrl: './pop-up-update-product.component.html',

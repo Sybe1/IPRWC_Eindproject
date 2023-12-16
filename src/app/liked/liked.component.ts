@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {PopUpUpdateProductComponent} from "../pop-up-update-product/pop-up-update-product.component";
-import {ProductService} from "../product/product.service";
-import {Product} from "../product/product";
+import {ProductService} from "../../services/product.service";
+import {Product} from "../../models/product";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {LikedSuperComponent} from "../liked-super/liked-super.component";

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductService} from "../product/product.service";
+import {ProductService} from "../../services/product.service";
 import {MatDialog} from "@angular/material/dialog";
-import {Product} from "../product/product";
+import {Product} from "../../models/product";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {ItemAddedToShoppingCartComponent} from "../item-added-to-shopping-cart/item-added-to-shopping-cart.component";
