@@ -32,6 +32,9 @@ import {NgOptimizedImage} from "@angular/common";
 import { ItemAddedToShoppingCartComponent } from './item-added-to-shopping-cart/item-added-to-shopping-cart.component';
 import { BoughtItemsComponent } from './bought-items/bought-items.component';
 import { LikedSuperComponent } from './liked-super/liked-super.component';
+import { ProductThumbnailComponent } from './shop/product-thumbnail/product-thumbnail.component';
+import { ProductShopInformationComponent } from './shop/product-shop-information/product-shop-information.component';
+import { HeaderPageComponent } from './header-page/header-page.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,10 @@ import { LikedSuperComponent } from './liked-super/liked-super.component';
     ProductInformationComponent,
     ItemAddedToShoppingCartComponent,
     BoughtItemsComponent,
-    LikedSuperComponent
+    LikedSuperComponent,
+    ProductThumbnailComponent,
+    ProductShopInformationComponent,
+    HeaderPageComponent
   ],
     imports: [
         BrowserModule,

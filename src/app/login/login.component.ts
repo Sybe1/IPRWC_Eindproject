@@ -29,6 +29,7 @@ export class LoginComponent {
       "address": "",
       "postalCode": ""
     }
+  namePage: string = "Login";
 
     constructor(private http:HttpClient, private router: Router, private loginService: LoginService,
                 private userService: UserService) {

@@ -18,6 +18,7 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
   amountShoppingCartNow = 0;
   amountProduct:number = 0;
   shoppingCartItems: any[] = [];
+  namePage: string = "Product";
 
   constructor(private productService: ProductService, public override route: ActivatedRoute, public dialog: MatDialog){
     super(route);

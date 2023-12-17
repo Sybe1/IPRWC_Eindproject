@@ -1,18 +1,11 @@
 
 <!--shop.component.html-->
 <body>
-  <div class="bg-red-100 ">
-    <p class="pt-10 pl-80 text-2xl font-semibold responsiveShoppingCart">Shop</p>
-    <div class="pb-10">
-      <p class="pl-80 inline responsiveShoppingCart">Home > </p>
-      <p class="pb-10 inline text-gray-400">Shop</p>
-    </div>
-  </div>
+  <app-header-page [namePage]=namePage></app-header-page>
+
+
   <div class="container mx-auto mt-8">
     <div class="flex flex-wrap">
-
-
-
       <div class="w-full lg:w-3/12 pr-4 pt-5">
         <div (click)="toggleClothingTypeCollapse()" class="cursor-pointer mb-2">
           <b class="inline">Clothing Type</b>
@@ -43,12 +36,8 @@
               <div class="card">
                 <a routerLink="/productinfo/{{product?.id}}">
                   <div class="card-body">
-                    <a><img src="{{product?.imageUrl}}" alt="" class="border-4 border-red-200 img-fluid w-full product-image pb-2 pt-2 pr-2 pl-2" [ngStyle]="{'background-image': 'url(' + image + ')', 'background-size': 'cover'}"></a>
-                    <p class="font-bold ">{{product?.productName}}</p>
-                    <p>{{product?.clothingType}} - {{product?.targetAudience}}</p>
-                    <p class="">
-                      €{{product?.price}}
-                    </p>
+                    <app-product-thumbnail [product]="product"></app-product-thumbnail>
+                    <app-product-shop-information [product]="product"></app-product-shop-information>
                   </div>
                 </a>
                 <div class="card-body">

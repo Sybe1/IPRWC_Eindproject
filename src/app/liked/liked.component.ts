@@ -15,6 +15,7 @@ import {LikedSuperComponent} from "../liked-super/liked-super.component";
 export class LikedComponent extends LikedSuperComponent implements OnInit{
   likedItems: any[] = [];
   itemInformation: any[] = [];
+  namePage: string = "Liked";
 
   constructor(private productService: ProductService, public override route: ActivatedRoute) {
     super(route);

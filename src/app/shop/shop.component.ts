@@ -14,7 +14,7 @@ import {PopUpUpdateProductComponent} from "../pop-up-update-product/pop-up-updat
 })
 export class ShopComponent implements OnInit{
   products: any[] = [];
-  image = 'assets/images/achtergrondBlauw.jpg';
+  namePage: string = "Shop";
   role: boolean = false;
 
   allClothingTypes: string[] = ["Hoodie", "Shirt", "Pants", "Underwear",

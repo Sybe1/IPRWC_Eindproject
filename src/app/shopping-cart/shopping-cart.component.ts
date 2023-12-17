@@ -15,6 +15,7 @@ export class ShoppingCartComponent implements OnInit{
   shoppingCartItems: any[] = [];
   itemInformation: any[] = [];
   priceAccumalated: number = 0;
+  namePage: string = "Shopping Cart";
 
   constructor(private productService: ProductService, public dialog: MatDialog) {
   }
