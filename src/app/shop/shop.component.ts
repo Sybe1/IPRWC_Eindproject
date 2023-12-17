@@ -8,11 +8,11 @@ import {PopUpUpdateProductComponent} from "../pop-up-update-product/pop-up-updat
 
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  selector: 'app-shop',
+  templateUrl: './shop.component.html',
+  styleUrls: ['./shop.component.scss']
 })
-export class ProductComponent implements OnInit{
+export class ShopComponent implements OnInit{
   products: any[] = [];
   image = 'assets/images/achtergrondBlauw.jpg';
   role: boolean = false;
@@ -67,8 +67,6 @@ export class ProductComponent implements OnInit{
     for (let i = 0; i < list.length; i++) {
       newList[i] = list[i].toUpperCase();
     }
-    console.log(list)
-    console.log(newList)
     return newList;
   }
 
@@ -88,7 +86,7 @@ export class ProductComponent implements OnInit{
   }
 
   public deleteProduct(product: Product): void{
-    if(confirm('Are you sure you want to delete this product?'))
+    if(confirm('Are you sure you want to delete this shop?'))
       this.productService.deleteProduct(product.id).subscribe(
         (resp) => {
           console.log(resp)

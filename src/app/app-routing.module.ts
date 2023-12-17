@@ -4,7 +4,7 @@ import {HomeComponent} from "./home/home.component";
 import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
 import {LikedComponent} from "./liked/liked.component";
 import {LoginComponent} from "./login/login.component";
-import {ProductComponent} from "./product/product.component";
+import {ShopComponent} from "./shop/shop.component";
 import {ProductInformationComponent} from "./product-information/product-information.component";
 
 const routes: Routes = [
@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'productinfo/:id', component: ProductInformationComponent },
   { path: 'shoppingcart', component: ShoppingCartComponent},
   { path: 'liked', component: LikedComponent},
-  { path: 'shop', component: ProductComponent},
+  { path: 'shop', component: ShopComponent},
   { path: '**', component: HomeComponent}
 ];
 
