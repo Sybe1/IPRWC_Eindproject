@@ -25,9 +25,6 @@ export class ShopComponent implements OnInit{
   allTargetAudience: string[] = ["Men", "Women", "Unisex", "Children"];
   selectedTargetAudience: string[] = ["Men", "Women", "Unisex", "Children"];
 
-  isClothingTypeCollapsed = true;
-  isTargetAudienceCollapsed = true;
-
   constructor(private productService: ProductService, private dialog: MatDialog){
   }
 
@@ -46,20 +43,6 @@ export class ShopComponent implements OnInit{
   public onCheckboxChangeTargetAudience(selectedTargetAudience: string[]): void {
     this.selectedTargetAudience = selectedTargetAudience;
     this.getProducts();
-  }
-
-  public toggleClothingTypeCollapse(): void {
-    this.isClothingTypeCollapsed = !this.isClothingTypeCollapsed;
-    if (!this.isTargetAudienceCollapsed && !this.isClothingTypeCollapsed){
-      this.isTargetAudienceCollapsed = !this.isTargetAudienceCollapsed;
-    }
-  }
-
-  public toggleTargetAudienceCollapse(): void{
-    this.isTargetAudienceCollapsed = !this.isTargetAudienceCollapsed;
-    if (!this.isClothingTypeCollapsed && !this.isTargetAudienceCollapsed){
-      this.isClothingTypeCollapsed = !this.isClothingTypeCollapsed;
-    }
   }
 
   public setToUpper(list: string[]): string[]{

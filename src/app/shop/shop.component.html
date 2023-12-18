@@ -6,29 +6,20 @@
 
   <div class="container mx-auto mt-8">
     <div class="flex flex-wrap">
-      <div class="w-full lg:w-3/12 pr-4 pt-5">
-        <div (click)="toggleClothingTypeCollapse()" class="cursor-pointer mb-2">
-          <b class="inline">Clothing Type</b>
-          <p class="inline pl-24">▼</p>
-        </div>
-        <div *ngIf="!isClothingTypeCollapsed">
-          <app-filter-clothing-type
-            [allClothingTypes]="allClothingTypes"
-            (clothingTypeFilterChange)="onClothingTypeFilterChange($event)">
-          </app-filter-clothing-type>
-        </div>
 
-        <div (click)="toggleTargetAudienceCollapse()" class="cursor-pointer mb-2">
-          <b class="inline">Target Audience</b>
-          <p class="inline paddingFilters">▼</p>
-        </div>
-        <div *ngIf="!isTargetAudienceCollapsed">
+
+      <div class="w-full lg:w-3/12 pr-4 pt-5">
+        <app-filter-clothing-type
+          [allClothingTypes]="allClothingTypes"
+          (clothingTypeFilterChange)="onClothingTypeFilterChange($event)">
+        </app-filter-clothing-type>
+
         <app-filter-target-audience
             [allTargetAudience]="allTargetAudience"
             (targetAudienceFilterChange)="onCheckboxChangeTargetAudience($event)">
         </app-filter-target-audience>
-        </div>
       </div>
+
 
       <div class="w-full lg:w-8/12">
         <div class="flex flex-wrap">

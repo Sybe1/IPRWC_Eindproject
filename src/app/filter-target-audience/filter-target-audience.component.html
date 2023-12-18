@@ -1,9 +1,10 @@
 <!--filter-target-audience.component.html-->
-
-
-
-<div class="card">
-  <div class="card-body">
+<div (click)="toggleTargetAudienceCollapse()" class="cursor-pointer mb-2">
+  <b class="inline">Target Audience</b>
+  <p class="inline paddingFilters">▼</p>
+</div>
+<div *ngIf="!isTargetAudienceCollapsed">
+  <div class="card">
     <div *ngFor="let product of allTargetAudience">
       <section>
         <input type="checkbox" (change)="onCheckboxChangeTargetAudience(product)" [checked]="selectedTargetAudience.includes(product)">

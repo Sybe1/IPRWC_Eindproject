@@ -7,9 +7,14 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class FilterTargetAudienceComponent {
   @Input() allTargetAudience:string[] = [];
+  isTargetAudienceCollapsed: boolean = true;
   @Output() targetAudienceFilterChange: EventEmitter<string[]> = new EventEmitter<string[]>();
 
   selectedTargetAudience: string[] = ["Men", "Women", "Unisex", "Children"];
+
+  public toggleTargetAudienceCollapse(): void{
+    this.isTargetAudienceCollapsed = !this.isTargetAudienceCollapsed;
+  }
 
   public onCheckboxChangeTargetAudience(product: string): void{
     for (let i = 0; i < this.selectedTargetAudience.length; i++) {

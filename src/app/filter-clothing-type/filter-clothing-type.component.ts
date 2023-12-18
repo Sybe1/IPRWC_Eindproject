@@ -7,6 +7,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class FilterClothingTypeComponent {
   @Input() allClothingTypes: string[] = [];
+  isClothingTypeCollapsed: boolean = true;
   @Output() clothingTypeFilterChange: EventEmitter<string[]> = new EventEmitter<string[]>();
 
   selectedClothingTypes: string[] = ["Hoodie", "Shirt", "Pants", "Underwear",
@@ -22,6 +23,10 @@ export class FilterClothingTypeComponent {
     }
     this.selectedClothingTypes.push(product);
     this.emitFilterChange();
+  }
+
+  public toggleClothingTypeCollapse(): void {
+    this.isClothingTypeCollapsed = !this.isClothingTypeCollapsed;
   }
 
   private emitFilterChange(): void {
