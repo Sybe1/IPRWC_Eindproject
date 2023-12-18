@@ -41,19 +41,21 @@ export class PopUpUpdateProductComponent implements OnInit{
   }
 
   public saveProduct(): void {
-    const productData: Product = {
-      id: this.myform.value.id || 0, // Handle the case where id is null or undefined
-      productName: this.myform.value.productName || '',
-      description: this.myform.value.description || '',
-      price: this.myform.value.price || 0, // Ensure 2 decimal places
-      stock: this.myform.value.stock || 0, // Ensure it's a valid integer
-      clothingType: this.myform.value.clothingType || '',
-      targetAudience: this.myform.value.targetAudience || '',
-      imageUrl: this.myform.value.imageUrl || ''
-    };
-    this.service.updateProduct(productData).subscribe(res => {
-      this.closePopup();
-    });
+    if (this.conditions()) {
+      const productData: Product = {
+        id: this.myform.value.id || 0, // Handle the case where id is null or undefined
+        productName: this.myform.value.productName || '',
+        description: this.myform.value.description || '',
+        price: this.myform.value.price || 0, // Ensure 2 decimal places
+        stock: this.myform.value.stock || 0, // Ensure it's a valid integer
+        clothingType: this.myform.value.clothingType || '',
+        targetAudience: this.myform.value.targetAudience || '',
+        imageUrl: this.myform.value.imageUrl || ''
+      };
+      this.service.updateProduct(productData).subscribe(res => {
+        this.closePopup();
+      });
+    }
   }
 
   public updateProduct(code:any): void{
@@ -65,4 +67,18 @@ export class PopUpUpdateProductComponent implements OnInit{
     })
   }
 
+  public conditions(): boolean{
+    if (this.myform.value.price != null && this.myform.value.price >= 0){
+      if (this.myform.value.stock != null && this.myform.value.stock >= 0){
+        if (this.myform.value.productName != null && this.myform.value.productName != ""){
+          if (this.myform.value.description != null && this.myform.value.description != ""){
+            if (this.myform.value.imageUrl != null && this.myform.value.imageUrl != "") {
+              return true
+            }
+          }
+        }
+      }
+    }
+    return false
+  }
 }
