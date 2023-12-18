@@ -1,6 +1,10 @@
 export interface Order{
   id: number;
   amount: number;
-  productId: number;
-  userId: number;
+  product: {
+    id: number | null;
+  };
+  user: {
+    id: number | null;
+  };
 }

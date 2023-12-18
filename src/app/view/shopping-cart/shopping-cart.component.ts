@@ -5,6 +5,8 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {MatDialog} from "@angular/material/dialog";
 import {ItemAddedToShoppingCartComponent} from "../item-added-to-shopping-cart/item-added-to-shopping-cart.component";
 import {BoughtItemsComponent} from "../bought-items/bought-items.component";
+import {OrderService} from "../../services/order.service";
+import {Order} from "../../models/order";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -14,10 +16,11 @@ import {BoughtItemsComponent} from "../bought-items/bought-items.component";
 export class ShoppingCartComponent implements OnInit{
   shoppingCartItems: any[] = [];
   itemInformation: any[] = [];
+  order: Order | undefined;
   priceAccumalated: number = 0;
   namePage: string = "Shopping Cart";
 
-  constructor(private productService: ProductService, public dialog: MatDialog) {
+  constructor(private productService: ProductService, public dialog: MatDialog, private orderService: OrderService) {
   }
   public ngOnInit(): void {
     this.shoppingCartItems = this.getShoppingCartItems();
@@ -63,11 +66,32 @@ export class ShoppingCartComponent implements OnInit{
 
   public boughtProducts(): void {
     const dialogRef = this.dialog.open(BoughtItemsComponent);
+    const itemsShoppingCart = localStorage.getItem('shoppingCart');
+
+    if (itemsShoppingCart != null){
+      this.shoppingCartItems = JSON.parse(itemsShoppingCart);
+
+      for (const item of this.shoppingCartItems) {
+        console.log(item)
+        //   this.order = {
+      //     id: 1,
+      //     amount: 2,
+      //     product: {
+      //       id: 1
+      //     },
+      //     user: {
+      //       id: 1
+      //     }
+      //   };
+      //   this.orderService.addOrders(this.order).subscribe();
+      }
+    }
+
+
     localStorage.removeItem('shoppingCart')
   }
 
   public deleteProductFromShoppingCart(productId: number): void {
-    console.log(productId)
     const shoppingCartToString = localStorage.getItem('shoppingCart');
 
     if (shoppingCartToString) {
