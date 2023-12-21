@@ -14,7 +14,6 @@ import { LikedComponent } from './view/liked/liked.component';
 import { ShopComponent } from './view/shop/shop.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { PageNotFoundComponent } from './view/page-not-found/page-not-found.component';
 import { MatDialogModule} from "@angular/material/dialog";
 import { PopUpUpdateProductComponent } from './view/pop-up-update-product/pop-up-update-product.component';
 import {MatInputModule} from "@angular/material/input";
@@ -44,7 +43,6 @@ import { HeaderPageComponent } from './view/header-page/header-page.component';
     ShoppingCartComponent,
     LikedComponent,
     ShopComponent,
-    PageNotFoundComponent,
     PopUpUpdateProductComponent,
     FilterClothingTypeComponent,
     FilterTargetAudienceComponent,
