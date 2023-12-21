@@ -3,8 +3,7 @@ import {ProductService} from "../../services/product.service";
 import {Product} from "../../models/product";
 import {HttpErrorResponse} from "@angular/common/http";
 import {MatDialog} from "@angular/material/dialog";
-import {ItemAddedToShoppingCartComponent} from "../item-added-to-shopping-cart/item-added-to-shopping-cart.component";
-import {BoughtItemsComponent} from "../bought-items/bought-items.component";
+import {BoughtItemsComponent} from "./bought-items/bought-items.component";
 import {OrderService} from "../../services/order.service";
 import {Order} from "../../models/order";
 
@@ -42,7 +41,7 @@ export class ShoppingCartComponent implements OnInit{
     for (let i = 0; i < items.length; i++) {
       const itemId = items[i].id;
       this.productService.getProductsById(itemId).subscribe(
-        (response: Product[]) => {
+        (response: Product) => {
           this.itemInformation.push(response);
           if (i === items.length - 1) {
             this.totalPrice(this.itemInformation);
@@ -65,30 +64,47 @@ export class ShoppingCartComponent implements OnInit{
   }
 
   public boughtProducts(): void {
-    const dialogRef = this.dialog.open(BoughtItemsComponent);
     const itemsShoppingCart = localStorage.getItem('shoppingCart');
-
     if (itemsShoppingCart != null){
       this.shoppingCartItems = JSON.parse(itemsShoppingCart);
-
       for (const item of this.shoppingCartItems) {
-        console.log(item)
-        //   this.order = {
-      //     id: 1,
-      //     amount: 2,
-      //     product: {
-      //       id: 1
-      //     },
-      //     user: {
-      //       id: 1
-      //     }
-      //   };
-      //   this.orderService.addOrders(this.order).subscribe();
+        this.order = {
+          id: 1,
+          amount: item.amount,
+          product: {
+            id: item.id
+          },
+          user: {
+            id: 1
+          }
+        };
+        this.orderService.addOrders(this.order).subscribe();
+        this.updateStockProduct(item.id, item.amount);
       }
     }
-
-
+    this.dialog.open(BoughtItemsComponent);
     localStorage.removeItem('shoppingCart')
+  }
+
+  public updateStockProduct(code: number, amountOfBoughtProduct: number): void{
+    console.log(code)
+    console.log(amountOfBoughtProduct)
+    this.productService.getProductsById(code).subscribe(item=>{
+      const product: Product = {
+        id: code,
+        productName: item.productName,
+        description: item.description,
+        price: item.price,
+        stock: item.stock - amountOfBoughtProduct,
+        clothingType: item.clothingType,
+        targetAudience: item.targetAudience,
+        imageUrl: item.imageUrl
+      };
+      console.log(product)
+      this.productService.updateProduct(product).subscribe(res => {
+        console.log(res)
+      });
+    })
   }
 
   public deleteProductFromShoppingCart(productId: number): void {

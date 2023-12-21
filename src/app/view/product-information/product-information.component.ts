@@ -4,7 +4,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Product} from "../../models/product";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
-import {ItemAddedToShoppingCartComponent} from "../item-added-to-shopping-cart/item-added-to-shopping-cart.component";
+import {ItemAddedToShoppingCartComponent} from "./item-added-to-shopping-cart/item-added-to-shopping-cart.component";
 import {LikedSuperComponent} from "../liked-super/liked-super.component";
 
 @Component({
@@ -37,7 +37,7 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
   }
 
   public getProduct(id:any): void{
-    this.productService.getProductsById(id).subscribe((response: Product[]) => {
+    this.productService.getProductsById(id).subscribe((response: Product) => {
         if (Array.isArray(response)) {
           this.products = response;
         } else {

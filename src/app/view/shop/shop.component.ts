@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Product } from '../../models/product';
-import { NgForm } from '@angular/forms';
 import {MatDialog} from "@angular/material/dialog";
-import {PopUpUpdateProductComponent} from "../pop-up-update-product/pop-up-update-product.component";
+import {PopUpUpdateProductComponent} from "./pop-up-update-product/pop-up-update-product.component";
 
 
 @Component({

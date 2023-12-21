@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
-import {PopUpUpdateProductComponent} from "../pop-up-update-product/pop-up-update-product.component";
 import {ProductService} from "../../services/product.service";
 import {Product} from "../../models/product";
 import {HttpErrorResponse} from "@angular/common/http";
@@ -32,7 +30,7 @@ export class LikedComponent extends LikedSuperComponent implements OnInit{
     for (let i = 0; i < items.length; i++) {
       const itemId = items[i].id;
       this.productService.getProductsById(itemId).subscribe(
-        (response: Product[]) => {
+        (response: Product) => {
           this.itemInformation.push(response);
         },
         (error: HttpErrorResponse) => {
