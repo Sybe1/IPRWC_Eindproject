@@ -87,8 +87,6 @@ export class ShoppingCartComponent implements OnInit{
   }
 
   public updateStockProduct(code: number, amountOfBoughtProduct: number): void{
-    console.log(code)
-    console.log(amountOfBoughtProduct)
     this.productService.getProductsById(code).subscribe(item=>{
       const product: Product = {
         id: code,
@@ -100,7 +98,6 @@ export class ShoppingCartComponent implements OnInit{
         targetAudience: item.targetAudience,
         imageUrl: item.imageUrl
       };
-      console.log(product)
       this.productService.updateProduct(product).subscribe(res => {
         console.log(res)
       });
