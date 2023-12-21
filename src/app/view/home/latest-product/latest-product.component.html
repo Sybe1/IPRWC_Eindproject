@@ -1,10 +1,7 @@
 <!--latest-product.component.html-->
 
+<a routerLink="/productinfo/{{products?.id}}"><img src="{{products?.imageUrl}}" alt=""></a>
+<br/>
 
-
-<div *ngFor="let product of products" class="text-center">
-    <a routerLink="/productinfo/{{product?.id}}"><img src="{{product?.imageUrl}}" alt=""></a>
-    <br/>
-</div>
 
 

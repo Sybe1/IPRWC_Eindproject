@@ -11,14 +11,14 @@ export class LikedSuperComponent {
 
   constructor(public route: ActivatedRoute) {}
 
-  public addLiked(productId: string | null, storageKey: string): void {
-    let currentLikedValue = JSON.parse(localStorage.getItem(storageKey) ?? '[]');
+  public toggleFavorite(productId: string): void {
+    this.isFavorite = !this.isFavorite;
 
-    if (!Array.isArray(currentLikedValue)) {
-      currentLikedValue = [];
-    }
+    const likedItemsString = localStorage.getItem('liked');
+    const currentLikedValue = likedItemsString ? JSON.parse(likedItemsString) : [];
 
-    const existingProductIndex = currentLikedValue.findIndex((item: { id: string | null }) => item.id === productId);
+    const existingProductIndex = currentLikedValue.findIndex((item: { id: string}) => item.id === productId);
+
     if (existingProductIndex !== -1) {
       currentLikedValue.splice(existingProductIndex, 1);
     } else {
@@ -27,11 +27,6 @@ export class LikedSuperComponent {
         isFavorite: true,
       });
     }
-    localStorage.setItem(storageKey, JSON.stringify(currentLikedValue));
-  }
-
-  public toggleFavorite(productId: string | null): void {
-    this.isFavorite = !this.isFavorite;
-    this.addLiked(productId, 'liked');
+    localStorage.setItem('liked', JSON.stringify(currentLikedValue));
   }
 }

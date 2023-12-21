@@ -9,18 +9,14 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./latest-product.component.scss']
 })
 export class LatestProductComponent implements OnInit {
-  products: Product[] = [];
+  products: Product | undefined;
 
   constructor(private service: ProductService) {}
 
   public ngOnInit(): void {
     this.service.getLatestProduct().subscribe(
-      (response: Product | Product[]) => {
-        if (Array.isArray(response)) {
+      (response: Product) => {
           this.products = response;
-        } else {
-          this.products = [response];
-        }
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

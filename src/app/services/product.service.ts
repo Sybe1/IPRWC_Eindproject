@@ -18,8 +18,8 @@ export class ProductService {
     return this.http.get<Product>(`${this.apiServerUrl}/product/find/` + code);
   }
 
-  public getLatestProduct(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.apiServerUrl}/product/findHighestId`);
+  public getLatestProduct(): Observable<Product> {
+    return this.http.get<Product>(`${this.apiServerUrl}/product/findHighestId`);
   }
 
   public addProducts(product: Product): Observable<Product> {

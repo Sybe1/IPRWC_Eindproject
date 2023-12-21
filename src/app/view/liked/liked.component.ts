@@ -26,7 +26,6 @@ export class LikedComponent extends LikedSuperComponent implements OnInit{
 
 
   public getInformationItems(items: any[]): void {
-    this.itemInformation = [];
     for (let i = 0; i < items.length; i++) {
       const itemId = items[i].id;
       this.productService.getProductsById(itemId).subscribe(
@@ -49,8 +48,8 @@ export class LikedComponent extends LikedSuperComponent implements OnInit{
     }
   }
 
-  public toggleFavoriteLiked(productId: string | number | null): void {
-    const productIdString = productId ? productId.toString() : null;
+  public toggleFavoriteLiked(productId: number): void {
+    const productIdString = productId.toString();
     this.toggleFavorite(productIdString);
     window.location.reload();
   }

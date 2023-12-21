@@ -33,7 +33,7 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
   private checkIfLiked(productId: string | null): boolean {
     const likedItems = JSON.parse(localStorage.getItem("liked") ?? "[]");
     const existingProduct = likedItems.find((item: { id: string | null; }) => item.id === productId);
-    return existingProduct ? true : false;
+    return !!existingProduct;
   }
 
   public getProduct(id:any): void{
@@ -106,7 +106,7 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
   }
 
   public toggleFavoriteProductInformation(): void{
-    const productId = this.route.snapshot.paramMap.get('id');
+    const productId = <string>this.route.snapshot.paramMap.get('id');
     this.toggleFavorite(productId)
   }
 
