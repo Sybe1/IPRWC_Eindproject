@@ -1,0 +1,35 @@
+<div class="pb-1">
+  <label>Username</label>
+  <input type="username" name="username" [(ngModel)]="signUpObj.username" class="bg-gray-50 border w-full p-2.5 border-red-200" placeholder="username" required="">
+  <div *ngIf="!signUpObj.username" class="text-red-500">Username is required.</div>
+</div>
+<div class="pb-1">
+  <label>Password</label>
+  <input type="password" name="password" [(ngModel)]="signUpObj.password" placeholder="••••••••" class="bg-gray-50 border w-full p-2.5 border-red-200" required="">
+  <div *ngIf="!signUpObj.password" class="text-red-500">Password is required (8 characters, 1 captial letter, 1 number, 1 small letter)</div>
+</div>
+<div class="pb-1">
+  <label>First Name</label>
+  <input type="firstName" name="firstName" [(ngModel)]="signUpObj.firstName" class="bg-gray-50 border w-full p-2.5 border-red-200" placeholder="name" required="">
+  <div *ngIf="!signUpObj.firstName" class="text-red-500">First Name is required.</div>
+</div>
+<div class="pb-1">
+  <label>Last Name</label>
+  <input type="lastName" name="lastName" [(ngModel)]="signUpObj.lastName" class="bg-gray-50 border w-full p-2.5 border-red-200" placeholder="name" required="">
+  <div *ngIf="!signUpObj.lastName" class="text-red-500">Last Name is required.</div>
+</div>
+<div class="pb-1">
+  <label>Email</label>
+  <input type="email" name="email" [(ngModel)]="signUpObj.email" class="bg-gray-50 border w-full p-2.5 border-red-200" placeholder="email" required="">
+  <div *ngIf="!signUpObj.email && !signUpObj.email.includes('@')" class="text-red-500">Email is required and should contain "@"</div>
+</div>
+<div class="pb-1">
+  <label>Address</label>
+  <input type="address" name="address" [(ngModel)]="signUpObj.address" class="bg-gray-50 border w-full p-2.5 border-red-200" placeholder="address" required="">
+  <div *ngIf="!signUpObj.address" class="text-red-500">Address is required.</div>
+</div>
+<div>
+  <label>Postal Code</label>
+  <input type="postalCode" name="postalCode" [(ngModel)]="signUpObj.postalCode" class="bg-gray-50 border w-full p-2.5 border-red-200" placeholder="postal code" required="">
+  <div *ngIf="!signUpObj.postalCode" class="text-red-500">Postal Code is required.</div>
+</div>

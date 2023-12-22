@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
+import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
 
 @Component({
   selector: 'app-logout',
@@ -8,7 +9,7 @@ import {Router} from "@angular/router";
 })
 export class LogoutComponent {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private data: IsUserLoggedInService) {
   }
   public logoutButton(): void{
     localStorage.removeItem('loginToken');
@@ -16,5 +17,10 @@ export class LogoutComponent {
     localStorage.removeItem('shoppingCart');
     localStorage.removeItem('liked');
     this.router.navigateByUrl('/home');
+    this.changeValueLoginOrLogout(true)
+  }
+
+  public changeValueLoginOrLogout(loggedOut: boolean):void{
+    this.data.changeStatus(loggedOut)
   }
 }

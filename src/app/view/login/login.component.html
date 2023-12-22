@@ -1,4 +1,9 @@
-<app-header-page [namePage]=namePage></app-header-page>
+<div *ngIf="isLoginOrLogout">
+  <app-header-page [namePage]="namePageLogin"></app-header-page>
+</div>
+<div *ngIf="!isLoginOrLogout">
+  <app-header-page [namePage]="namePageLogout"></app-header-page>
+</div>
 
 <div class="flex flex-col items-center justify-center pt-12">
   <div class="w-full rounded-lg shadow border max-w-md border-gray-700">
@@ -17,34 +22,7 @@
           </div>
 
           <div *ngIf=!isLoginMode>
-            <div class="pb-1">
-              <label>Username</label>
-              <input type="username" name="username" [(ngModel)]="signUpObj.username" class="bg-gray-50 border w-full p-2.5 border-red-200" placeholder="username" required="">
-            </div>
-            <div class="pb-1">
-              <label>Password</label>
-              <input type="password" name="password" [(ngModel)]="signUpObj.password" placeholder="••••••••" class="bg-gray-50 border w-full p-2.5 border-red-200" required="">
-            </div>
-            <div class="pb-1">
-              <label>First Name</label>
-              <input type="firstName" name="firstName" [(ngModel)]="signUpObj.firstName" class="bg-gray-50 border w-full p-2.5 border-red-200" placeholder="name" required="">
-            </div>
-            <div class="pb-1">
-              <label>Last Name</label>
-              <input type="lastName" name="lastName" [(ngModel)]="signUpObj.lastName" class="bg-gray-50 border w-full p-2.5 border-red-200" placeholder="name" required="">
-            </div>
-            <div class="pb-1">
-              <label>Email</label>
-              <input type="email" name="email" [(ngModel)]="signUpObj.email" class="bg-gray-50 border w-full p-2.5 border-red-200" placeholder="email" required="">
-            </div>
-            <div class="pb-1">
-              <label>Address</label>
-              <input type="address" name="address" [(ngModel)]="signUpObj.address" class="bg-gray-50 border w-full p-2.5 border-red-200" placeholder="address" required="">
-            </div>
-            <div>
-              <label>Postal Code</label>
-              <input type="postalCode" name="postalCode" [(ngModel)]="signUpObj.postalCode" class="bg-gray-50 border w-full p-2.5 border-red-200" placeholder="postal code" required="">
-            </div>
+            <app-sign-up [signUpObj]=signUpObj></app-sign-up>
           </div>
 
           <button id="submitButton" type="submit" (click)="onLogin()" class="">{{ isLoginMode ? 'Login' : 'Sign Up'}}</button>

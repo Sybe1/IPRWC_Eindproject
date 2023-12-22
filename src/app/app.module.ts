@@ -35,6 +35,7 @@ import { ProductThumbnailComponent } from './view/shop/product-thumbnail/product
 import { ProductShopInformationComponent } from './view/shop/product-shop-information/product-shop-information.component';
 import { HeaderPageComponent } from './view/header-page/header-page.component';
 import { LogoutComponent } from './view/logout/logout.component';
+import { SignUpComponent } from './view/login/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { LogoutComponent } from './view/logout/logout.component';
     ProductThumbnailComponent,
     ProductShopInformationComponent,
     HeaderPageComponent,
-    LogoutComponent
+    LogoutComponent,
+    SignUpComponent
   ],
     imports: [
         BrowserModule,
