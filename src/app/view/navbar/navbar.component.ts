@@ -15,9 +15,4 @@ export class NavbarComponent implements OnInit{
    ngOnInit() {
      this.data.currentStatus.subscribe(message => this.isLoginOrLogout = message)
    }
-
-  // ngOnInit() {
-  //   this.isLoginOrLogout = localStorage.getItem('loginToken') == null;
-  // }
-
 }

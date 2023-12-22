@@ -6,6 +6,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {ItemAddedToShoppingCartComponent} from "./item-added-to-shopping-cart/item-added-to-shopping-cart.component";
 import {LikedSuperComponent} from "../liked-super/liked-super.component";
+import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
 
 @Component({
   selector: 'app-product-information',
@@ -19,12 +20,15 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
   amountProduct:number = 0;
   shoppingCartItems: any[] = [];
   namePage: string = "Product";
+  isLoginOrLogout: boolean = true;
 
-  constructor(private productService: ProductService, public override route: ActivatedRoute, public dialog: MatDialog){
+  constructor(private productService: ProductService, public override route: ActivatedRoute,
+              public dialog: MatDialog, private isUserLoggedInService: IsUserLoggedInService){
     super(route);
   }
 
   public ngOnInit(): void {
+    this.isUserLoggedInService.currentStatus.subscribe(message => this.isLoginOrLogout = message)
     const productId = this.route.snapshot.paramMap.get('id');
     this.getProduct(productId);
     this.isFavorite = this.checkIfLiked(productId);
@@ -75,7 +79,7 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
   public addAmount(): void {
     const productId = this.route.snapshot.paramMap.get('id');
 
-    if (this.amountProduct != 0) {
+    if (this.amountProduct != 0 && !this.isLoginOrLogout) {
       if (localStorage.getItem("shoppingCart") == null) {
         const obj = [{
           id: productId,
@@ -97,10 +101,9 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
             amount: this.amountProduct
           });
         }
-
         localStorage.setItem("shoppingCart", JSON.stringify(currentCartValue));
       }
-      const dialogRef = this.dialog.open(ItemAddedToShoppingCartComponent);
+      this.dialog.open(ItemAddedToShoppingCartComponent);
       this.amountProduct = 0;
     }
   }

@@ -6,11 +6,20 @@ import {BehaviorSubject} from "rxjs";
 })
 export class IsUserLoggedInService {
 
-  private loginOrLogoutValue = new BehaviorSubject<boolean>(true)
+  private loginOrLogoutValue = new BehaviorSubject<boolean>(this.isUserLoggedOut())
   currentStatus = this.loginOrLogoutValue.asObservable()
   constructor() { }
 
-  changeStatus(loginOrLogout: boolean){
+  public isUserLoggedOut():boolean{
+    if (!localStorage.getItem("loginToken")){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  public changeStatus(loginOrLogout: boolean):void{
     this.loginOrLogoutValue.next(loginOrLogout)
   }
 }
