@@ -34,6 +34,7 @@ import { LikedSuperComponent } from './view/liked-super/liked-super.component';
 import { ProductThumbnailComponent } from './view/shop/product-thumbnail/product-thumbnail.component';
 import { ProductShopInformationComponent } from './view/shop/product-shop-information/product-shop-information.component';
 import { HeaderPageComponent } from './view/header-page/header-page.component';
+import { LogoutComponent } from './view/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { HeaderPageComponent } from './view/header-page/header-page.component';
     LikedSuperComponent,
     ProductThumbnailComponent,
     ProductShopInformationComponent,
-    HeaderPageComponent
+    HeaderPageComponent,
+    LogoutComponent
   ],
     imports: [
         BrowserModule,

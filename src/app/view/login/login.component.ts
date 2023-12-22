@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {LoginService} from "../../services/login.service";
@@ -9,8 +9,9 @@ import {UserService} from "../../services/user.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
     isLoginMode = true;
+    isLoginOrLogout = true;
     private usernameHelp: string = "";
     private passwordHelp: string = "";
 
@@ -31,11 +32,15 @@ export class LoginComponent {
     }
   namePage: string = "Login";
 
-    constructor(private http:HttpClient, private router: Router, private loginService: LoginService,
+    constructor(private router: Router, private loginService: LoginService,
                 private userService: UserService) {
     }
 
-    public onSwitchMode(): void{
+    ngOnInit() {
+      this.isLoginOrLogout = localStorage.getItem('loginToken') == null;
+    }
+
+  public onSwitchMode(): void{
       this.isLoginMode = !this.isLoginMode;
     }
 
