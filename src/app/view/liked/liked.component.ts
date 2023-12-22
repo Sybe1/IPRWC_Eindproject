@@ -15,8 +15,7 @@ export class LikedComponent implements OnInit{
   itemInformation: any[] = [];
   namePage: string = "Liked";
 
-  constructor(private productService: ProductService, public route: ActivatedRoute, private toggleFavoriteService: ToggleFavoriteService) {
-    // super(route);
+  constructor(private productService: ProductService, private toggleFavoriteService: ToggleFavoriteService) {
   }
 
   public ngOnInit(): void {

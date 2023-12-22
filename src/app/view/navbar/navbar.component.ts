@@ -11,7 +11,6 @@ export class NavbarComponent implements OnInit{
 
    constructor(private data: IsUserLoggedInService) {
    }
-
    ngOnInit() {
      this.data.currentStatus.subscribe(message => this.isLoginOrLogout = message)
    }

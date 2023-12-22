@@ -23,19 +23,23 @@ import {MatSelectModule} from "@angular/material/select";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterClothingTypeComponent } from './view/shop/filter-clothing-type/filter-clothing-type.component';
 import { FilterTargetAudienceComponent } from './view/shop/filter-target-audience/filter-target-audience.component';
-import { LoginComponent } from './view/login/login.component';
+import { LoginComponent } from './view/authentication/login/login.component';
 import {CustomerInterceptorInterceptor} from "./conf/customer-interceptor.interceptor";
 import { LatestProductComponent } from './view/home/latest-product/latest-product.component';
-import { ProductInformationComponent } from './view/product-information/product-information.component';
+import { ProductComponent } from './view/product/product.component';
 import {NgOptimizedImage} from "@angular/common";
-import { ItemAddedToShoppingCartComponent } from './view/product-information/item-added-to-shopping-cart/item-added-to-shopping-cart.component';
+import {ItemAddedToShoppingCartComponent} from "./view/product/item-added-to-shopping-cart/item-added-to-shopping-cart.component";
 import { BoughtItemsComponent } from './view/shopping-cart/bought-items/bought-items.component';
-import { ProductThumbnailComponent } from './view/shop/product-thumbnail/product-thumbnail.component';
+import { ProductThumbnailShopComponent } from './view/shop/product-thumbnail-shop/product-thumbnail-shop.component';
 import { ProductShopInformationComponent } from './view/shop/product-shop-information/product-shop-information.component';
 import { HeaderPageComponent } from './view/header-page/header-page.component';
-import { LogoutComponent } from './view/logout/logout.component';
-import { SignUpComponent } from './view/login/sign-up/sign-up.component';
-import { LoginToDoActionComponent } from './view/login-to-do-action/login-to-do-action.component';
+import { SignUpComponent } from './view/authentication/sign-up/sign-up.component';
+import {LoginToDoActionComponent} from "./view/product/login-to-do-action/login-to-do-action.component";
+import { LikedItemsComponent } from './view/liked/liked-items/liked-items.component';
+import { AuthenticationComponent } from './view/authentication/authentication.component';
+import {LogoutComponent} from "./view/authentication/logout/logout.component";
+import { ProductInformationComponent } from './view/product/product-information/product-information.component';
+import {ProductThumbnailComponent} from "./view/product/product-thumbnail/product-thumbnail.component";
 
 @NgModule({
   declarations: [
@@ -50,7 +54,7 @@ import { LoginToDoActionComponent } from './view/login-to-do-action/login-to-do-
     FilterTargetAudienceComponent,
     LoginComponent,
     LatestProductComponent,
-    ProductInformationComponent,
+    ProductComponent,
     ItemAddedToShoppingCartComponent,
     BoughtItemsComponent,
     ProductThumbnailComponent,
@@ -58,7 +62,13 @@ import { LoginToDoActionComponent } from './view/login-to-do-action/login-to-do-
     HeaderPageComponent,
     LogoutComponent,
     SignUpComponent,
-    LoginToDoActionComponent
+    LoginToDoActionComponent,
+    LikedItemsComponent,
+    AuthenticationComponent,
+    LogoutComponent,
+    ProductInformationComponent,
+    ProductThumbnailComponent,
+    ProductThumbnailShopComponent
   ],
     imports: [
         BrowserModule,

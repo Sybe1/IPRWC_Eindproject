@@ -7,8 +7,7 @@ import {Product} from "../../../models/product";
   styleUrls: ['./product-thumbnail.component.scss']
 })
 export class ProductThumbnailComponent {
-  @Input() public product: Product | undefined;
-
   image = 'assets/images/achtergrondBlauw.jpg';
 
+  @Input() public product: Product | undefined;
 }

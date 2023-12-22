@@ -3,16 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from "./view/home/home.component";
 import {ShoppingCartComponent} from "./view/shopping-cart/shopping-cart.component";
 import {LikedComponent} from "./view/liked/liked.component";
-import {LoginComponent} from "./view/login/login.component";
 import {ShopComponent} from "./view/shop/shop.component";
-import {ProductInformationComponent} from "./view/product-information/product-information.component";
+import {ProductComponent} from "./view/product/product.component";
+import {AuthenticationComponent} from "./view/authentication/authentication.component";
 
 const routes: Routes = [
-  { path:'login', component:LoginComponent},
+  { path:'login', component:AuthenticationComponent},
   { path: '', redirectTo:'home', pathMatch:'full'},
   { path: '', component:HomeComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'productinfo/:id', component: ProductInformationComponent },
+  { path: 'productinfo/:id', component: ProductComponent },
   { path: 'shoppingcart', component: ShoppingCartComponent},
   { path: 'liked', component: LikedComponent},
   { path: 'shop', component: ShopComponent},

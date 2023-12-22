@@ -1,16 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginService} from "../../services/login.service";
 import {UserService} from "../../services/user.service";
 import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-authentication',
+  templateUrl: './authentication.component.html',
+  styleUrls: ['./authentication.component.scss']
 })
-export class LoginComponent{
+export class AuthenticationComponent {
   isLoginMode = true;
   isLoginOrLogout = localStorage.getItem('loginToken') == null;
   private usernameHelp: string = "";
@@ -20,8 +19,8 @@ export class LoginComponent{
 
 
   loginObj: any = {
-      "username": "",
-      "password": ""
+    "username": "",
+    "password": ""
   }
 
   signUpObj: any = {
@@ -50,25 +49,32 @@ export class LoginComponent{
 
   public onLogin(): void {
     if (this.isLoginMode) {
-      this.loginService.postUser(this.loginObj).subscribe((res: any) => {
-        localStorage.setItem('loginToken', res.token);
-        console.log(res.token);
-        this.userService.getUserByUsername(this.loginObj.username).subscribe((resUser: any) => {
-          localStorage.setItem('role', resUser.role);
-          console.log("role: " + localStorage.getItem('role'));
-        })
-        this.changeValueLoginOrLogout(false);
-        this.router.navigateByUrl('/home');
-      })
+      this.userLogin();
     }
     else if (!this.isLoginMode) {
-      this.loginService.registerUser(this.signUpObj).subscribe((res: any) => {
-        this.usernameHelp = this.signUpObj.username;
-        this.passwordHelp = this.signUpObj.password;
-        this.onSwitchMode();
-        this.loginObj.username = this.usernameHelp;
-        this.loginObj.password = this.passwordHelp;
-      })
+      this.userRegister();
     }
   }
+
+  public userLogin():void{
+    this.loginService.postUser(this.loginObj).subscribe((res: any) => {
+      localStorage.setItem('loginToken', res.token);
+      this.userService.getUserByUsername(this.loginObj.username).subscribe((resUser: any) => {
+        localStorage.setItem('role', resUser.role);
+      })
+      this.changeValueLoginOrLogout(false);
+      this.router.navigateByUrl('/home');
+    })
+  }
+
+  public userRegister():void{
+    this.loginService.registerUser(this.signUpObj).subscribe((res: any) => {
+      this.usernameHelp = this.signUpObj.username;
+      this.passwordHelp = this.signUpObj.password;
+      this.onSwitchMode();
+      this.loginObj.username = this.usernameHelp;
+      this.loginObj.password = this.passwordHelp;
+    })
+  }
+
 }

@@ -16,14 +16,11 @@
         <div *ngFor="let product of itemInformation">
           <div *ngFor="let item of likedItems">
             <div *ngIf="item.id == product.id">
-              <div class="grid grid-cols-3 gap-32 content-start">
-                <div>{{product.productName}} </div>
-                <div>${{product.price}}</div>
-                <div>
-                  <button (click)="toggleFavoriteLiked(product.id)">
-                    <mat-icon>{{ item.isFavorite ? 'favorite' : 'favorite_outline' }}</mat-icon>
-                  </button>
-                </div>
+              <app-liked-items [product]="product" [item]="item"></app-liked-items>
+              <div>
+                <button (click)="toggleFavoriteLiked(product.id)">
+                  <mat-icon>{{ item.isFavorite ? 'favorite' : 'favorite_outline' }}</mat-icon>
+                </button>
               </div>
             </div>
           </div>

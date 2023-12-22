@@ -6,17 +6,16 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {ItemAddedToShoppingCartComponent} from "./item-added-to-shopping-cart/item-added-to-shopping-cart.component";
 import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
-import {LoginToDoActionComponent} from "../login-to-do-action/login-to-do-action.component";
+import {LoginToDoActionComponent} from "./login-to-do-action/login-to-do-action.component";
 import {ToggleFavoriteService} from "../../services/toggle-favorite.service";
 
 @Component({
-  selector: 'app-product-information',
-  templateUrl: './product-information.component.html',
-  styleUrls: ['./product-information.component.scss']
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss']
 })
-export class ProductInformationComponent implements OnInit{
+export class ProductComponent implements OnInit{
   products: any[] = [];
-  image = 'assets/images/achtergrondBlauw.jpg';
   amountShoppingCartNow = 0;
   amountProduct:number = 0;
   shoppingCartItems: any[] = [];
@@ -27,8 +26,7 @@ export class ProductInformationComponent implements OnInit{
 
   constructor(private productService: ProductService, public route: ActivatedRoute,
               public dialog: MatDialog, private isUserLoggedInService: IsUserLoggedInService,
-              private toggleFavoriteService: ToggleFavoriteService){
-    // super(route);
+              ){
   }
 
   public ngOnInit(): void {
@@ -113,21 +111,6 @@ export class ProductInformationComponent implements OnInit{
     else if (this.amountProduct != 0 && this.isLoginOrLogout){
       this.dialog.open(LoginToDoActionComponent);
     }
-  }
-
-  public toggleFavoriteProductInformation(): void{
-    if (!this.isLoginOrLogout) {
-      const productId = <string>this.route.snapshot.paramMap.get('id');
-      this.toggleFavorite(productId)
-      this.isFavorite = !this.isFavorite;
-    }
-    else{
-      this.dialog.open(LoginToDoActionComponent);
-    }
-  }
-
-  public toggleFavorite(productId: string): void {
-    this.toggleFavoriteService.toggleFavorite(productId);
   }
 
   public outOfStock():boolean{

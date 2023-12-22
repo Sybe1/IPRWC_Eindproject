@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
-import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
+import {IsUserLoggedInService} from "../../../services/is-user-logged-in.service";
 
 @Component({
   selector: 'app-logout',

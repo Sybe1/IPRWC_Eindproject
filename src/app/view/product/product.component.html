@@ -1,21 +1,13 @@
-<!--product-information.component.html-->
+<!--product.component.html-->
 
 <app-header-page [namePage]=namePage></app-header-page>
 
 
 <div *ngFor="let product of products" class="mb-4 pt-16">
   <div class="flex flex-wrap items-center">
-    <div class="padding-left">
-        <img src="{{ product?.imageUrl }}" class=" border-4 h-96 mr-4" alt="{{ product?.productName }}" [ngStyle]="{ 'background-image': 'url(' + image + ')', 'background-size': 'cover'}">
-    </div>
+    <app-product-thumbnail [product]="product"></app-product-thumbnail>
     <div class="ml-3 width-tekst">
-      <div class="mb-2 text-red-400">WorldWideFashion</div>
-      <div class="mb-3 text-3xl font-semibold">{{ product?.productName }}</div>
-      <div class="mb-3 text-md">{{ product?.description }}</div>
-      <div class="grid grid-cols-3 gap-4 content-start">
-        <div class="mb-3 text-2xl col-span-2">€{{ product?.price }}</div>
-        <div class="pl-12"><button (click)="toggleFavoriteProductInformation()"><mat-icon>{{ isFavorite ? 'favorite' : 'favorite_outline' }}</mat-icon></button></div>
-      </div>
+      <app-product-information [product]=product [isLoginOrLogout]="isLoginOrLogout" [isFavorite]="isFavorite"></app-product-information>
       <div class="flex">
         <div class="mr-2 wrapper flex justify-center bg-gray-100">
           <button (click)="minProduct()" class="pr-10">-</button>

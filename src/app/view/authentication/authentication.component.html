@@ -11,14 +11,7 @@
       <div *ngIf="isLoginOrLogout">
         <form class="space-y-4 md:space-y-6" action="#">
           <div *ngIf=isLoginMode>
-            <div class="pb-1">
-              <label>Username</label>
-              <input type="username" name="username" id="username" [(ngModel)]="loginObj.username" class="bg-gray-50 border w-full p-2.5 border-red-200" placeholder="username" required="">
-            </div>
-            <div>
-              <label>Password</label>
-              <input type="password" name="password" id="password" [(ngModel)]="loginObj.password" placeholder="••••••••" class="bg-gray-50 border w-full p-2.5 border-red-200" required="">
-            </div>
+            <app-login [loginObj]="loginObj"></app-login>
           </div>
 
           <div *ngIf=!isLoginMode>
