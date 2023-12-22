@@ -23,6 +23,7 @@ export class ProductInformationComponent implements OnInit{
   namePage: string = "Product";
   isLoginOrLogout: boolean = true;
   isFavorite: boolean = true;
+  isProductOutOfStock: boolean = false;
 
   constructor(private productService: ProductService, public route: ActivatedRoute,
               public dialog: MatDialog, private isUserLoggedInService: IsUserLoggedInService,
@@ -63,6 +64,7 @@ export class ProductInformationComponent implements OnInit{
   }
 
   public maxProduct(): void {
+    this.isProductOutOfStock = this.outOfStock();
     const shoppingCartString = localStorage.getItem("shoppingCart");
     if (shoppingCartString){
       this.shoppingCartItems = JSON.parse(shoppingCartString);
@@ -114,12 +116,23 @@ export class ProductInformationComponent implements OnInit{
   }
 
   public toggleFavoriteProductInformation(): void{
-    const productId = <string>this.route.snapshot.paramMap.get('id');
-    this.toggleFavorite(productId)
+    if (!this.isLoginOrLogout) {
+      const productId = <string>this.route.snapshot.paramMap.get('id');
+      this.toggleFavorite(productId)
+      this.isFavorite = !this.isFavorite;
+    }
+    else{
+      this.dialog.open(LoginToDoActionComponent);
+    }
   }
 
   public toggleFavorite(productId: string): void {
     this.toggleFavoriteService.toggleFavorite(productId);
+  }
+
+  public outOfStock():boolean{
+    console.log(this.products[0])
+    return this.products[0].stock == 0;
   }
 }
 
