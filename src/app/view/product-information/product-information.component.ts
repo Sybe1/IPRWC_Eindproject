@@ -5,16 +5,16 @@ import {Product} from "../../models/product";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {ItemAddedToShoppingCartComponent} from "./item-added-to-shopping-cart/item-added-to-shopping-cart.component";
-import {LikedSuperComponent} from "../liked-super/liked-super.component";
 import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
 import {LoginToDoActionComponent} from "../login-to-do-action/login-to-do-action.component";
+import {ToggleFavoriteService} from "../../services/toggle-favorite.service";
 
 @Component({
   selector: 'app-product-information',
   templateUrl: './product-information.component.html',
   styleUrls: ['./product-information.component.scss']
 })
-export class ProductInformationComponent extends LikedSuperComponent implements OnInit{
+export class ProductInformationComponent implements OnInit{
   products: any[] = [];
   image = 'assets/images/achtergrondBlauw.jpg';
   amountShoppingCartNow = 0;
@@ -22,10 +22,12 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
   shoppingCartItems: any[] = [];
   namePage: string = "Product";
   isLoginOrLogout: boolean = true;
+  isFavorite: boolean = true;
 
-  constructor(private productService: ProductService, public override route: ActivatedRoute,
-              public dialog: MatDialog, private isUserLoggedInService: IsUserLoggedInService){
-    super(route);
+  constructor(private productService: ProductService, public route: ActivatedRoute,
+              public dialog: MatDialog, private isUserLoggedInService: IsUserLoggedInService,
+              private toggleFavoriteService: ToggleFavoriteService){
+    // super(route);
   }
 
   public ngOnInit(): void {
@@ -116,6 +118,9 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
     this.toggleFavorite(productId)
   }
 
+  public toggleFavorite(productId: string): void {
+    this.toggleFavoriteService.toggleFavorite(productId);
+  }
 }
 
 

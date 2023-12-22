@@ -30,7 +30,6 @@ import { ProductInformationComponent } from './view/product-information/product-
 import {NgOptimizedImage} from "@angular/common";
 import { ItemAddedToShoppingCartComponent } from './view/product-information/item-added-to-shopping-cart/item-added-to-shopping-cart.component';
 import { BoughtItemsComponent } from './view/shopping-cart/bought-items/bought-items.component';
-import { LikedSuperComponent } from './view/liked-super/liked-super.component';
 import { ProductThumbnailComponent } from './view/shop/product-thumbnail/product-thumbnail.component';
 import { ProductShopInformationComponent } from './view/shop/product-shop-information/product-shop-information.component';
 import { HeaderPageComponent } from './view/header-page/header-page.component';
@@ -54,7 +53,6 @@ import { LoginToDoActionComponent } from './view/login-to-do-action/login-to-do-
     ProductInformationComponent,
     ItemAddedToShoppingCartComponent,
     BoughtItemsComponent,
-    LikedSuperComponent,
     ProductThumbnailComponent,
     ProductShopInformationComponent,
     HeaderPageComponent,

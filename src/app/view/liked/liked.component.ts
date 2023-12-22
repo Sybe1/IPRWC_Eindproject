@@ -3,20 +3,20 @@ import {ProductService} from "../../services/product.service";
 import {Product} from "../../models/product";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
-import {LikedSuperComponent} from "../liked-super/liked-super.component";
+import {ToggleFavoriteService} from "../../services/toggle-favorite.service";
 
 @Component({
   selector: 'app-liked',
   templateUrl: './liked.component.html',
   styleUrls: ['./liked.component.scss']
 })
-export class LikedComponent extends LikedSuperComponent implements OnInit{
+export class LikedComponent implements OnInit{
   likedItems: any[] = [];
   itemInformation: any[] = [];
   namePage: string = "Liked";
 
-  constructor(private productService: ProductService, public override route: ActivatedRoute) {
-    super(route);
+  constructor(private productService: ProductService, public route: ActivatedRoute, private toggleFavoriteService: ToggleFavoriteService) {
+    // super(route);
   }
 
   public ngOnInit(): void {
@@ -50,7 +50,7 @@ export class LikedComponent extends LikedSuperComponent implements OnInit{
 
   public toggleFavoriteLiked(productId: number): void {
     const productIdString = productId.toString();
-    this.toggleFavorite(productIdString);
+    this.toggleFavoriteService.toggleFavorite(productIdString);
     window.location.reload();
   }
 }
