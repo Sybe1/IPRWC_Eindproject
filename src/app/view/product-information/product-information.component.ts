@@ -7,6 +7,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ItemAddedToShoppingCartComponent} from "./item-added-to-shopping-cart/item-added-to-shopping-cart.component";
 import {LikedSuperComponent} from "../liked-super/liked-super.component";
 import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
+import {LoginToDoActionComponent} from "../login-to-do-action/login-to-do-action.component";
 
 @Component({
   selector: 'app-product-information',
@@ -78,7 +79,6 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
 
   public addAmount(): void {
     const productId = this.route.snapshot.paramMap.get('id');
-
     if (this.amountProduct != 0 && !this.isLoginOrLogout) {
       if (localStorage.getItem("shoppingCart") == null) {
         const obj = [{
@@ -105,6 +105,9 @@ export class ProductInformationComponent extends LikedSuperComponent implements 
       }
       this.dialog.open(ItemAddedToShoppingCartComponent);
       this.amountProduct = 0;
+    }
+    else if (this.amountProduct != 0 && this.isLoginOrLogout){
+      this.dialog.open(LoginToDoActionComponent);
     }
   }
 

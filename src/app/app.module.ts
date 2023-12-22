@@ -36,6 +36,7 @@ import { ProductShopInformationComponent } from './view/shop/product-shop-inform
 import { HeaderPageComponent } from './view/header-page/header-page.component';
 import { LogoutComponent } from './view/logout/logout.component';
 import { SignUpComponent } from './view/login/sign-up/sign-up.component';
+import { LoginToDoActionComponent } from './view/login-to-do-action/login-to-do-action.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { SignUpComponent } from './view/login/sign-up/sign-up.component';
     ProductShopInformationComponent,
     HeaderPageComponent,
     LogoutComponent,
-    SignUpComponent
+    SignUpComponent,
+    LoginToDoActionComponent
   ],
     imports: [
         BrowserModule,
