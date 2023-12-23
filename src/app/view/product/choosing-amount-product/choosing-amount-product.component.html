@@ -1,0 +1,15 @@
+<div class="flex">
+  <div class="mr-2 wrapper flex justify-center bg-gray-100">
+    <button (click)="minProduct()" class="pr-10 pl-5">-</button>
+    <span class="pt-3">{{amountProduct}}</span>
+    <button (click)="maxProduct()" class="pl-10 pr-5">+</button>
+  </div>
+  <div>
+    <button (click)="addAmount()" class="hover:bg-red-500 flex justify-center items-center gap-2 px-10 py-3
+                        border font-light text-lg leading-none bg-red-400
+                        rounded-2xl text-white"
+    >Add to cart
+
+    </button>
+  </div>
+</div>

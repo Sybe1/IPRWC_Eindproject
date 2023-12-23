@@ -40,6 +40,13 @@ import { AuthenticationComponent } from './view/authentication/authentication.co
 import {LogoutComponent} from "./view/authentication/logout/logout.component";
 import { ProductInformationComponent } from './view/product/product-information/product-information.component';
 import {ProductThumbnailComponent} from "./view/product/product-thumbnail/product-thumbnail.component";
+import { ChoosingAmountProductComponent } from './view/product/choosing-amount-product/choosing-amount-product.component';
+import { EditDeleteProductComponent } from './view/shop/edit-delete-product/edit-delete-product.component';
+import { AddProductComponent } from './view/shop/add-product/add-product.component';
+import { EmptyShoppingCartComponent } from './view/shopping-cart/empty-shopping-cart/empty-shopping-cart.component';
+import { TopOfTableComponent } from './view/shopping-cart/top-of-table/top-of-table.component';
+import { InformationProductShoppingCartComponent } from './view/shopping-cart/information-product-shopping-cart/information-product-shopping-cart.component';
+import { PriceAccumulatedComponent } from './view/shopping-cart/price-accumulated/price-accumulated.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +75,14 @@ import {ProductThumbnailComponent} from "./view/product/product-thumbnail/produc
     LogoutComponent,
     ProductInformationComponent,
     ProductThumbnailComponent,
-    ProductThumbnailShopComponent
+    ProductThumbnailShopComponent,
+    ChoosingAmountProductComponent,
+    EditDeleteProductComponent,
+    AddProductComponent,
+    EmptyShoppingCartComponent,
+    TopOfTableComponent,
+    InformationProductShoppingCartComponent,
+    PriceAccumulatedComponent
   ],
     imports: [
         BrowserModule,

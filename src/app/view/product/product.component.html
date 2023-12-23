@@ -2,27 +2,12 @@
 
 <app-header-page [namePage]=namePage></app-header-page>
 
-
 <div *ngFor="let product of products" class="mb-4 pt-16">
-  <div class="flex flex-wrap items-center">
+  <div class="flex flex-wrap items-center justify-center">
     <app-product-thumbnail [product]="product"></app-product-thumbnail>
     <div class="ml-3 width-tekst">
       <app-product-information [product]=product [isLoginOrLogout]="isLoginOrLogout" [isFavorite]="isFavorite"></app-product-information>
-      <div class="flex">
-        <div class="mr-2 wrapper flex justify-center bg-gray-100">
-          <button (click)="minProduct()" class="pr-10">-</button>
-          <span>{{amountProduct}}</span>
-          <button (click)="maxProduct()" class="pl-10">+</button>
-        </div>
-        <div>
-          <button (click)="addAmount()" class="hover:bg-red-500 flex justify-center items-center gap-2 px-10 py-3
-                        border font-light text-lg leading-none bg-red-400
-                        rounded-2xl text-white"
-                  >Add to cart
-
-          </button>
-        </div>
-      </div>
+      <app-choosing-amount-product [isLoginOrLogout]="isLoginOrLogout" [products]="products"></app-choosing-amount-product>
       <div class="flex" *ngIf="isProductOutOfStock">
         <p class="text-red-400"> Product is out of stock! </p>
       </div>

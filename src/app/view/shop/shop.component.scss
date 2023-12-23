@@ -1,39 +1,6 @@
-
-
-.card {
-  border: none;
-  margin-bottom: 5px;
-  max-width: 250px;
-  margin-left: 0;
-  margin-right: 30px;
-}
-
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0 0 10px;
-  font-weight: 600;
-}
-
-.mat-checkbox {
-  display: block;
-}
-
-.product-image {
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
-  object-position: left;
-}
-
 a{
   text-decoration: none;
   color: black;
-}
-
-@media (max-width: 1000px) {
-  .responsiveShoppingCart {
-    padding-left: 100px;
-  }
 }
 
 
