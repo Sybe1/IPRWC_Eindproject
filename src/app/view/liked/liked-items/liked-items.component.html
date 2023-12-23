@@ -1,4 +1,9 @@
 <div class="grid grid-cols-3 gap-32 content-start">
     <div>{{product?.productName}} </div>
     <div>${{product?.price}}</div>
+  <div *ngIf="item && product">
+    <button (click)="toggleFavoriteLiked(product.id)">
+      <mat-icon>{{ item.isFavorite ? 'favorite' : 'favorite_outline' }}</mat-icon>
+    </button>
+  </div>
 </div>

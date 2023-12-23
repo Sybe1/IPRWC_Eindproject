@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from "../../../models/product";
+import {ToggleFavoriteService} from "../../../services/toggle-favorite.service";
+import {LikedItem} from "../../../models/liked-item";
 
 @Component({
   selector: 'app-liked-items',
@@ -8,6 +10,13 @@ import { Product } from "../../../models/product";
 })
 export class LikedItemsComponent {
   @Input() public product: Product | undefined;
-  @Input() public item: any[] | undefined;
+  @Input() public item: LikedItem | undefined;
 
+  constructor(private toggleFavoriteService: ToggleFavoriteService) {
+  }
+  public toggleFavoriteLiked(productId: number): void {
+    const productIdString = productId.toString();
+    this.toggleFavoriteService.toggleFavorite(productIdString);
+    window.location.reload();
+  }
 }

@@ -46,10 +46,4 @@ export class LikedComponent implements OnInit{
       return [];
     }
   }
-
-  public toggleFavoriteLiked(productId: number): void {
-    const productIdString = productId.toString();
-    this.toggleFavoriteService.toggleFavorite(productIdString);
-    window.location.reload();
-  }
 }
