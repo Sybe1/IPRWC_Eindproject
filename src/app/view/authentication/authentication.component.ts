@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginService} from "../../services/login.service";
 import {UserService} from "../../services/user.service";
 import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
+import {jwtDecode} from "jwt-decode/build/esm";
 
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
   styleUrls: ['./authentication.component.scss']
 })
-export class AuthenticationComponent {
+export class AuthenticationComponent{
   isLoginMode = true;
   isLoginOrLogout = localStorage.getItem('loginToken') == null;
   private usernameHelp: string = "";
@@ -37,7 +38,6 @@ export class AuthenticationComponent {
   constructor(private router: Router, private loginService: LoginService,
               private userService: UserService, private data: IsUserLoggedInService) {
   }
-
 
   public changeValueLoginOrLogout(isLoggedOut: boolean):void{
     this.data.changeStatus(isLoggedOut)

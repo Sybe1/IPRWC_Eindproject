@@ -47,6 +47,7 @@ import { EmptyShoppingCartComponent } from './view/shopping-cart/empty-shopping-
 import { TopOfTableComponent } from './view/shopping-cart/top-of-table/top-of-table.component';
 import { InformationProductShoppingCartComponent } from './view/shopping-cart/information-product-shopping-cart/information-product-shopping-cart.component';
 import { PriceAccumulatedComponent } from './view/shopping-cart/price-accumulated/price-accumulated.component';
+import { OrderComponent } from './view/order/order.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { PriceAccumulatedComponent } from './view/shopping-cart/price-accumulate
     EmptyShoppingCartComponent,
     TopOfTableComponent,
     InformationProductShoppingCartComponent,
-    PriceAccumulatedComponent
+    PriceAccumulatedComponent,
+    OrderComponent
   ],
     imports: [
         BrowserModule,
