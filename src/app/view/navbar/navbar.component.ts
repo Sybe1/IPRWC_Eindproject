@@ -7,11 +7,11 @@ import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit{
-   isLoginOrLogout: boolean = true;
+   isLoggedOut: boolean = true;
 
    constructor(private data: IsUserLoggedInService) {
    }
    ngOnInit() {
-     this.data.currentStatus.subscribe(message => this.isLoginOrLogout = message)
+     this.data.currentStatus.subscribe(message => this.isLoggedOut = message)
    }
 }

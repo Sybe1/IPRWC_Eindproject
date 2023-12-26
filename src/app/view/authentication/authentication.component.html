@@ -1,14 +1,14 @@
-<div *ngIf="isLoginOrLogout">
+<div *ngIf="isLoggedOut">
   <app-header-page [namePage]="namePageLogin"></app-header-page>
 </div>
-<div *ngIf="!isLoginOrLogout">
+<div *ngIf="!isLoggedOut">
   <app-header-page [namePage]="namePageLogout"></app-header-page>
 </div>
 
 <div class="flex flex-col items-center justify-center pt-12">
   <div class="w-full rounded-lg shadow border max-w-md border-gray-700">
     <div class="space-y-4 p-8">
-      <div *ngIf="isLoginOrLogout">
+      <div *ngIf="isLoggedOut">
         <form class="space-y-4 md:space-y-6" action="#">
           <div *ngIf=isLoginMode>
             <app-login [loginObj]="loginObj"></app-login>
@@ -24,7 +24,7 @@
           </p>
         </form>
       </div>
-      <div *ngIf="!isLoginOrLogout">
+      <div *ngIf="!isLoggedOut">
         <app-logout></app-logout>
       </div>
     </div>

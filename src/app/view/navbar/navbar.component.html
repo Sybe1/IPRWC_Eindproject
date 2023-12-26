@@ -25,10 +25,10 @@
   <div class="spacer"></div>
 
   <a mat-button routerLink="login" class="no-underline">
-    <div *ngIf="isLoginOrLogout">
+    <div *ngIf="isLoggedOut">
       Login
     </div>
-    <div *ngIf="!isLoginOrLogout">
+    <div *ngIf="!isLoggedOut">
       Logout
     </div>
   </a>

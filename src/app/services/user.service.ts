@@ -16,4 +16,8 @@ export class UserService {
   public getUserByUsername(username: any): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiServerUrl}/user/find/` + username);
   }
+
+  public getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiServerUrl}/user/all`);
+  }
 }

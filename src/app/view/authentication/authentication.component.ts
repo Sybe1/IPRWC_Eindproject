@@ -10,9 +10,9 @@ import {jwtDecode} from "jwt-decode/build/esm";
   templateUrl: './authentication.component.html',
   styleUrls: ['./authentication.component.scss']
 })
-export class AuthenticationComponent{
+export class AuthenticationComponent implements OnInit{
   isLoginMode = true;
-  isLoginOrLogout = localStorage.getItem('loginToken') == null;
+  isLoggedOut: boolean = true;
   private usernameHelp: string = "";
   private passwordHelp: string = "";
   namePageLogin: string = "Login";
@@ -39,6 +39,10 @@ export class AuthenticationComponent{
               private userService: UserService, private data: IsUserLoggedInService) {
   }
 
+  ngOnInit() {
+    this.data.currentStatus.subscribe(message => this.isLoggedOut = message)
+  }
+
   public changeValueLoginOrLogout(isLoggedOut: boolean):void{
     this.data.changeStatus(isLoggedOut)
   }
@@ -59,9 +63,9 @@ export class AuthenticationComponent{
   public userLogin():void{
     this.loginService.postUser(this.loginObj).subscribe((res: any) => {
       localStorage.setItem('loginToken', res.token);
-      this.userService.getUserByUsername(this.loginObj.username).subscribe((resUser: any) => {
-        localStorage.setItem('role', resUser.role);
-      })
+      // this.userService.getUserByUsername(this.loginObj.username).subscribe((resUser: any) => {
+      //   localStorage.setItem('role', resUser.role);
+      // })
       this.changeValueLoginOrLogout(false);
       this.router.navigateByUrl('/home');
     })
