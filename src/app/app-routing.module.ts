@@ -7,6 +7,7 @@ import {ShopComponent} from "./view/shop/shop.component";
 import {ProductComponent} from "./view/product/product.component";
 import {AuthenticationComponent} from "./view/authentication/authentication.component";
 import {OrderComponent} from "./view/order/order.component";
+import {RoleGuard} from "./guard/role.guard";
 
 const routes: Routes = [
   { path:'login', component:AuthenticationComponent},
@@ -16,7 +17,7 @@ const routes: Routes = [
   { path: 'productinfo/:id', component: ProductComponent },
   { path: 'shoppingcart', component: ShoppingCartComponent},
   { path: 'liked', component: LikedComponent},
-  { path: 'orders', component: OrderComponent},
+  { path: 'orders', component: OrderComponent, canActivate: [RoleGuard]},
   { path: 'shop', component: ShopComponent},
   { path: '**', component: HomeComponent}
 ];
