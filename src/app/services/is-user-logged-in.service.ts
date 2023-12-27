@@ -9,9 +9,8 @@ import {User} from "../models/user";
   providedIn: 'root'
 })
 export class IsUserLoggedInService {
-
-  private loginOrLogoutValue = new BehaviorSubject<boolean>(this.isUserLoggedOut())
-  currentStatus = this.loginOrLogoutValue.asObservable()
+  private isLoggedOut = new BehaviorSubject<boolean>(this.isUserLoggedOut())
+  currentStatus = this.isLoggedOut.asObservable()
   tokenJWT: string = ""
   constructor(private userService: UserService) { }
 
@@ -22,7 +21,7 @@ export class IsUserLoggedInService {
       const decodedJWT = jwtDecode(this.tokenJWT) as JwtPayload
       this.userService.getAllUsers().subscribe((response: User[]) => {
         for (let i = 0; i < response.length; i++) {
-          return decodedJWT.username !== response[i].username;
+          return decodedJWT.sub !== response[i].username;
         }
       })
     }
@@ -31,7 +30,26 @@ export class IsUserLoggedInService {
     }
   }
 
-  public changeStatus(loginOrLogout: boolean):void{
-    this.loginOrLogoutValue.next(loginOrLogout)
+  // public whatIsRoleUser():string{
+  //   if (localStorage.getItem("loginToken")) {
+  //     this.tokenJWT = localStorage.getItem("loginToken")!
+  //     const decodedJWT = jwtDecode(this.tokenJWT) as JwtPayload
+  //     return decodedJWT.role[0].authority
+  //   }
+  //   else{
+  //     return ""
+  //   }
+  // }
+
+  // @ts-ignore
+  // public decodeTokenJWT():JwtPayload{
+  //   if (localStorage.getItem("loginToken")) {
+  //     this.tokenJWT = localStorage.getItem("loginToken")!
+  //     return jwtDecode(this.tokenJWT) as JwtPayload
+  //   }
+  // }
+
+  public changeStatus(isLoggedOut: boolean):void{
+    this.isLoggedOut.next(isLoggedOut)
   }
 }

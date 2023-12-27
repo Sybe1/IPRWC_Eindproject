@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
+import {WhatIsRoleUserService} from "../../services/what-is-role-user.service";
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +9,12 @@ import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
 })
 export class NavbarComponent implements OnInit{
    isLoggedOut: boolean = true;
+   whatIsRoleUser: string = "";
 
-   constructor(private data: IsUserLoggedInService) {
+   constructor(private isUserLoggedInService: IsUserLoggedInService, private whatIsRoleUserService: WhatIsRoleUserService) {
    }
    ngOnInit() {
-     this.data.currentStatus.subscribe(message => this.isLoggedOut = message)
+     this.isUserLoggedInService.currentStatus.subscribe(message => this.isLoggedOut = message)
+     this.whatIsRoleUserService.currentStatus.subscribe(message => this.whatIsRoleUser = message)
    }
 }

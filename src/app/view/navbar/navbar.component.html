@@ -9,7 +9,7 @@
     <div class="normaal-menu">
       <a mat-button routerLink="home" routerLinkActive="router-link-active" class="no-underline hover-underline">Home</a>
       <a mat-button routerLink="shop" routerLinkActive="router-link-active" class="no-underline hover-underline">Shop</a>
-      <a mat-button routerLink="orders" routerLinkActive="router-link-active" class="no-underline hover-underline">Orders</a>
+      <a *ngIf="whatIsRoleUser === 'ADMIN'" mat-button routerLink="orders" routerLinkActive="router-link-active" class="no-underline hover-underline">Orders</a>
     </div>
   </div>
 
@@ -18,7 +18,7 @@
     <div class="dropdown-content">
       <a routerLink="home" routerLinkActive="router-link-active">Home</a>
       <a routerLink="shop" routerLinkActive="router-link-active">Shop</a>
-      <a routerLink="orders" routerLinkActive="router-link-active">Orders</a>
+      <a *ngIf="whatIsRoleUser === 'ADMIN'" routerLink="orders" routerLinkActive="router-link-active">Orders</a>
     </div>
   </div>
 

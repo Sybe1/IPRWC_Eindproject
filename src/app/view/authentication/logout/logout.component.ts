@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {IsUserLoggedInService} from "../../../services/is-user-logged-in.service";
+import {WhatIsRoleUserService} from "../../../services/what-is-role-user.service";
 
 @Component({
   selector: 'app-logout',
@@ -9,7 +10,8 @@ import {IsUserLoggedInService} from "../../../services/is-user-logged-in.service
 })
 export class LogoutComponent {
 
-  constructor(private router: Router, private data: IsUserLoggedInService) {
+  constructor(private router: Router, private isUserLoggedInService: IsUserLoggedInService,
+              private whatIsRoleUserService: WhatIsRoleUserService) {
   }
   public logoutButton(): void{
     localStorage.removeItem('loginToken');
@@ -17,10 +19,15 @@ export class LogoutComponent {
     localStorage.removeItem('shoppingCart');
     localStorage.removeItem('liked');
     this.router.navigateByUrl('/home');
-    this.changeValueLoginOrLogout(true)
+    this.changeValueLoginOrLogout(true);
+    this.changeValueRoleUser("");
   }
 
   public changeValueLoginOrLogout(loggedOut: boolean):void{
-    this.data.changeStatus(loggedOut)
+    this.isUserLoggedInService.changeStatus(loggedOut)
+  }
+
+  public changeValueRoleUser(userRole: string):void{
+    this.whatIsRoleUserService.changeStatus(userRole)
   }
 }

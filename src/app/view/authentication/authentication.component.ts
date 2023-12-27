@@ -4,6 +4,7 @@ import {LoginService} from "../../services/login.service";
 import {UserService} from "../../services/user.service";
 import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
 import {jwtDecode} from "jwt-decode/build/esm";
+import {WhatIsRoleUserService} from "../../services/what-is-role-user.service";
 
 @Component({
   selector: 'app-authentication',
@@ -13,6 +14,7 @@ import {jwtDecode} from "jwt-decode/build/esm";
 export class AuthenticationComponent implements OnInit{
   isLoginMode = true;
   isLoggedOut: boolean = true;
+  roleUser: string = "";
   private usernameHelp: string = "";
   private passwordHelp: string = "";
   namePageLogin: string = "Login";
@@ -36,15 +38,21 @@ export class AuthenticationComponent implements OnInit{
   }
 
   constructor(private router: Router, private loginService: LoginService,
-              private userService: UserService, private data: IsUserLoggedInService) {
+              private userService: UserService, private isUserLoggedInService: IsUserLoggedInService,
+              private whatIsRoleUserService: WhatIsRoleUserService) {
   }
 
   ngOnInit() {
-    this.data.currentStatus.subscribe(message => this.isLoggedOut = message)
+    this.isUserLoggedInService.currentStatus.subscribe(message => this.isLoggedOut = message)
+    this.whatIsRoleUserService.currentStatus.subscribe(message => this.roleUser = message)
   }
 
   public changeValueLoginOrLogout(isLoggedOut: boolean):void{
-    this.data.changeStatus(isLoggedOut)
+    this.isUserLoggedInService.changeStatus(isLoggedOut)
+  }
+
+  public changeValueRoleUser(userRole: string):void{
+    this.whatIsRoleUserService.changeStatus(userRole)
   }
 
   public onSwitchMode(): void{
@@ -63,10 +71,9 @@ export class AuthenticationComponent implements OnInit{
   public userLogin():void{
     this.loginService.postUser(this.loginObj).subscribe((res: any) => {
       localStorage.setItem('loginToken', res.token);
-      // this.userService.getUserByUsername(this.loginObj.username).subscribe((resUser: any) => {
-      //   localStorage.setItem('role', resUser.role);
-      // })
       this.changeValueLoginOrLogout(false);
+      this.roleUser = this.whatIsRoleUserService.whatIsRoleUser();
+      this.changeValueRoleUser(this.roleUser);
       this.router.navigateByUrl('/home');
     })
   }

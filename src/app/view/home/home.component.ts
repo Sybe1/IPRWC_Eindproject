@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     if (tokenJWT){
       const decodedJWT = jwtDecode(tokenJWT) as JwtPayload
       console.log(decodedJWT)
-      console.log(decodedJWT.username)
+      // console.log(decodedJWT.username)
       console.log(decodedJWT.role[0].authority)
     }
   }
