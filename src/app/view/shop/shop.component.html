@@ -26,7 +26,7 @@
                   <app-product-shop-information [product]="product"></app-product-shop-information>
                 </a>
                 <div class="card-body">
-                  <div *ngIf="role" class="float-right btn-group btn-group-sm">
+                  <div *ngIf="whatIsRoleUser === 'ADMIN'" class="float-right btn-group btn-group-sm">
                     <button class="bg-blue-800 w-8 h-9" data-original-title="edit" (click)="openPopup(product.id, 'Edit Product')">
                       <span class="text-white"><mat-icon class="pt-1">edit</mat-icon></span>
                     </button>
@@ -42,7 +42,7 @@
 
 <!--      <app-add-product [role]="role"></app-add-product>-->
       <div class="pl-14">
-       <div *ngIf="role">
+       <div *ngIf="whatIsRoleUser === 'ADMIN'">
         <button class="text-white py-2 px-3 rounded-full bg-red-400 font-bold" (click)="openPopup(0, 'Add Product')">+</button>
        </div>
       </div>

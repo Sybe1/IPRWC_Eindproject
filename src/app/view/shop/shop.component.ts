@@ -4,6 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Product } from '../../models/product';
 import {MatDialog} from "@angular/material/dialog";
 import {PopUpUpdateProductComponent} from "./pop-up-update-product/pop-up-update-product.component";
+import {WhatIsRoleUserService} from "../../services/what-is-role-user.service";
 
 
 @Component({
@@ -15,6 +16,7 @@ export class ShopComponent implements OnInit{
   products: any[] = [];
   namePage: string = "Shop";
   role: boolean = false;
+  whatIsRoleUser: string = "";
 
   allClothingTypes: string[] = ["Hoodie", "Shirt", "Pants", "Underwear",
     "Socks", "Shoes", "Jacket", "Hat"];
@@ -24,7 +26,8 @@ export class ShopComponent implements OnInit{
   allTargetAudience: string[] = ["Men", "Women", "Unisex", "Children"];
   selectedTargetAudience: string[] = ["Men", "Women", "Unisex", "Children"];
 
-  constructor(private productService: ProductService, private dialog: MatDialog){
+  constructor(private productService: ProductService, private dialog: MatDialog, private whatIsRoleUserService: WhatIsRoleUserService){
+
   }
 
   public ngOnInit(): void{
@@ -32,6 +35,7 @@ export class ShopComponent implements OnInit{
     if (localStorage.getItem('role') === 'ADMIN'){
       this.role = true;
     }
+    this.whatIsRoleUserService.currentStatus.subscribe(message => this.whatIsRoleUser = message)
   }
 
   public onClothingTypeFilterChange(selectedClothingTypes: string[]): void {
