@@ -1,10 +1,10 @@
 export interface Order{
-  id: number;
+  // id: number;
   amount: number;
   product: {
-    id: number | null;
+    id: number
   };
   user: {
-    id: number | null;
+    username: string;
   };
 }

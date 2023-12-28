@@ -5,6 +5,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {Product} from "../../../models/product";
 import {ProductService} from "../../../services/product.service";
 import {Order} from "../../../models/order";
+import {jwtDecode} from 'jwt-decode';
+import {JwtPayload} from "../../../models/jwt-payload";
 
 @Component({
   selector: 'app-price-accumulated',
@@ -21,19 +23,23 @@ export class PriceAccumulatedComponent {
   }
   public boughtProducts(): void {
     const itemsShoppingCart = localStorage.getItem('shoppingCart');
-    if (itemsShoppingCart != null){
+    const loginToken = localStorage.getItem("loginToken")
+    if (itemsShoppingCart != null && loginToken != null){
+      const decodedJWT = jwtDecode(loginToken) as JwtPayload
       this.shoppingCartItems = JSON.parse(itemsShoppingCart);
       for (const item of this.shoppingCartItems) {
+        console.log(item.id)
         this.order = {
-          id: 1,
           amount: item.amount,
           product: {
             id: item.id
           },
           user: {
-            id: 1
+            username: decodedJWT.sub
           }
         };
+        console.log(this.order)
+
         this.orderService.addOrders(this.order).subscribe();
         this.updateStockProduct(item.id, item.amount);
       }
