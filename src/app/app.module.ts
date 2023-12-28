@@ -48,6 +48,7 @@ import { TopOfTableComponent } from './view/shopping-cart/top-of-table/top-of-ta
 import { InformationProductShoppingCartComponent } from './view/shopping-cart/information-product-shopping-cart/information-product-shopping-cart.component';
 import { PriceAccumulatedComponent } from './view/shopping-cart/price-accumulated/price-accumulated.component';
 import { OrderComponent } from './view/order/order.component';
+import {RecaptchaModule} from "ng-recaptcha";
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { OrderComponent } from './view/order/order.component';
         MatSelectModule,
         NgbModule,
         NgOptimizedImage,
+        RecaptchaModule,
     ],
   providers: [
     {

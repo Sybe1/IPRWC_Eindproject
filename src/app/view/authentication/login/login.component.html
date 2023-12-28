@@ -6,3 +6,7 @@
   <label>Password</label>
   <input type="password" name="password" id="password" [(ngModel)]="loginObj.password" placeholder="••••••••" class="bg-gray-50 border w-full p-2.5 border-red-200" required="">
 </div>
+<br>
+<div>
+  <re-captcha (resolved)="wasCaptchaSuccesful($event)" siteKey="6LdXPz8pAAAAAHp4jrhFaH1sPASRDbxVbh6Fc4Jv"></re-captcha>
+</div>
