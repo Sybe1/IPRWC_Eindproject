@@ -10,14 +10,15 @@
       <div *ngIf="orders.length === 0">
         <p>No orders.</p>
       </div>
-      <div class="grid grid-cols-4 gap-4 content-start">
-        <b>Amount</b>
-        <b>Product</b>
-        <b>User</b>
-        <b>Address</b>
-      </div>
-      <hr>
+
       <div *ngIf="orders.length > 0">
+        <div class="grid grid-cols-4 gap-4 content-start">
+          <b>Amount</b>
+          <b>Product</b>
+          <b>User</b>
+          <b>Address</b>
+        </div>
+        <hr>
         <div *ngFor="let order of orders" class="grid grid-cols-4 gap-4 content-start">
           <p>{{order.amount}}</p>
           <p>{{order.product.productName}}</p>
