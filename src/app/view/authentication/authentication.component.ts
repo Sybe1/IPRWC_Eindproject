@@ -14,6 +14,7 @@ import {WhatIsRoleUserService} from "../../services/what-is-role-user.service";
 export class AuthenticationComponent implements OnInit{
   isLoginMode = true;
   isLoggedOut: boolean = true;
+  captcha: string|null = ""
   roleUser: string = "";
   private usernameHelp: string = "";
   private passwordHelp: string = "";
@@ -59,8 +60,12 @@ export class AuthenticationComponent implements OnInit{
     this.isLoginMode = !this.isLoginMode;
   }
 
+  wasCaptchaSuccesful(captchaResponse: string | null): void {
+    this.captcha = captchaResponse;
+  }
+
   public onLogin(): void {
-    if (this.isLoginMode) {
+    if (this.isLoginMode && this.captcha) {
       this.userLogin();
     }
     else if (!this.isLoginMode) {

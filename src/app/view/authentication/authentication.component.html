@@ -11,7 +11,7 @@
       <div *ngIf="isLoggedOut">
         <form class="space-y-4 md:space-y-6" action="#">
           <div *ngIf=isLoginMode>
-            <app-login [loginObj]="loginObj"></app-login>
+            <app-login [loginObj]="loginObj" (captchaResolved)="wasCaptchaSuccesful($event)" ></app-login>
           </div>
 
           <div *ngIf=!isLoginMode>
