@@ -20,8 +20,9 @@ export class OrderComponent implements OnInit{
   }
 
   public getOrders(): void{
-    this.orderService.getOrders().subscribe((response: Order[]) => {
+    this.orderService.getOrders().subscribe((response: any[]) => {
       this.orders = response
+      console.log(this.orders)
     })
   }
 }

@@ -3,24 +3,28 @@
 <app-header-page [namePage]=namePage></app-header-page>
 
 <div class="flex flex-col items-center justify-center pt-12">
-  <div class="w-full rounded-lg shadow border max-w-xl border-gray-700">
+  <div class="w-full rounded-lg shadow border max-w-2xl border-gray-700">
     <div class="space-y-4 p-8">
       <p class="text-xl text-center">Orders</p>
 
       <div *ngIf="orders.length === 0">
         <p>No orders.</p>
       </div>
-
+      <div class="grid grid-cols-4 gap-4 content-start">
+        <b>Amount</b>
+        <b>Product</b>
+        <b>User</b>
+        <b>Address</b>
+      </div>
+      <hr>
       <div *ngIf="orders.length > 0">
-        <div *ngFor="let order of orders">
-          <p>{{order.id}}</p>
+        <div *ngFor="let order of orders" class="grid grid-cols-4 gap-4 content-start">
           <p>{{order.amount}}</p>
-          <p>{{order.product.id}}</p>
-          <p>{{order.user.id}}</p>
+          <p>{{order.product.productName}}</p>
+          <p>{{order.user.username}}</p>
+          <p>{{order.user.address}}</p>
         </div>
       </div>
-
-
 
     </div>
   </div>

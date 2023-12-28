@@ -28,7 +28,6 @@ export class PriceAccumulatedComponent {
       const decodedJWT = jwtDecode(loginToken) as JwtPayload
       this.shoppingCartItems = JSON.parse(itemsShoppingCart);
       for (const item of this.shoppingCartItems) {
-        console.log(item.id)
         this.order = {
           amount: item.amount,
           product: {
@@ -38,8 +37,6 @@ export class PriceAccumulatedComponent {
             username: decodedJWT.sub
           }
         };
-        console.log(this.order)
-
         this.orderService.addOrders(this.order).subscribe();
         this.updateStockProduct(item.id, item.amount);
       }
