@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit, Output, EventEmitter} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ProductService} from "../../../services/product.service";
 import {Product} from "../../../models/product";
@@ -43,11 +43,11 @@ export class PopUpUpdateProductComponent implements OnInit{
   public saveProduct(): void {
     if (this.conditions()) {
       const productData: Product = {
-        id: this.myform.value.id || 0, // Handle the case where id is null or undefined
+        id: this.myform.value.id || 0,
         productName: this.myform.value.productName || '',
         description: this.myform.value.description || '',
-        price: this.myform.value.price || 0, // Ensure 2 decimal places
-        stock: this.myform.value.stock || 0, // Ensure it's a valid integer
+        price: this.myform.value.price || 0,
+        stock: this.myform.value.stock || 0,
         clothingType: this.myform.value.clothingType || '',
         targetAudience: this.myform.value.targetAudience || '',
         imageUrl: this.myform.value.imageUrl || ''

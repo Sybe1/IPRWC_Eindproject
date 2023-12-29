@@ -1,8 +1,8 @@
 export interface Order{
-  // id: number;
+  id?: string;
   amount: number;
   product: {
-    id: number
+    id: string
   };
   user: {
     username: string;

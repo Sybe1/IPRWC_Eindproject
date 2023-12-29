@@ -49,6 +49,7 @@ import { InformationProductShoppingCartComponent } from './view/shopping-cart/in
 import { PriceAccumulatedComponent } from './view/shopping-cart/price-accumulated/price-accumulated.component';
 import { OrderComponent } from './view/order/order.component';
 import {RecaptchaModule} from "ng-recaptcha";
+import { PopUpUpdateOrderComponent } from './view/order/pop-up-update-order/pop-up-update-order.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import {RecaptchaModule} from "ng-recaptcha";
     TopOfTableComponent,
     InformationProductShoppingCartComponent,
     PriceAccumulatedComponent,
-    OrderComponent
+    OrderComponent,
+    PopUpUpdateOrderComponent
   ],
     imports: [
         BrowserModule,
