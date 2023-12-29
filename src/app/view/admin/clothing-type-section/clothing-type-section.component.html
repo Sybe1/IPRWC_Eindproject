@@ -10,13 +10,16 @@
         <div class="grid grid-cols-3">
           <b>Type</b>
           <b>Description</b>
+          <p>
+            <button (click)="openPopup(null, 'Add ClothingType')" class="pl-32 pr-4"><mat-icon>add</mat-icon></button>
+          </p>
         </div>
         <hr>
         <div *ngFor="let clothingType of clothingTypes" class="grid grid-cols-3">
           <p>{{clothingType.type}}</p>
           <p>{{clothingType.description}}</p>
           <p>
-            <button (click)="openPopup(clothingType.id, 'Edit ClothingType')" class="pl-20 pr-4"><mat-icon>edit</mat-icon></button>
+            <button (click)="openPopup(clothingType.id, 'Edit ClothingType')" class="pl-20 pr-6"><mat-icon>edit</mat-icon></button>
             <button (click)="deleteClothingType(clothingType.id)"><mat-icon>delete</mat-icon></button>
           </p>
         </div>
