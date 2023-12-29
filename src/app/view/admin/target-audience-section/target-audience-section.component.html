@@ -2,19 +2,16 @@
   <div class="w-full rounded-lg shadow border max-w-2xl border-gray-700">
     <div class="space-y-4 p-8">
       <p class="text-xl text-center">Target Audience</p>
-      <div *ngIf="targetAudiences.length === 0">
-        <p>No Target Audiences.</p>
-      </div>
 
+      <div class="grid grid-cols-3">
+        <b>Type</b>
+        <b>Description</b>
+        <p>
+          <button (click)="openPopup(null, 'Add Target Audience')" class="pl-32 pr-4"><mat-icon>add</mat-icon></button>
+        </p>
+      </div>
+      <hr>
       <div *ngIf="targetAudiences.length > 0">
-        <div class="grid grid-cols-3">
-          <b>Type</b>
-          <b>Description</b>
-          <p>
-            <button (click)="openPopup(null, 'Add Target Audience')" class="pl-32 pr-4"><mat-icon>add</mat-icon></button>
-          </p>
-        </div>
-        <hr>
         <div *ngFor="let targetAudience of targetAudiences" class="grid grid-cols-3">
           <p>{{targetAudience.audience}}</p>
           <p>{{targetAudience.description}}</p>
@@ -23,6 +20,10 @@
             <button (click)="deleteTargetAudience(targetAudience.id)"><mat-icon>delete</mat-icon></button>
           </p>
         </div>
+      </div>
+
+      <div *ngIf="targetAudiences.length === 0">
+        <p>No Target Audiences.</p>
       </div>
     </div>
   </div>

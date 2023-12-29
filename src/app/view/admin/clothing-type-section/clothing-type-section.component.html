@@ -2,19 +2,16 @@
   <div class="w-full rounded-lg shadow border max-w-2xl border-gray-700">
     <div class="space-y-4 p-8">
       <p class="text-xl text-center">Clothing Type</p>
-      <div *ngIf="clothingTypes.length === 0">
-        <p>No Clothing Types.</p>
-      </div>
 
+      <div class="grid grid-cols-3">
+        <b>Type</b>
+        <b>Description</b>
+        <p>
+          <button (click)="openPopup(null, 'Add ClothingType')" class="pl-32 pr-4"><mat-icon>add</mat-icon></button>
+        </p>
+      </div>
+      <hr>
       <div *ngIf="clothingTypes.length > 0">
-        <div class="grid grid-cols-3">
-          <b>Type</b>
-          <b>Description</b>
-          <p>
-            <button (click)="openPopup(null, 'Add ClothingType')" class="pl-32 pr-4"><mat-icon>add</mat-icon></button>
-          </p>
-        </div>
-        <hr>
         <div *ngFor="let clothingType of clothingTypes" class="grid grid-cols-3">
           <p>{{clothingType.type}}</p>
           <p>{{clothingType.description}}</p>
@@ -23,6 +20,10 @@
             <button (click)="deleteClothingType(clothingType.id)"><mat-icon>delete</mat-icon></button>
           </p>
         </div>
+      </div>
+
+      <div *ngIf="clothingTypes.length === 0">
+        <p>No Clothing Types.</p>
       </div>
     </div>
   </div>
