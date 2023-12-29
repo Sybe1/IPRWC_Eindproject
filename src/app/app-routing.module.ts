@@ -9,6 +9,7 @@ import {AuthenticationComponent} from "./view/authentication/authentication.comp
 import {OrderComponent} from "./view/order/order.component";
 import {RoleGuard} from "./guard/role.guard";
 import {AdminComponent} from "./view/admin/admin.component";
+import {UserComponent} from "./view/user/user.component";
 
 const routes: Routes = [
   { path:'login', component:AuthenticationComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'orders', component: OrderComponent, canActivate: [RoleGuard]},
   { path: 'admin', component: AdminComponent, canActivate: [RoleGuard]},
   { path: 'shop', component: ShopComponent},
+  { path: 'user', component: UserComponent},
   { path: '**', component: HomeComponent}
 ];
 

@@ -55,6 +55,10 @@ import { ClothingTypeSectionComponent } from './view/admin/clothing-type-section
 import { PopUpUpdateClothingTypeComponent } from './view/admin/clothing-type-section/pop-up-update-clothing-type/pop-up-update-clothing-type.component';
 import { PopUpUpdateTargetAudienceComponent } from './view/admin/target-audience-section/pop-up-update-target-audience/pop-up-update-target-audience.component';
 import {TargetAudienceSectionComponent} from "./view/admin/target-audience-section/target-audience-section.component";
+import {PopUpUpdateUserComponent} from "./view/user/pop-up-update-user/pop-up-update-user.component";
+import {UserComponent} from "./view/user/user.component";
+import {UserInformationComponent} from "./view/user/user-information/user-information.component";
+import {UserInformationAdminComponent} from "./view/user/user-information-admin/user-information-admin.component";
 
 
 @NgModule({
@@ -98,7 +102,11 @@ import {TargetAudienceSectionComponent} from "./view/admin/target-audience-secti
     TargetAudienceSectionComponent,
     ClothingTypeSectionComponent,
     PopUpUpdateClothingTypeComponent,
-    PopUpUpdateTargetAudienceComponent
+    PopUpUpdateTargetAudienceComponent,
+    PopUpUpdateUserComponent,
+    UserComponent,
+    UserInformationComponent,
+    UserInformationAdminComponent
   ],
     imports: [
         BrowserModule,

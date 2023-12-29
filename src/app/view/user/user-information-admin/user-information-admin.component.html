@@ -1,0 +1,23 @@
+<div *ngIf="users.length === 0">
+  <p>No users.</p>
+</div>
+
+<div *ngIf="users.length > 0">
+  <div class="grid grid-cols-5 gap-4 content-start">
+    <b>Username</b>
+    <b>Address</b>
+    <b>Postal Code</b>
+    <b>Role</b>
+  </div>
+  <hr>
+  <div *ngFor="let user of users" class="grid grid-cols-5 gap-4 content-start">
+    <p>{{user.username}}</p>
+    <p>{{user.address}}</p>
+    <p>{{user.postalCode}}</p>
+    <p>{{user.role}}</p>
+    <p>
+      <button (click)="openPopup(user.username, 'Edit User')" class="pl-4 pr-4"><mat-icon>edit</mat-icon></button>
+      <button *ngIf="user.role !== 'ADMIN'" (click)="deleteUser(user.username)"><mat-icon>delete</mat-icon></button>
+    </p>
+  </div>
+</div>
