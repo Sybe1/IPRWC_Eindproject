@@ -1,1 +1,22 @@
-<p>user-information works!</p>
+<div *ngIf="user === undefined">
+  <p>No users.</p>
+</div>
+
+<div *ngIf="user">
+  <div class="grid grid-cols-5 gap-4 content-start">
+    <b>Username</b>
+    <b>Address</b>
+    <b>Postal Code</b>
+    <b>Role</b>
+  </div>
+  <hr>
+  <div class="grid grid-cols-5 gap-4 content-start">
+    <p>{{user.username}}</p>
+    <p>{{user.address}}</p>
+    <p>{{user.postalCode}}</p>
+    <p>{{user.role}}</p>
+    <p>
+      <button (click)="openPopup(user.username, 'Edit User')" class="pl-4 pr-4"><mat-icon>edit</mat-icon></button>
+    </p>
+  </div>
+</div>

@@ -13,7 +13,7 @@
         <input formControlName="lastName" matInput />
       </mat-form-field>
     </div>
-    <div *ngIf="!valueRoleNotChangeable">
+    <div *ngIf="whatIsRoleUser === 'ADMIN'">
       <mat-form-field>
         <mat-label>Role</mat-label>
         <mat-select formControlName="role">

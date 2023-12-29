@@ -5,6 +5,7 @@ import {TargetAudienceService} from "../../../services/target-audience.service";
 import {TargetAudience} from "../../../models/target-audience";
 import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user";
+import {WhatIsRoleUserService} from "../../../services/what-is-role-user.service";
 
 @Component({
   selector: 'app-pop-up-update-user',
@@ -14,7 +15,7 @@ import {User} from "../../../models/user";
 export class PopUpUpdateUserComponent {
   @Output() onClose: EventEmitter<void> = new EventEmitter<void>();
   password: string = '';
-  valueRoleNotChangeable: boolean = false;
+  whatIsRoleUser: string = "";
 
   myform = this.buildr.group({
     firstName: '',
@@ -26,7 +27,8 @@ export class PopUpUpdateUserComponent {
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data:any, private ref:MatDialogRef<PopUpUpdateUserComponent>,
-              private buildr:FormBuilder, private userService: UserService) {
+              private buildr:FormBuilder, private userService: UserService, private whatIsRoleUserService: WhatIsRoleUserService) {
+    this.whatIsRoleUserService.currentStatus.subscribe(message => this.whatIsRoleUser = message);
   }
   ngOnInit(): void {
     this.updateUser(this.data.code);
@@ -46,9 +48,6 @@ export class PopUpUpdateUserComponent {
         address:item.address,
         postalCode:item.postalCode,
       })
-      if (item.role == "ADMIN"){
-        this.valueRoleNotChangeable = true;
-      }
       this.password = item.password;
     })
   }
