@@ -50,6 +50,12 @@ import { PriceAccumulatedComponent } from './view/shopping-cart/price-accumulate
 import { OrderComponent } from './view/order/order.component';
 import {RecaptchaModule} from "ng-recaptcha";
 import { PopUpUpdateOrderComponent } from './view/order/pop-up-update-order/pop-up-update-order.component';
+import { AdminComponent } from './view/admin/admin.component';
+import { ClothingTypeSectionComponent } from './view/admin/clothing-type-section/clothing-type-section.component';
+import { PopUpUpdateClothingTypeComponent } from './view/admin/clothing-type-section/pop-up-update-clothing-type/pop-up-update-clothing-type.component';
+import { PopUpUpdateTargetAudienceComponent } from './view/admin/target-audience-section/pop-up-update-target-audience/pop-up-update-target-audience.component';
+import {TargetAudienceSectionComponent} from "./view/admin/target-audience-section/target-audience-section.component";
+
 
 @NgModule({
   declarations: [
@@ -87,7 +93,12 @@ import { PopUpUpdateOrderComponent } from './view/order/pop-up-update-order/pop-
     InformationProductShoppingCartComponent,
     PriceAccumulatedComponent,
     OrderComponent,
-    PopUpUpdateOrderComponent
+    PopUpUpdateOrderComponent,
+    AdminComponent,
+    TargetAudienceSectionComponent,
+    ClothingTypeSectionComponent,
+    PopUpUpdateClothingTypeComponent,
+    PopUpUpdateTargetAudienceComponent
   ],
     imports: [
         BrowserModule,

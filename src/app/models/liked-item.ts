@@ -1,4 +1,4 @@
 export interface LikedItem{
-  id: number;
+  id: string;
   isFavorite: boolean;
 }

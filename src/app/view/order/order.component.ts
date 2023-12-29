@@ -45,7 +45,7 @@ export class OrderComponent implements OnInit{
 
   public openPopup(code:any, title :any): void{
     const dialogRef = this.dialog.open(PopUpUpdateOrderComponent,{
-      width:'60%',
+      width:'18%',
       data: {
         title: title,
         code: code

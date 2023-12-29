@@ -1,0 +1,26 @@
+<div class="flex flex-col items-center justify-center pt-12">
+  <div class="w-full rounded-lg shadow border max-w-2xl border-gray-700">
+    <div class="space-y-4 p-8">
+      <p class="text-xl text-center">Clothing Type</p>
+      <div *ngIf="clothingTypes.length === 0">
+        <p>No Clothing Types.</p>
+      </div>
+
+      <div *ngIf="clothingTypes.length > 0">
+        <div class="grid grid-cols-3">
+          <b>Type</b>
+          <b>Description</b>
+        </div>
+        <hr>
+        <div *ngFor="let clothingType of clothingTypes" class="grid grid-cols-3">
+          <p>{{clothingType.type}}</p>
+          <p>{{clothingType.description}}</p>
+          <p>
+            <button (click)="openPopup(clothingType.id, 'Edit ClothingType')" class="pl-20 pr-4"><mat-icon>edit</mat-icon></button>
+            <button (click)="deleteClothingType(clothingType.id)"><mat-icon>delete</mat-icon></button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

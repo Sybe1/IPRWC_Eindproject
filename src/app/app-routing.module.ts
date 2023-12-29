@@ -8,6 +8,7 @@ import {ProductComponent} from "./view/product/product.component";
 import {AuthenticationComponent} from "./view/authentication/authentication.component";
 import {OrderComponent} from "./view/order/order.component";
 import {RoleGuard} from "./guard/role.guard";
+import {AdminComponent} from "./view/admin/admin.component";
 
 const routes: Routes = [
   { path:'login', component:AuthenticationComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'shoppingcart', component: ShoppingCartComponent},
   { path: 'liked', component: LikedComponent},
   { path: 'orders', component: OrderComponent, canActivate: [RoleGuard]},
+  { path: 'admin', component: AdminComponent, canActivate: [RoleGuard]},
   { path: 'shop', component: ShopComponent},
   { path: '**', component: HomeComponent}
 ];

@@ -21,7 +21,6 @@ export class OrderService {
     return this.http.get<Order>(`${this.apiServerUrl}/order/find/` + code);
   }
 
-
   public addOrders(order: Order): Observable<Order> {
     return this.http.post<Order>(`${this.apiServerUrl}/order/add`, order);
   }

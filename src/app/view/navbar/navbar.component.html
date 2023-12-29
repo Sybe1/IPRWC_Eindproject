@@ -10,6 +10,7 @@
       <a mat-button routerLink="home" routerLinkActive="router-link-active" class="no-underline hover-underline">Home</a>
       <a mat-button routerLink="shop" routerLinkActive="router-link-active" class="no-underline hover-underline">Shop</a>
       <a *ngIf="whatIsRoleUser === 'ADMIN'" mat-button routerLink="orders" routerLinkActive="router-link-active" class="no-underline hover-underline">Orders</a>
+      <a *ngIf="whatIsRoleUser === 'ADMIN'" mat-button routerLink="admin" routerLinkActive="router-link-active" class="no-underline hover-underline">Admin</a>
     </div>
   </div>
 
@@ -19,6 +20,7 @@
       <a routerLink="home" routerLinkActive="router-link-active">Home</a>
       <a routerLink="shop" routerLinkActive="router-link-active">Shop</a>
       <a *ngIf="whatIsRoleUser === 'ADMIN'" routerLink="orders" routerLinkActive="router-link-active">Orders</a>
+      <a *ngIf="whatIsRoleUser === 'ADMIN'" routerLink="admin" routerLinkActive="router-link-active">Admin</a>
     </div>
   </div>
 

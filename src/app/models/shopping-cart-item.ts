@@ -1,4 +1,4 @@
 export interface ShoppingCartItem{
-  id: number;
+  id: string;
   amount: number;
 }
