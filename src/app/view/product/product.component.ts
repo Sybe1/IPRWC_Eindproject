@@ -16,21 +16,17 @@ import {ToggleFavoriteService} from "../../services/toggle-favorite.service";
 })
 export class ProductComponent implements OnInit{
   product: Product = <Product>{};
-  amountShoppingCartNow = 0;
-  amountProduct:number = 0;
-  shoppingCartItems: any[] = [];
   namePage: string = "Product";
-  isLoginOrLogout: boolean = true;
+  isUserLoggedIn: boolean = false;
   isFavorite: boolean = true;
   isProductOutOfStock: boolean = false;
 
   constructor(private productService: ProductService, public route: ActivatedRoute,
-              public dialog: MatDialog, private isUserLoggedInService: IsUserLoggedInService,
-              ){
+              public dialog: MatDialog, private isUserLoggedInService: IsUserLoggedInService){
   }
 
   public ngOnInit(): void {
-    this.isUserLoggedInService.currentStatus.subscribe(message => this.isLoginOrLogout = message)
+    this.isUserLoggedInService.currentStatus.subscribe(message => this.isUserLoggedIn = !message)
     const productId = this.route.snapshot.paramMap.get('id');
     this.getProduct(productId);
     this.isFavorite = this.checkIfLiked(productId);

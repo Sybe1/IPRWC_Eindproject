@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,6 +16,4 @@ export class SignUpComponent {
     "address": "",
     "postalCode": ""
   }
-
-
 }

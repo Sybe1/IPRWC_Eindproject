@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from "../../models/product";
-import {Order} from "../../models/order";
 import {OrderService} from "../../services/order.service";
-import {PopUpUpdateProductComponent} from "../shop/pop-up-update-product/pop-up-update-product.component";
 import {PopUpUpdateOrderComponent} from "./pop-up-update-order/pop-up-update-order.component";
 import {MatDialog} from "@angular/material/dialog";
 

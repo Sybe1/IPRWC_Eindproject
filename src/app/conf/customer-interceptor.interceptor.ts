@@ -25,7 +25,6 @@ export class CustomerInterceptorInterceptor implements HttpInterceptor {
       });
       return next.handle(newCloneRequest);
     }
-
     return next.handle(request);
   }
 }

@@ -8,8 +8,8 @@
     </button>
     <app-product-thumbnail [product]="product"></app-product-thumbnail>
     <div class="ml-3 width-tekst">
-      <app-product-information [product]=product [isLoginOrLogout]="isLoginOrLogout" [isFavorite]="isFavorite"></app-product-information>
-      <app-choosing-amount-product [isLoginOrLogout]="isLoginOrLogout" [product]="product"></app-choosing-amount-product>
+      <app-product-information [product]=product [isUserLoggedIn]="isUserLoggedIn" [isFavorite]="isFavorite"></app-product-information>
+      <app-choosing-amount-product [isUserLoggedIn]="isUserLoggedIn" [product]="product"></app-choosing-amount-product>
       <div class="flex" *ngIf="isProductOutOfStock">
         <p class="text-red-400"> Product is out of stock! </p>
       </div>

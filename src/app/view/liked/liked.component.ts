@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../services/product.service";
 import {Product} from "../../models/product";
 import {HttpErrorResponse} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
-import {ToggleFavoriteService} from "../../services/toggle-favorite.service";
 
 @Component({
   selector: 'app-liked',
@@ -15,7 +13,7 @@ export class LikedComponent implements OnInit{
   itemInformation: any[] = [];
   namePage: string = "Liked";
 
-  constructor(private productService: ProductService, private toggleFavoriteService: ToggleFavoriteService) {
+  constructor(private productService: ProductService) {
   }
 
   public ngOnInit(): void {
@@ -39,11 +37,7 @@ export class LikedComponent implements OnInit{
   }
 
   public getLikedItems(): any[] {
-    const likedString = localStorage.getItem("liked");
-    if (likedString) {
-      return JSON.parse(likedString);
-    } else {
-      return [];
-    }
+    const likedString: string = localStorage.getItem("liked") ?? '';
+    return JSON.parse(likedString);
   }
 }

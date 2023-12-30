@@ -8,5 +8,4 @@ import {Product} from "../../models/product";
 })
 export class HeaderPageComponent {
   @Input() public namePage: string | undefined;
-
 }

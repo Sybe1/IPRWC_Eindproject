@@ -13,7 +13,7 @@ import {Product} from "../../../models/product";
 export class ChoosingAmountProductComponent implements OnInit{
   shoppingCartItems: any[] = [];
   amountProduct:number = 0;
-  @Input() public isLoginOrLogout: boolean | undefined;
+  @Input() public isUserLoggedIn: boolean | undefined;
   @Input() public product: Product = <Product>{};
 
 
@@ -48,13 +48,13 @@ export class ChoosingAmountProductComponent implements OnInit{
 
   public addAmount(): void {
     const productId = this.route.snapshot.paramMap.get('id') ?? '';
-    if (this.amountProduct != 0 && !this.isLoginOrLogout) {
+    if (this.amountProduct != 0 && this.isUserLoggedIn) {
       this.pushProductInEmptyShoppingCart(productId);
       this.pushProductInFullShoppingCart(productId)
       this.dialog.open(ItemAddedToShoppingCartComponent);
       this.amountProduct = 0;
     }
-    else if (this.amountProduct != 0 && this.isLoginOrLogout){
+    else if (!this.isUserLoggedIn){
       this.dialog.open(LoginToDoActionComponent);
     }
   }

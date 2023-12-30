@@ -11,15 +11,9 @@ export class ToggleFavoriteService {
     this.loadLikedItems();
   }
 
-  public getIsFavorite(): boolean {
-    return this.isFavorite;
-  }
-
   public toggleFavorite(productId: string): void {
     this.isFavorite = !this.isFavorite;
-
     const existingProductIndex = this.likedItems.findIndex((item) => item.id === productId);
-
     if (existingProductIndex !== -1) {
       this.likedItems.splice(existingProductIndex, 1);
     } else {

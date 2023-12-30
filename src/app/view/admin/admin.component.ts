@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import {MatIconModule} from "@angular/material/icon";
-import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-admin',
@@ -9,5 +7,4 @@ import {NgForOf, NgIf} from "@angular/common";
 })
 export class AdminComponent {
   namePage: string = "Admin";
-
 }

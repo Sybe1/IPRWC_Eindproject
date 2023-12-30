@@ -14,7 +14,6 @@ export class IsUserLoggedInService {
   tokenJWT: string = ""
   constructor(private userService: UserService) { }
 
-  //@ts-ignore
   public isUserLoggedOut():boolean{
     if (localStorage.getItem("loginToken")) {
       this.tokenJWT = localStorage.getItem("loginToken")!
@@ -25,30 +24,8 @@ export class IsUserLoggedInService {
         }
       })
     }
-    else {
-      return true;
-    }
+    return true;
   }
-
-  // public whatIsRoleUser():string{
-  //   if (localStorage.getItem("loginToken")) {
-  //     this.tokenJWT = localStorage.getItem("loginToken")!
-  //     const decodedJWT = jwtDecode(this.tokenJWT) as JwtPayload
-  //     return decodedJWT.role[0].authority
-  //   }
-  //   else{
-  //     return ""
-  //   }
-  // }
-
-  // @ts-ignore
-  // public decodeTokenJWT():JwtPayload{
-  //   if (localStorage.getItem("loginToken")) {
-  //     this.tokenJWT = localStorage.getItem("loginToken")!
-  //     return jwtDecode(this.tokenJWT) as JwtPayload
-  //   }
-  // }
-
   public changeStatus(isLoggedOut: boolean):void{
     this.isLoggedOut.next(isLoggedOut)
   }

@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginService} from "../../services/login.service";
-import {UserService} from "../../services/user.service";
 import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
-import {jwtDecode} from "jwt-decode/build/esm";
 import {WhatIsRoleUserService} from "../../services/what-is-role-user.service";
 
 @Component({
@@ -12,9 +10,9 @@ import {WhatIsRoleUserService} from "../../services/what-is-role-user.service";
   styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent implements OnInit{
-  isLoginMode = true;
+  isLoginMode: boolean = true;
   isLoggedOut: boolean = true;
-  captcha: string|null = ""
+  captcha: string = ""
   roleUser: string = "";
   private usernameHelp: string = "";
   private passwordHelp: string = "";
@@ -38,8 +36,7 @@ export class AuthenticationComponent implements OnInit{
     "postalCode": ""
   }
 
-  constructor(private router: Router, private loginService: LoginService,
-              private userService: UserService, private isUserLoggedInService: IsUserLoggedInService,
+  constructor(private router: Router, private loginService: LoginService, private isUserLoggedInService: IsUserLoggedInService,
               private whatIsRoleUserService: WhatIsRoleUserService) {
   }
 
@@ -48,11 +45,11 @@ export class AuthenticationComponent implements OnInit{
     this.whatIsRoleUserService.currentStatus.subscribe(message => this.roleUser = message)
   }
 
-  public changeValueLoginOrLogout(isLoggedOut: boolean):void{
+  public changeValueLoginOrLogout(isLoggedOut: boolean): void{
     this.isUserLoggedInService.changeStatus(isLoggedOut)
   }
 
-  public changeValueRoleUser(userRole: string):void{
+  public changeValueRoleUser(userRole: string): void{
     this.whatIsRoleUserService.changeStatus(userRole)
   }
 
@@ -60,7 +57,7 @@ export class AuthenticationComponent implements OnInit{
     this.isLoginMode = !this.isLoginMode;
   }
 
-  wasCaptchaSuccesful(captchaResponse: string | null): void {
+  public wasCaptchaSuccesful(captchaResponse: string): void {
     this.captcha = captchaResponse;
   }
 
@@ -84,13 +81,12 @@ export class AuthenticationComponent implements OnInit{
   }
 
   public userRegister():void{
-    this.loginService.registerUser(this.signUpObj).subscribe((res: any) => {
-      this.usernameHelp = this.signUpObj.username;
-      this.passwordHelp = this.signUpObj.password;
-      this.onSwitchMode();
-      this.loginObj.username = this.usernameHelp;
-      this.loginObj.password = this.passwordHelp;
-    })
+    this.loginService.registerUser(this.signUpObj).subscribe()
+    this.usernameHelp = this.signUpObj.username;
+    this.passwordHelp = this.signUpObj.password;
+    this.onSwitchMode();
+    this.loginObj.username = this.usernameHelp;
+    this.loginObj.password = this.passwordHelp;
   }
 
 }

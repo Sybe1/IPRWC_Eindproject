@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import {ClothingType} from "../../../models/clothing-type";
-import {ClothingTypeService} from "../../../services/clothing-type.service";
 import {MatDialog} from "@angular/material/dialog";
-import {
-  PopUpUpdateClothingTypeComponent
-} from "../clothing-type-section/pop-up-update-clothing-type/pop-up-update-clothing-type.component";
 import {TargetAudience} from "../../../models/target-audience";
 import {TargetAudienceService} from "../../../services/target-audience.service";
 import {

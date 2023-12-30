@@ -13,12 +13,12 @@ import {ToggleFavoriteService} from "../../../services/toggle-favorite.service";
 export class ProductInformationComponent {
   @Input() public product: Product | undefined;
   @Input() public isFavorite: boolean | undefined;
-  @Input() public isLoginOrLogout: boolean | undefined;
+  @Input() public isUserLoggedIn: boolean | undefined;
 
   constructor(public route: ActivatedRoute, public dialog: MatDialog, private toggleFavoriteService: ToggleFavoriteService) {
   }
   public toggleFavoriteProductInformation(): void{
-    if (!this.isLoginOrLogout) {
+    if (this.isUserLoggedIn) {
       const productId = <string>this.route.snapshot.paramMap.get('id');
       this.toggleFavorite(productId)
       this.isFavorite = !this.isFavorite;
