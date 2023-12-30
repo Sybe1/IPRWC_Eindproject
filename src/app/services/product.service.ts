@@ -30,7 +30,7 @@ export class ProductService {
     return this.http.put<Product>(`${this.apiServerUrl}/product/update`, product);
   }
 
-  public deleteProduct(productId: number){
+  public deleteProduct(productId: string){
     return this.http.delete<void>(`${this.apiServerUrl}/product/delete/${productId}`);
   }
 }

@@ -45,7 +45,7 @@ export class PriceAccumulatedComponent {
     localStorage.removeItem('shoppingCart')
   }
 
-  public updateStockProduct(code: number, amountOfBoughtProduct: number): void{
+  public updateStockProduct(code: string, amountOfBoughtProduct: number): void{
     this.productService.getProductsById(code).subscribe(item=>{
       const product: Product = {
         id: code,

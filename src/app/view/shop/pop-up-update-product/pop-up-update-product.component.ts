@@ -20,7 +20,7 @@ export class PopUpUpdateProductComponent implements OnInit{
 
 
   myform = this.buildr.group({
-    id: 0,
+    id: '',
     productName: '',
     description: '',
     price: this.buildr.control(0, [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]),
@@ -70,7 +70,7 @@ export class PopUpUpdateProductComponent implements OnInit{
   public saveProduct(): void {
     if (this.conditions()) {
       const productData: Product = {
-        id: this.myform.value.id || 0,
+        id: this.myform.value.id || '',
         productName: this.myform.value.productName || '',
         description: this.myform.value.description || '',
         price: this.myform.value.price || 0,

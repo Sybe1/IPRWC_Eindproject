@@ -15,7 +15,7 @@ import {ToggleFavoriteService} from "../../services/toggle-favorite.service";
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit{
-  products: any[] = [];
+  product: Product = <Product>{};
   amountShoppingCartNow = 0;
   amountProduct:number = 0;
   shoppingCartItems: any[] = [];
@@ -44,11 +44,7 @@ export class ProductComponent implements OnInit{
 
   public getProduct(id:any): void{
     this.productService.getProductsById(id).subscribe((response: Product) => {
-        if (Array.isArray(response)) {
-          this.products = response;
-        } else {
-          this.products = [response];
-        }
+        this.product = response;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

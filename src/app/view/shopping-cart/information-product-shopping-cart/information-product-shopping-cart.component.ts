@@ -14,7 +14,7 @@ export class InformationProductShoppingCartComponent{
 
 
 
-  public deleteProductFromShoppingCart(productId: number): void {
+  public deleteProductFromShoppingCart(productId: string): void {
     const shoppingCartToString = localStorage.getItem('shoppingCart');
     if (shoppingCartToString) {
       this.shoppingCartItems = JSON.parse(shoppingCartToString);

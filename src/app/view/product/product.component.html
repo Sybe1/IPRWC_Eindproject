@@ -1,7 +1,7 @@
 <!--product.component.html-->
 
 <app-header-page [namePage]=namePage></app-header-page>
-<div *ngFor="let product of products" class="mb-4 pt-16">
+<div class="mb-4 pt-16">
   <div class="flex flex-wrap items-center justify-center">
     <button class="pr-14" [routerLink]="'/shop'" routerLinkActive="router-link-active">
       <mat-icon>arrow_circle_left</mat-icon>
@@ -9,13 +9,12 @@
     <app-product-thumbnail [product]="product"></app-product-thumbnail>
     <div class="ml-3 width-tekst">
       <app-product-information [product]=product [isLoginOrLogout]="isLoginOrLogout" [isFavorite]="isFavorite"></app-product-information>
-      <app-choosing-amount-product [isLoginOrLogout]="isLoginOrLogout" [products]="products"></app-choosing-amount-product>
+      <app-choosing-amount-product [isLoginOrLogout]="isLoginOrLogout" [product]="product"></app-choosing-amount-product>
       <div class="flex" *ngIf="isProductOutOfStock">
         <p class="text-red-400"> Product is out of stock! </p>
       </div>
     </div>
   </div>
 </div>
-
 
 
