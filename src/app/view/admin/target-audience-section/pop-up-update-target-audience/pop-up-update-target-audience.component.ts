@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Inject, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {ClothingTypeService} from "../../../../services/clothing-type.service";
 import {ClothingType} from "../../../../models/clothing-type";
 import {TargetAudienceService} from "../../../../services/target-audience.service";
@@ -14,7 +14,7 @@ import {TargetAudience} from "../../../../models/target-audience";
 export class PopUpUpdateTargetAudienceComponent {
   @Output() onClose: EventEmitter<void> = new EventEmitter<void>();
 
-  myform = this.buildr.group({
+  public targetAudienceForm:FormGroup = this.buildr.group({
     audience: '',
     description: ''
   });
@@ -32,7 +32,7 @@ export class PopUpUpdateTargetAudienceComponent {
 
   public updateClothingType(code:any): void{
     this.targetAudienceService.getTargetAudienceById(code).subscribe(item=>{
-      this.myform.setValue({
+      this.targetAudienceForm.setValue({
         audience:item.audience,
         description: item.description
       })
@@ -42,8 +42,8 @@ export class PopUpUpdateTargetAudienceComponent {
   public saveTargetAudience(): void {
     const targetAudienceData: TargetAudience = {
       id: this.data.code || '',
-      audience: this.myform.value.audience || '',
-      description: this.myform.value.description || '',
+      audience: this.targetAudienceForm.value.audience || '',
+      description: this.targetAudienceForm.value.description || '',
     };
     this.targetAudienceService.updateTargetAudience(targetAudienceData).subscribe(res => {
       this.closePopup();

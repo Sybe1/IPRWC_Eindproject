@@ -21,10 +21,8 @@ export class ChoosingAmountProductComponent implements OnInit{
   }
 
   ngOnInit() {
-    const shoppingCartString = localStorage.getItem("shoppingCart");
-    if (shoppingCartString){
-      this.shoppingCartItems = JSON.parse(shoppingCartString);
-    }
+    const shoppingCartString = localStorage.getItem("shoppingCart") ?? '';
+    this.shoppingCartItems = JSON.parse(shoppingCartString);
     for (let i = 0; i < this.shoppingCartItems.length; i++){
       if (this.shoppingCartItems[i].id == this.product.id){
         this.amountProduct = this.shoppingCartItems[i].amount;
@@ -65,7 +63,6 @@ export class ChoosingAmountProductComponent implements OnInit{
         id: productId,
         amount: this.amountProduct
       }];
-
       localStorage.setItem("shoppingCart", JSON.stringify(obj));
     }
   }

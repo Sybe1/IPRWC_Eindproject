@@ -12,18 +12,18 @@ import {
   styleUrl: './target-audience-section.component.scss'
 })
 export class TargetAudienceSectionComponent {
-  targetAudiences: TargetAudience[] = [];
+  public targetAudiences: TargetAudience[] = [];
 
   constructor(private targetAudienceService: TargetAudienceService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.getTargetAudiences()
+    this.getTargetAudiences();
   }
 
   public getTargetAudiences(): void{
-    this.targetAudienceService.getTargetAudiences().subscribe((response: any[]) => {
-      this.targetAudiences = response
+    this.targetAudienceService.getTargetAudiences().subscribe((response: TargetAudience[]) => {
+      this.targetAudiences = response;
     })
   }
 
@@ -31,7 +31,7 @@ export class TargetAudienceSectionComponent {
     if(confirm('Are you sure you want to delete this clothing type?')) {
       this.targetAudienceService.deleteTargetAudience(targetAudienceId).subscribe(
         (resp) => {
-          console.log(resp)
+          console.log(resp);
           this.getTargetAudiences();
         },
         (err) => {
