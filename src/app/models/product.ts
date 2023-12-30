@@ -4,7 +4,13 @@ export interface Product{
   description: string;
   price: number;
   stock: number;
-  clothingType: string;
-  targetAudience: string;
+  clothingType: {
+    id: string
+    type?: string
+  };
+  targetAudience: {
+    id: string
+    audience?: string
+  };
   imageUrl: string;
 }

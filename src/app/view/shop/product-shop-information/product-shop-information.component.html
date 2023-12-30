@@ -1,5 +1,5 @@
 <p class="font-bold ">{{product?.productName}}</p>
-<p>{{product?.clothingType}} - {{product?.targetAudience}}</p>
+<p>{{product?.clothingType?.type ?? ''}} - {{product?.targetAudience?.audience ?? ''}}</p>
 <p class="">
   €{{product?.price}}
 </p>

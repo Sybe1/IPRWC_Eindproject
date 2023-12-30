@@ -3,41 +3,68 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ProductService} from "../../../services/product.service";
 import {Product} from "../../../models/product";
+import {User} from "../../../models/user";
+import {ClothingType} from "../../../models/clothing-type";
+import {TargetAudience} from "../../../models/target-audience";
+import {ClothingTypeService} from "../../../services/clothing-type.service";
+import {TargetAudienceService} from "../../../services/target-audience.service";
 @Component({
   selector: 'app-pop-up-update-product',
   templateUrl: './pop-up-update-product.component.html',
   styleUrls: ['./pop-up-update-product.component.scss']
 })
 export class PopUpUpdateProductComponent implements OnInit{
-  inputdata: any;
-  editdata: any
+  clothingTypes: ClothingType[] = [];
+  targetAudiences: TargetAudience[] = [];
   @Output() onClose: EventEmitter<void> = new EventEmitter<void>();
 
 
   myform = this.buildr.group({
-    id: this.buildr.control(0),
-    productName: this.buildr.control('', Validators.required),
-    description: this.buildr.control('', Validators.required),
+    id: 0,
+    productName: '',
+    description: '',
     price: this.buildr.control(0, [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]),
     stock: this.buildr.control(0, [Validators.required, Validators.pattern(/^\d+$/)]),
-    clothingType: this.buildr.control('', Validators.required),
-    targetAudience: this.buildr.control('', Validators.required),
-    imageUrl: this.buildr.control('', Validators.required),
+    clothingTypeId: '',
+    targetAudienceId: '',
+    imageUrl: '',
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data:any, private ref:MatDialogRef<PopUpUpdateProductComponent>,
-              private buildr:FormBuilder, private service:ProductService) {
+              private buildr:FormBuilder, private service:ProductService, private clothingTypeService: ClothingTypeService,
+              private targetAudienceService: TargetAudienceService) {
   }
   public ngOnInit(): void {
-    this.inputdata = this.data;
-    if (this.inputdata.code > 0) {
-      this.updateProduct(this.inputdata.code);
+    if (this.data.code > 0) {
+      this.updateProduct(this.data.code);
     }
+    this.clothingTypeService.getClothingTypes().subscribe((response:ClothingType[]) => {
+      this.clothingTypes = response;
+    })
+    this.targetAudienceService.getTargetAudiences().subscribe((response:TargetAudience[]) => {
+      this.targetAudiences = response;
+    })
   }
 
   public closePopup(): void{
     this.ref.close('Closed using function');
     this.onClose.emit();
+  }
+
+  public updateProduct(code:any): void{
+    this.service.getProductsById(code).subscribe(item=>{
+      this.myform.setValue(
+        {
+          id:item.id,
+          productName:item.productName,
+          description:item.description,
+          price: item.price,
+          stock: item.stock,
+          clothingTypeId: item.clothingType.id,
+          targetAudienceId: item.targetAudience.id,
+          imageUrl: item.imageUrl
+        })
+    })
   }
 
   public saveProduct(): void {
@@ -48,24 +75,18 @@ export class PopUpUpdateProductComponent implements OnInit{
         description: this.myform.value.description || '',
         price: this.myform.value.price || 0,
         stock: this.myform.value.stock || 0,
-        clothingType: this.myform.value.clothingType || '',
-        targetAudience: this.myform.value.targetAudience || '',
+        clothingType: {
+          id: this.myform.value.clothingTypeId || '',
+        },
+        targetAudience: {
+          id: this.myform.value.targetAudienceId || '',
+        },
         imageUrl: this.myform.value.imageUrl || ''
       };
-      console.log(productData)
       this.service.updateProduct(productData).subscribe(res => {
         this.closePopup();
       });
     }
-  }
-
-  public updateProduct(code:any): void{
-    this.service.getProductsById(code).subscribe(item=>{
-      this.editdata = item;
-      this.myform.setValue({id:this.editdata.id, productName:this.editdata.productName, description:this.editdata.description,
-      price: this.editdata.price, stock: this.editdata.stock, clothingType: this.editdata.clothingType, targetAudience: this.editdata.targetAudience,
-      imageUrl: this.editdata.imageUrl})
-    })
   }
 
   public conditions(): boolean{

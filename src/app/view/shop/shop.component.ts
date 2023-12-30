@@ -5,6 +5,10 @@ import { Product } from '../../models/product';
 import {MatDialog} from "@angular/material/dialog";
 import {PopUpUpdateProductComponent} from "./pop-up-update-product/pop-up-update-product.component";
 import {WhatIsRoleUserService} from "../../services/what-is-role-user.service";
+import {ClothingTypeService} from "../../services/clothing-type.service";
+import {ClothingType} from "../../models/clothing-type";
+import {TargetAudience} from "../../models/target-audience";
+import {TargetAudienceService} from "../../services/target-audience.service";
 
 
 @Component({
@@ -18,24 +22,45 @@ export class ShopComponent implements OnInit{
   role: boolean = false;
   whatIsRoleUser: string = "";
 
-  allClothingTypes: string[] = ["Hoodie", "Shirt", "Pants", "Underwear",
-    "Socks", "Shoes", "Jacket", "Hat"];
-  selectedClothingTypes: string[] = ["Hoodie", "Shirt", "Pants", "Underwear",
-    "Socks", "Shoes", "Jacket", "Hat"];
+  allClothingTypes: string[] = [];
+  selectedClothingTypes: string[] = [];
 
-  allTargetAudience: string[] = ["Men", "Women", "Unisex", "Children"];
-  selectedTargetAudience: string[] = ["Men", "Women", "Unisex", "Children"];
+  allTargetAudience: string[] = [];
+  selectedTargetAudience: string[] = [];
 
-  constructor(private productService: ProductService, private dialog: MatDialog, private whatIsRoleUserService: WhatIsRoleUserService){
+  constructor(private productService: ProductService, private dialog: MatDialog, private whatIsRoleUserService: WhatIsRoleUserService,
+              private clothingTypeService: ClothingTypeService, private targetAudienceService: TargetAudienceService){
 
   }
 
   public ngOnInit(): void{
+    this.getClothingTypes();
+    this.getTargetAudiences();
     this.getProducts();
     if (localStorage.getItem('role') === 'ADMIN'){
       this.role = true;
     }
     this.whatIsRoleUserService.currentStatus.subscribe(message => this.whatIsRoleUser = message)
+  }
+
+  public getClothingTypes(): void{
+    this.clothingTypeService.getClothingTypes().subscribe((response: any[]) => {
+      const clothingTypes: ClothingType[] = response
+      for (let i = 0; i < clothingTypes.length; i++) {
+        this.selectedClothingTypes.push(clothingTypes[i].type);
+        this.allClothingTypes.push(clothingTypes[i].type);
+      }
+    })
+  }
+
+  public getTargetAudiences(): void{
+    this.targetAudienceService.getTargetAudiences().subscribe((response: any[]) => {
+      const targetAudiences: TargetAudience[] = response
+      for (let i = 0; i < targetAudiences.length; i++) {
+        this.selectedTargetAudience.push(targetAudiences[i].audience)
+        this.allTargetAudience.push(targetAudiences[i].audience)
+      }
+    })
   }
 
   public onClothingTypeFilterChange(selectedClothingTypes: string[]): void {
@@ -48,21 +73,11 @@ export class ShopComponent implements OnInit{
     this.getProducts();
   }
 
-  public setToUpper(list: string[]): string[]{
-    let newList: string[] = []
-    for (let i = 0; i < list.length; i++) {
-      newList[i] = list[i].toUpperCase();
-    }
-    return newList;
-  }
-
   public getProducts(): void {
-    let upperSelectedTargetAudience: string[] = this.setToUpper(this.selectedTargetAudience);
-    let upperSelectedClothingTypes: string[] = this.setToUpper(this.selectedClothingTypes);
     this.productService.getProducts().subscribe((response: Product[]) => {
         this.products = response.filter(product =>
-          upperSelectedClothingTypes.includes(product.clothingType) &&
-          upperSelectedTargetAudience.includes(product.targetAudience)
+          this.selectedClothingTypes.includes(product.clothingType?.type ?? '') &&
+          this.selectedTargetAudience.includes(product.targetAudience?.audience ?? '')
         );
       },
       (error: HttpErrorResponse) => {

@@ -1,6 +1,6 @@
 <form [formGroup]="myform" (ngSubmit)="saveProduct()">
 
-  <h1 mat-dialog-title>{{inputdata.title}}</h1>
+  <h1 mat-dialog-title>{{data.title}}</h1>
   <div mat-dialog-content>
     <mat-form-field>
       <mat-label>Name</mat-label>
@@ -20,24 +20,14 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>ClothingType</mat-label>
-      <mat-select formControlName="clothingType">
-        <mat-option value="HOODIE">Hoodie</mat-option>
-        <mat-option value="SHIRT">Shirt</mat-option>
-        <mat-option value="PANTS">Pants</mat-option>
-        <mat-option value="UNDERWEAR">Underwear</mat-option>
-        <mat-option value="SOCKS">Socks</mat-option>
-        <mat-option value="SHOES">Shoes</mat-option>
-        <mat-option value="JACKET">Jacket</mat-option>
-        <mat-option value="HAT">Hat</mat-option>
+      <mat-select formControlName="clothingTypeId">
+        <mat-option *ngFor="let clothingType of clothingTypes" [value]="clothingType.id">{{ clothingType.type }}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>TargetAudience</mat-label>
-      <mat-select formControlName="targetAudience">
-        <mat-option value="WOMEN">Women</mat-option>
-        <mat-option value="MEN">Men</mat-option>
-        <mat-option value="UNISEX">Unisex</mat-option>
-        <mat-option value="CHILDREN">Children</mat-option>
+      <mat-select formControlName="targetAudienceId">
+        <mat-option *ngFor="let targetAudience of targetAudiences" [value]="targetAudience.id">{{ targetAudience.audience }}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
