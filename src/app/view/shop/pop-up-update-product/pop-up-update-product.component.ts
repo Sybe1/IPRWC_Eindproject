@@ -35,9 +35,7 @@ export class PopUpUpdateProductComponent implements OnInit{
               private targetAudienceService: TargetAudienceService) {
   }
   public ngOnInit(): void {
-    if (this.data.code > 0) {
-      this.updateProduct(this.data.code);
-    }
+    this.updateProduct(this.data.code);
     this.clothingTypeService.getClothingTypes().subscribe((response:ClothingType[]) => {
       this.clothingTypes = response;
     })
@@ -53,6 +51,8 @@ export class PopUpUpdateProductComponent implements OnInit{
 
   public updateProduct(code:any): void{
     this.service.getProductsById(code).subscribe(item=>{
+      console.log("Dit is het item ")
+      console.log(item)
       this.myform.setValue(
         {
           id:item.id,
