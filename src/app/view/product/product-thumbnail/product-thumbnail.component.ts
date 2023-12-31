@@ -7,6 +7,6 @@ import {Product} from "../../../models/product";
   styleUrls: ['./product-thumbnail.component.scss']
 })
 export class ProductThumbnailComponent {
-  image:string = 'assets/images/achtergrondBlauw.jpg';
+  public BACKGROUND_IMAGE:string = 'assets/images/achtergrondBlauw.jpg';
   @Input() public product: Product | undefined;
 }

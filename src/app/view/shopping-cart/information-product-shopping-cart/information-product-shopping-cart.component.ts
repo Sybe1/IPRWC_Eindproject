@@ -12,8 +12,6 @@ export class InformationProductShoppingCartComponent{
   @Input() public product:  Product | undefined;
   @Input() public shoppingCartItems:  any[] = [];
 
-
-
   public deleteProductFromShoppingCart(productId: string): void {
     const shoppingCartToString = localStorage.getItem('shoppingCart');
     if (shoppingCartToString) {

@@ -8,7 +8,5 @@ import {Product} from "../../../models/product";
 })
 export class ProductThumbnailShopComponent {
   @Input() public product: Product | undefined;
-
-  image = 'assets/images/achtergrondBlauw.jpg';
-
+  public backgroundImage:string = 'assets/images/achtergrondBlauw.jpg';
 }

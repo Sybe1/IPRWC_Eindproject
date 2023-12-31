@@ -9,28 +9,25 @@ import {ClothingTypeService} from "../../services/clothing-type.service";
 import {ClothingType} from "../../models/clothing-type";
 import {TargetAudience} from "../../models/target-audience";
 import {TargetAudienceService} from "../../services/target-audience.service";
-
-
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit{
-  products: any[] = [];
-  namePage: string = "Shop";
-  role: boolean = false;
-  whatIsRoleUser: string = "";
+  public products: Product[] = [];
+  public NAMEPAGE: string = "Shop";
+  public role: boolean = false;
+  public whatIsRoleUser: string = "";
 
-  allClothingTypes: string[] = [];
-  selectedClothingTypes: string[] = [];
+  public allClothingTypes: string[] = [];
+  public selectedClothingTypes: string[] = [];
 
-  allTargetAudience: string[] = [];
-  selectedTargetAudience: string[] = [];
+  public allTargetAudience: string[] = [];
+  public selectedTargetAudience: string[] = [];
 
   constructor(private productService: ProductService, private dialog: MatDialog, private whatIsRoleUserService: WhatIsRoleUserService,
               private clothingTypeService: ClothingTypeService, private targetAudienceService: TargetAudienceService){
-
   }
 
   public ngOnInit(): void{

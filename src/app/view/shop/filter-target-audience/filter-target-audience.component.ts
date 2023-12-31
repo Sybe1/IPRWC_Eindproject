@@ -10,10 +10,10 @@ import {TargetAudience} from "../../../models/target-audience";
 })
 export class FilterTargetAudienceComponent implements OnInit{
   @Input() allTargetAudience:string[] = [];
-  isTargetAudienceCollapsed: boolean = true;
+  public isTargetAudienceCollapsed: boolean = true;
   @Output() targetAudienceFilterChange: EventEmitter<string[]> = new EventEmitter<string[]>();
 
-  selectedTargetAudience: string[] = [];
+  public selectedTargetAudience: string[] = [];
 
   constructor(private targetAudienceService: TargetAudienceService) {
   }

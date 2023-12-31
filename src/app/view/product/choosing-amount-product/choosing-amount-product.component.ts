@@ -11,12 +11,10 @@ import {Product} from "../../../models/product";
   styleUrls: ['./choosing-amount-product.component.scss']
 })
 export class ChoosingAmountProductComponent implements OnInit{
-  shoppingCartItems: any[] = [];
-  amountProduct:number = 0;
+  public shoppingCartItems: any[] = [];
+  public amountProduct:number = 0;
   @Input() public isUserLoggedIn: boolean | undefined;
   @Input() public product: Product = <Product>{};
-
-
   constructor(public dialog: MatDialog, public route: ActivatedRoute) {
   }
 

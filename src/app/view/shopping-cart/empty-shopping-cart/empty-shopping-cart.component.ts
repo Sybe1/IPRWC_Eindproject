@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {Product} from "../../../models/product";
 
 @Component({
   selector: 'app-empty-shopping-cart',
@@ -8,5 +7,4 @@ import {Product} from "../../../models/product";
 })
 export class EmptyShoppingCartComponent {
   @Input() public shoppingCartItems:  any[] = [];
-
 }

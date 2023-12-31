@@ -15,11 +15,11 @@ import {ToggleFavoriteService} from "../../services/toggle-favorite.service";
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit{
-  product: Product = <Product>{};
-  namePage: string = "Product";
-  isUserLoggedIn: boolean = false;
-  isFavorite: boolean = true;
-  isProductOutOfStock: boolean = false;
+  public product: Product = <Product>{};
+  public NAMEPAGE: string = "Product";
+  public isUserLoggedIn: boolean = false;
+  public isFavorite: boolean = true;
+  public isProductOutOfStock: boolean = false;
 
   constructor(private productService: ProductService, public route: ActivatedRoute,
               public dialog: MatDialog, private isUserLoggedInService: IsUserLoggedInService){

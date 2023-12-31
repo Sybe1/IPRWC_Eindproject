@@ -9,10 +9,9 @@ import {ClothingType} from "../../../models/clothing-type";
 })
 export class FilterClothingTypeComponent implements OnInit{
   @Input() allClothingTypes: string[] = [];
-  isClothingTypeCollapsed: boolean = true;
+  public isClothingTypeCollapsed: boolean = true;
   @Output() clothingTypeFilterChange: EventEmitter<string[]> = new EventEmitter<string[]>();
-
-  selectedClothingTypes: string[] = [];
+  public selectedClothingTypes: string[] = [];
 
   constructor(private clothingTypeService: ClothingTypeService) {
   }

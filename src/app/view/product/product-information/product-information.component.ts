@@ -14,7 +14,6 @@ export class ProductInformationComponent {
   @Input() public product: Product | undefined;
   @Input() public isFavorite: boolean | undefined;
   @Input() public isUserLoggedIn: boolean | undefined;
-
   constructor(public route: ActivatedRoute, public dialog: MatDialog, private toggleFavoriteService: ToggleFavoriteService) {
   }
   public toggleFavoriteProductInformation(): void{
@@ -27,7 +26,6 @@ export class ProductInformationComponent {
       this.dialog.open(LoginToDoActionComponent);
     }
   }
-
   public toggleFavorite(productId: string): void {
     this.toggleFavoriteService.toggleFavorite(productId);
   }

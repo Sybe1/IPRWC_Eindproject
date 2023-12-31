@@ -8,5 +8,4 @@ import {Product} from "../../../models/product";
 })
 export class ProductShopInformationComponent {
   @Input() public product: Product | undefined;
-
 }

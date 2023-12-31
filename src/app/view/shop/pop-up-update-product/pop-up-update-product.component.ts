@@ -1,9 +1,8 @@
 import {Component, Inject, OnInit, Output, EventEmitter} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ProductService} from "../../../services/product.service";
 import {Product} from "../../../models/product";
-import {User} from "../../../models/user";
 import {ClothingType} from "../../../models/clothing-type";
 import {TargetAudience} from "../../../models/target-audience";
 import {ClothingTypeService} from "../../../services/clothing-type.service";
@@ -18,8 +17,7 @@ export class PopUpUpdateProductComponent implements OnInit{
   targetAudiences: TargetAudience[] = [];
   @Output() onClose: EventEmitter<void> = new EventEmitter<void>();
 
-
-  myform = this.buildr.group({
+  public formProduct:FormGroup = this.buildr.group({
     id: '',
     productName: '',
     description: '',
@@ -51,9 +49,7 @@ export class PopUpUpdateProductComponent implements OnInit{
 
   public updateProduct(code:any): void{
     this.service.getProductsById(code).subscribe(item=>{
-      console.log("Dit is het item ")
-      console.log(item)
-      this.myform.setValue(
+      this.formProduct.setValue(
         {
           id:item.id,
           productName:item.productName,
@@ -70,18 +66,18 @@ export class PopUpUpdateProductComponent implements OnInit{
   public saveProduct(): void {
     if (this.conditions()) {
       const productData: Product = {
-        id: this.myform.value.id || '',
-        productName: this.myform.value.productName || '',
-        description: this.myform.value.description || '',
-        price: this.myform.value.price || 0,
-        stock: this.myform.value.stock || 0,
+        id: this.formProduct.value.id || '',
+        productName: this.formProduct.value.productName || '',
+        description: this.formProduct.value.description || '',
+        price: this.formProduct.value.price || 0,
+        stock: this.formProduct.value.stock || 0,
         clothingType: {
-          id: this.myform.value.clothingTypeId || '',
+          id: this.formProduct.value.clothingTypeId || '',
         },
         targetAudience: {
-          id: this.myform.value.targetAudienceId || '',
+          id: this.formProduct.value.targetAudienceId || '',
         },
-        imageUrl: this.myform.value.imageUrl || ''
+        imageUrl: this.formProduct.value.imageUrl || ''
       };
       this.service.updateProduct(productData).subscribe(res => {
         this.closePopup();
@@ -90,11 +86,11 @@ export class PopUpUpdateProductComponent implements OnInit{
   }
 
   public conditions(): boolean{
-    if (this.myform.value.price != null && this.myform.value.price >= 0){
-      if (this.myform.value.stock != null && this.myform.value.stock >= 0){
-        if (this.myform.value.productName != null && this.myform.value.productName != ""){
-          if (this.myform.value.description != null && this.myform.value.description != ""){
-            if (this.myform.value.imageUrl != null && this.myform.value.imageUrl != "") {
+    if (this.formProduct.value.price != null && this.formProduct.value.price >= 0){
+      if (this.formProduct.value.stock != null && this.formProduct.value.stock >= 0){
+        if (this.formProduct.value.productName != null && this.formProduct.value.productName != ""){
+          if (this.formProduct.value.description != null && this.formProduct.value.description != ""){
+            if (this.formProduct.value.imageUrl != null && this.formProduct.value.imageUrl != "") {
               return true
             }
           }

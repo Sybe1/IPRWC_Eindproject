@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./bought-items.component.scss']
 })
 export class BoughtItemsComponent {
-
   public pageRefreshing(): void{
     window.location.reload();
   }
