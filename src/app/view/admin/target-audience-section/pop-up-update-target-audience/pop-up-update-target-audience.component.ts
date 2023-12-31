@@ -30,7 +30,7 @@ export class PopUpUpdateTargetAudienceComponent {
     this.onClose.emit();
   }
 
-  public updateClothingType(code:any): void{
+  public updateClothingType(code:string): void{
     this.targetAudienceService.getTargetAudienceById(code).subscribe(item=>{
       this.targetAudienceForm.setValue({
         audience:item.audience,

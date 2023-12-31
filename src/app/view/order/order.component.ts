@@ -9,8 +9,8 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit{
-  namePage: string = "Orders";
-  orders: any[] = [];
+  public namePage: string = "Orders";
+  public orders: any[] = [];
 
   constructor(private orderService: OrderService, private dialog: MatDialog) {
   }

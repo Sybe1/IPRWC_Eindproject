@@ -18,12 +18,11 @@ export class PriceAccumulatedComponent {
   @Input() public priceAccumulated: number | undefined;
   @Input() public shoppingCartItems: any[] = [];
 
-
   constructor(private orderService: OrderService, public dialog: MatDialog, private productService: ProductService) {
   }
   public boughtProducts(): void {
-    const itemsShoppingCart = localStorage.getItem('shoppingCart');
-    const loginToken = localStorage.getItem("loginToken")
+    const itemsShoppingCart:string = localStorage.getItem('shoppingCart') ?? '';
+    const loginToken:string = localStorage.getItem("loginToken") ?? '';
     if (itemsShoppingCart != null && loginToken != null){
       const decodedJWT = jwtDecode(loginToken) as JwtPayload
       this.shoppingCartItems = JSON.parse(itemsShoppingCart);

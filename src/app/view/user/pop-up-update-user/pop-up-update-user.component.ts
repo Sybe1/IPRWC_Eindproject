@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Inject, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {TargetAudienceService} from "../../../services/target-audience.service";
 import {TargetAudience} from "../../../models/target-audience";
 import {UserService} from "../../../services/user.service";
@@ -14,10 +14,10 @@ import {WhatIsRoleUserService} from "../../../services/what-is-role-user.service
 })
 export class PopUpUpdateUserComponent {
   @Output() onClose: EventEmitter<void> = new EventEmitter<void>();
-  password: string = '';
-  whatIsRoleUser: string = "";
+  public password: string = '';
+  public whatIsRoleUser: string = "";
 
-  myform = this.buildr.group({
+  public formUser:FormGroup = this.buildr.group({
     firstName: '',
     lastName: '',
     role: '',
@@ -40,7 +40,7 @@ export class PopUpUpdateUserComponent {
 
   public updateUser(code:any): void{
     this.userService.getUserByUsername(code).subscribe(item=>{
-      this.myform.setValue({
+      this.formUser.setValue({
         firstName:item.firstName,
         lastName:item.lastName,
         role: item.role,
@@ -54,12 +54,12 @@ export class PopUpUpdateUserComponent {
 
   public saveUser(): void {
     const userData: User = {
-      firstName:this.myform.value.firstName || '',
-      lastName:this.myform.value.lastName || '',
-      role: this.myform.value.role || '',
-      email: this.myform.value.email || '',
-      address:this.myform.value.address || '',
-      postalCode:this.myform.value.postalCode || '',
+      firstName:this.formUser.value.firstName || '',
+      lastName:this.formUser.value.lastName || '',
+      role: this.formUser.value.role || '',
+      email: this.formUser.value.email || '',
+      address:this.formUser.value.address || '',
+      postalCode:this.formUser.value.postalCode || '',
       username: this.data.code || '',
       password: this.password,
     };

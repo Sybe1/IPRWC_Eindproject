@@ -10,9 +10,9 @@ export class LoginComponent{
     "password": "",
   }
 
-  @Output() captchaResolved = new EventEmitter<string | null>();
+  @Output() captchaResolved: EventEmitter<string|null> = new EventEmitter<string | null>();
 
-  wasCaptchaSuccesful(captchaResponse: string | null): void {
+  public wasCaptchaSuccesful(captchaResponse: string | null): void {
     this.captchaResolved.emit(captchaResponse);
   }
 }

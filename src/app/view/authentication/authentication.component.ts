@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {LoginService} from "../../services/login.service";
 import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
 import {WhatIsRoleUserService} from "../../services/what-is-role-user.service";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-authentication',
@@ -10,22 +11,22 @@ import {WhatIsRoleUserService} from "../../services/what-is-role-user.service";
   styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent implements OnInit{
-  isLoginMode: boolean = true;
-  isLoggedOut: boolean = true;
-  captcha: string = ""
-  roleUser: string = "";
+  public isLoginMode: boolean = true;
+  public isLoggedOut: boolean = true;
+  public captcha: string = ""
+  public roleUser: string = "";
   private usernameHelp: string = "";
   private passwordHelp: string = "";
-  namePageLogin: string = "Login";
-  namePageLogout: string = "Logout";
+  public namePageLogin: string = "Login";
+  public namePageLogout: string = "Logout";
 
 
-  loginObj: any = {
+  public loginObj: any = {
     "username": "",
     "password": ""
   }
 
-  signUpObj: any = {
+  public signUpObj: User = {
     "username": "",
     "password": "",
     "firstName": "",
@@ -88,5 +89,4 @@ export class AuthenticationComponent implements OnInit{
     this.loginObj.username = this.usernameHelp;
     this.loginObj.password = this.passwordHelp;
   }
-
 }

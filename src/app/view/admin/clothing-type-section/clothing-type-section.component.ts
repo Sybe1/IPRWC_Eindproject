@@ -11,7 +11,7 @@ import {PopUpUpdateClothingTypeComponent} from "./pop-up-update-clothing-type/po
   styleUrl: './clothing-type-section.component.scss'
 })
 export class ClothingTypeSectionComponent implements OnInit{
-  clothingTypes: ClothingType[] = [];
+  public clothingTypes: ClothingType[] = [];
 
   constructor(private clothingTypeService: ClothingTypeService, private dialog: MatDialog) {
   }
@@ -26,7 +26,7 @@ export class ClothingTypeSectionComponent implements OnInit{
     })
   }
 
-  deleteClothingType(clothingTypeId: string) {
+  public deleteClothingType(clothingTypeId: string): void {
     if(confirm('Are you sure you want to delete this clothing type?')) {
       this.clothingTypeService.deleteClothingType(clothingTypeId).subscribe(
         (resp) => {
@@ -40,7 +40,7 @@ export class ClothingTypeSectionComponent implements OnInit{
     }
   }
 
-  public openPopup(code:any, title :any): void{
+  public openPopup(code:string, title:string): void{
     const dialogRef = this.dialog.open(PopUpUpdateClothingTypeComponent,{
       width:'18%',
       data: {

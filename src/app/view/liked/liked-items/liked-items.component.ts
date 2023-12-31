@@ -15,7 +15,7 @@ export class LikedItemsComponent {
   constructor(private toggleFavoriteService: ToggleFavoriteService) {
   }
   public toggleFavoriteLiked(productId: string): void {
-    const productIdString = productId.toString();
+    const productIdString:string = productId.toString();
     this.toggleFavoriteService.toggleFavorite(productIdString);
     window.location.reload();
   }

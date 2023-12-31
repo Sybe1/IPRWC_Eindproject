@@ -9,9 +9,9 @@ import {HttpErrorResponse} from "@angular/common/http";
   styleUrls: ['./liked.component.scss']
 })
 export class LikedComponent implements OnInit{
-  likedItems: any[] = [];
-  itemInformation: any[] = [];
-  namePage: string = "Liked";
+  public likedItems: any[] = [];
+  public itemInformation: any[] = [];
+  public NAMEPAGE: string = "Liked";
 
   constructor(private productService: ProductService) {
   }

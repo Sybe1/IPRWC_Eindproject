@@ -12,8 +12,8 @@ import {JwtPayload} from "../../../models/jwt-payload";
   styleUrl: './user-information.component.scss'
 })
 export class UserInformationComponent {
-  user: User | undefined;
-  username: string = '';
+  public user: User | undefined;
+  public username: string = '';
 
   constructor(private userService: UserService, private dialog: MatDialog) {
   }
@@ -28,20 +28,6 @@ export class UserInformationComponent {
     this.userService.getUserByUsername(this.username).subscribe((response: User) => {
       this.user = response
     })
-  }
-
-  public deleteUser(userId: string): void{
-    if(confirm('Are you sure you want to delete this user?')) {
-      this.userService.deleteUser(userId).subscribe(
-        (resp) => {
-          console.log(resp)
-          this.getUser();
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-    }
   }
 
   public openPopup(code:any, title :any): void{

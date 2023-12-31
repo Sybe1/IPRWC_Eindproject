@@ -8,13 +8,13 @@ import {WhatIsRoleUserService} from "../../services/what-is-role-user.service";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit{
-   isLoggedOut: boolean = true;
-   whatIsRoleUser: string = "";
+   public isLoggedOut: boolean = true;
+   public whatIsRoleUser: string = "";
 
    constructor(private isUserLoggedInService: IsUserLoggedInService, private whatIsRoleUserService: WhatIsRoleUserService) {
    }
    ngOnInit() {
-     this.isUserLoggedInService.currentStatus.subscribe(message => this.isLoggedOut = message)
-     this.whatIsRoleUserService.currentStatus.subscribe(message => this.whatIsRoleUser = message)
+     this.isUserLoggedInService.currentStatus.subscribe(message=> this.isLoggedOut = message)
+     this.whatIsRoleUserService.currentStatus.subscribe(message=> this.whatIsRoleUser = message)
    }
 }

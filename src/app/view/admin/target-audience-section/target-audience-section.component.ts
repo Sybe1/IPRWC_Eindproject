@@ -27,7 +27,7 @@ export class TargetAudienceSectionComponent {
     })
   }
 
-  deleteTargetAudience(targetAudienceId: string) {
+  public deleteTargetAudience(targetAudienceId: string):void {
     if(confirm('Are you sure you want to delete this clothing type?')) {
       this.targetAudienceService.deleteTargetAudience(targetAudienceId).subscribe(
         (resp) => {
@@ -41,7 +41,7 @@ export class TargetAudienceSectionComponent {
     }
   }
 
-  public openPopup(code:any, title :any): void{
+  public openPopup(code:string, title:string): void{
     const dialogRef = this.dialog.open(PopUpUpdateTargetAudienceComponent,{
       width:'18%',
       data: {

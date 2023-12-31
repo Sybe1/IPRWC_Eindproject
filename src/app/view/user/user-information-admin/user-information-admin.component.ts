@@ -12,7 +12,7 @@ import {PopUpUpdateUserComponent} from "../pop-up-update-user/pop-up-update-user
   styleUrl: './user-information-admin.component.scss'
 })
 export class UserInformationAdminComponent implements OnInit{
-  users: User[] = [];
+  public users: User[] = [];
 
   constructor(private userService: UserService, private dialog: MatDialog) {
   }
@@ -41,7 +41,7 @@ export class UserInformationAdminComponent implements OnInit{
     }
   }
 
-  public openPopup(code:any, title :any): void{
+  public openPopup(code:string, title :string): void{
     const dialogRef = this.dialog.open(PopUpUpdateUserComponent,{
       width:'18%',
       data: {

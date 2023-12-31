@@ -1,10 +1,6 @@
 import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {FormBuilder} from "@angular/forms";
-import {OrderService} from "../../../../services/order.service";
-import {ProductService} from "../../../../services/product.service";
-import {UserService} from "../../../../services/user.service";
-import {Order} from "../../../../models/order";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {ClothingTypeService} from "../../../../services/clothing-type.service";
 import {ClothingType} from "../../../../models/clothing-type";
 
@@ -16,7 +12,7 @@ import {ClothingType} from "../../../../models/clothing-type";
 export class PopUpUpdateClothingTypeComponent implements OnInit{
   @Output() onClose: EventEmitter<void> = new EventEmitter<void>();
 
-  myform = this.buildr.group({
+  public formClothingType:FormGroup = this.buildr.group({
     type: '',
     description: ''
   });
@@ -32,9 +28,9 @@ export class PopUpUpdateClothingTypeComponent implements OnInit{
     this.onClose.emit();
   }
 
-  public updateClothingType(code:any): void{
+  public updateClothingType(code:string): void{
     this.clothingTypeService.getClothingTypeById(code).subscribe(item=>{
-      this.myform.setValue({
+      this.formClothingType.setValue({
         type:item.type,
         description: item.description
       })
@@ -44,12 +40,11 @@ export class PopUpUpdateClothingTypeComponent implements OnInit{
   public saveClothingType(): void {
     const clothingTypeData: ClothingType = {
       id: this.data.code || '',
-      type: this.myform.value.type || '',
-      description: this.myform.value.description || '',
+      type: this.formClothingType.value.type || '',
+      description: this.formClothingType.value.description || '',
     };
     this.clothingTypeService.updateClothingType(clothingTypeData).subscribe(res => {
       this.closePopup();
-      console.log(res)
     });
   }
 

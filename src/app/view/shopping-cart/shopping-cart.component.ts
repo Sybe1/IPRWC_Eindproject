@@ -3,8 +3,6 @@ import {ProductService} from "../../services/product.service";
 import {Product} from "../../models/product";
 import {HttpErrorResponse} from "@angular/common/http";
 import {MatDialog} from "@angular/material/dialog";
-import {BoughtItemsComponent} from "./bought-items/bought-items.component";
-import {OrderService} from "../../services/order.service";
 import {Order} from "../../models/order";
 
 @Component({
@@ -13,13 +11,13 @@ import {Order} from "../../models/order";
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit{
-  shoppingCartItems: any[] = [];
-  itemInformation: any[] = [];
-  order: Order | undefined;
-  priceAccumulated: number = 0;
-  namePage: string = "Shopping Cart";
+  public shoppingCartItems: any[] = [];
+  public itemInformation: any[] = [];
+  public order: Order | undefined;
+  public priceAccumulated: number = 0;
+  public NAMEPAGE: string = "Shopping Cart";
 
-  constructor(private productService: ProductService, public dialog: MatDialog, private orderService: OrderService) {
+  constructor(private productService: ProductService, public dialog: MatDialog) {
   }
   public ngOnInit(): void {
     this.shoppingCartItems = this.getShoppingCartItems();

@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {User} from "../../../models/user";
 
 @Component({
   selector: 'app-sign-up',
@@ -6,7 +7,7 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent {
-  @Input() public signUpObj: any = {
+  @Input() public signUpObj: User = {
     "username": "",
     "password": "",
     "firstName": "",
