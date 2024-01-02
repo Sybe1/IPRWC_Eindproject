@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {OrderService} from "../../../services/order.service";
-import {MatDialog} from "@angular/material/dialog";
-import {PopUpUpdateOrderComponent} from "../../order/pop-up-update-order/pop-up-update-order.component";
 import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
 import {PopUpUpdateUserComponent} from "../pop-up-update-user/pop-up-update-user.component";
+import {OpenPopUpService} from "../../../services/open-pop-up.service";
 
 @Component({
   selector: 'app-user-information-admin',
@@ -13,8 +11,9 @@ import {PopUpUpdateUserComponent} from "../pop-up-update-user/pop-up-update-user
 })
 export class UserInformationAdminComponent implements OnInit{
   public users: User[] = [];
+  protected readonly PopUpUpdateUserComponent = PopUpUpdateUserComponent;
 
-  constructor(private userService: UserService, private dialog: MatDialog) {
+  constructor(private userService: UserService, public openPopUpService: OpenPopUpService) {
   }
 
   ngOnInit() {
@@ -39,18 +38,5 @@ export class UserInformationAdminComponent implements OnInit{
         }
       );
     }
-  }
-
-  public openPopup(code:string, title :string): void{
-    const dialogRef = this.dialog.open(PopUpUpdateUserComponent,{
-      width:'18%',
-      data: {
-        title: title,
-        code: code
-      }
-    });
-    dialogRef.componentInstance.onClose.subscribe(() => {
-      this.getUsers();
-    });
   }
 }

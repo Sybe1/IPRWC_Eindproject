@@ -9,26 +9,21 @@ import {ClothingType} from "../models/clothing-type";
 })
 export class ClothingTypeService {
   private apiServerUrl = environment.apiBaseUrl;
-
   constructor(private http: HttpClient) { }
-
   public getClothingTypes(): Observable<ClothingType[]> {
     return this.http.get<ClothingType[]>(`${this.apiServerUrl}/clothingType/all`);
   }
-
   public getClothingTypeById(code: any): Observable<ClothingType> {
     return this.http.get<ClothingType>(`${this.apiServerUrl}/clothingType/find/` + code);
   }
-
   public addClothingTypes(clothingType: ClothingType): Observable<ClothingType> {
     return this.http.post<ClothingType>(`${this.apiServerUrl}/clothingType/add`, clothingType);
   }
-
   public updateClothingType(clothingType: ClothingType): Observable<ClothingType> {
     return this.http.put<ClothingType>(`${this.apiServerUrl}/clothingType/update`, clothingType);
   }
 
-  public deleteClothingType(clothingTypeId: string){
+  public deleteClothingType(clothingTypeId: string): Observable<void>{
     return this.http.delete<void>(`${this.apiServerUrl}/clothingType/delete/${clothingTypeId}`);
   }
 }

@@ -48,19 +48,21 @@ export class PopUpUpdateProductComponent implements OnInit{
   }
 
   public updateProduct(code:any): void{
-    this.service.getProductsById(code).subscribe(item=>{
-      this.formProduct.setValue(
-        {
-          id:item.id,
-          productName:item.productName,
-          description:item.description,
-          price: item.price,
-          stock: item.stock,
-          clothingTypeId: item.clothingType.id,
-          targetAudienceId: item.targetAudience.id,
-          imageUrl: item.imageUrl
-        })
-    })
+    if (this.data.code != undefined) {
+      this.service.getProductsById(code).subscribe(item => {
+        this.formProduct.setValue(
+          {
+            id: item.id,
+            productName: item.productName,
+            description: item.description,
+            price: item.price,
+            stock: item.stock,
+            clothingTypeId: item.clothingType.id,
+            targetAudienceId: item.targetAudience.id,
+            imageUrl: item.imageUrl
+          })
+      })
+    }
   }
 
   public saveProduct(): void {

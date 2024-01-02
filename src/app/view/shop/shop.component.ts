@@ -9,6 +9,7 @@ import {ClothingTypeService} from "../../services/clothing-type.service";
 import {ClothingType} from "../../models/clothing-type";
 import {TargetAudience} from "../../models/target-audience";
 import {TargetAudienceService} from "../../services/target-audience.service";
+import {OpenPopUpService} from "../../services/open-pop-up.service";
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -19,6 +20,7 @@ export class ShopComponent implements OnInit{
   public NAMEPAGE: string = "Shop";
   public role: boolean = false;
   public whatIsRoleUser: string = "";
+  protected readonly PopUpUpdateProductComponent = PopUpUpdateProductComponent;
 
   public allClothingTypes: string[] = [];
   public selectedClothingTypes: string[] = [];
@@ -26,8 +28,9 @@ export class ShopComponent implements OnInit{
   public allTargetAudience: string[] = [];
   public selectedTargetAudience: string[] = [];
 
-  constructor(private productService: ProductService, private dialog: MatDialog, private whatIsRoleUserService: WhatIsRoleUserService,
-              private clothingTypeService: ClothingTypeService, private targetAudienceService: TargetAudienceService){
+  constructor(private productService: ProductService, private whatIsRoleUserService: WhatIsRoleUserService,
+              private clothingTypeService: ClothingTypeService, private targetAudienceService: TargetAudienceService,
+              public openPopUpService: OpenPopUpService){
   }
 
   public ngOnInit(): void{
@@ -84,7 +87,7 @@ export class ShopComponent implements OnInit{
   }
 
   public deleteProduct(product: Product): void{
-    if(confirm('Are you sure you want to delete this shop?'))
+    if(confirm('Are you sure you want to delete this shop?')) {
       this.productService.deleteProduct(product.id).subscribe(
         (resp) => {
           console.log(resp)
@@ -94,17 +97,6 @@ export class ShopComponent implements OnInit{
           console.log(err);
         }
       );
-  }
-  public openPopup(code:any, title :any): void{
-    const dialogRef = this.dialog.open(PopUpUpdateProductComponent,{
-      width:'60%',
-      data: {
-        title: title,
-        code: code
-      }
-    });
-    dialogRef.componentInstance.onClose.subscribe(() => {
-      this.getProducts();
-    });
+    }
   }
 }

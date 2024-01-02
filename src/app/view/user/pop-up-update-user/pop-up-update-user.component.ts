@@ -1,8 +1,6 @@
 import {Component, EventEmitter, Inject, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {TargetAudienceService} from "../../../services/target-audience.service";
-import {TargetAudience} from "../../../models/target-audience";
 import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user";
 import {WhatIsRoleUserService} from "../../../services/what-is-role-user.service";
@@ -39,17 +37,19 @@ export class PopUpUpdateUserComponent {
   }
 
   public updateUser(code:any): void{
-    this.userService.getUserByUsername(code).subscribe(item=>{
-      this.formUser.setValue({
-        firstName:item.firstName,
-        lastName:item.lastName,
-        role: item.role,
-        email: item.email,
-        address:item.address,
-        postalCode:item.postalCode,
+    if (this.data.code != undefined) {
+      this.userService.getUserByUsername(code).subscribe(item => {
+        this.formUser.setValue({
+          firstName: item.firstName,
+          lastName: item.lastName,
+          role: item.role,
+          email: item.email,
+          address: item.address,
+          postalCode: item.postalCode,
+        })
+        this.password = item.password;
       })
-      this.password = item.password;
-    })
+    }
   }
 
   public saveUser(): void {

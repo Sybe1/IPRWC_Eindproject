@@ -4,6 +4,7 @@ import {ClothingType} from "../../../models/clothing-type";
 import {PopUpUpdateOrderComponent} from "../../order/pop-up-update-order/pop-up-update-order.component";
 import {MatDialog} from "@angular/material/dialog";
 import {PopUpUpdateClothingTypeComponent} from "./pop-up-update-clothing-type/pop-up-update-clothing-type.component";
+import {OpenPopUpService} from "../../../services/open-pop-up.service";
 
 @Component({
   selector: 'app-clothing-type-section',
@@ -12,16 +13,16 @@ import {PopUpUpdateClothingTypeComponent} from "./pop-up-update-clothing-type/po
 })
 export class ClothingTypeSectionComponent implements OnInit{
   public clothingTypes: ClothingType[] = [];
+  protected readonly PopUpUpdateClothingTypeComponent = PopUpUpdateClothingTypeComponent;
 
-  constructor(private clothingTypeService: ClothingTypeService, private dialog: MatDialog) {
+  constructor(private clothingTypeService: ClothingTypeService, public openPupUpService: OpenPopUpService) {
   }
-
   ngOnInit() {
     this.getClothingTypes()
   }
 
   public getClothingTypes(): void{
-    this.clothingTypeService.getClothingTypes().subscribe((response: any[]) => {
+    this.clothingTypeService.getClothingTypes().subscribe((response: ClothingType[]) => {
       this.clothingTypes = response
     })
   }
@@ -38,18 +39,5 @@ export class ClothingTypeSectionComponent implements OnInit{
         }
       );
     }
-  }
-
-  public openPopup(code:string, title:string): void{
-    const dialogRef = this.dialog.open(PopUpUpdateClothingTypeComponent,{
-      width:'18%',
-      data: {
-        title: title,
-        code: code
-      }
-    });
-    dialogRef.componentInstance.onClose.subscribe(() => {
-      this.getClothingTypes();
-    });
   }
 }

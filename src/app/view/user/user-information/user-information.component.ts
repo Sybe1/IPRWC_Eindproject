@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {PopUpUpdateUserComponent} from "../pop-up-update-user/pop-up-update-user.component";
 import {jwtDecode} from "jwt-decode";
 import {JwtPayload} from "../../../models/jwt-payload";
+import {OpenPopUpService} from "../../../services/open-pop-up.service";
 
 @Component({
   selector: 'app-user-information',
@@ -14,8 +15,9 @@ import {JwtPayload} from "../../../models/jwt-payload";
 export class UserInformationComponent {
   public user: User | undefined;
   public username: string = '';
+  protected readonly PopUpUpdateUserComponent = PopUpUpdateUserComponent;
 
-  constructor(private userService: UserService, private dialog: MatDialog) {
+  constructor(private userService: UserService, public openPopUpService: OpenPopUpService) {
   }
 
   ngOnInit() {
@@ -28,18 +30,5 @@ export class UserInformationComponent {
     this.userService.getUserByUsername(this.username).subscribe((response: User) => {
       this.user = response
     })
-  }
-
-  public openPopup(code:any, title :any): void{
-    const dialogRef = this.dialog.open(PopUpUpdateUserComponent,{
-      width:'18%',
-      data: {
-        title: title,
-        code: code
-      }
-    });
-    dialogRef.componentInstance.onClose.subscribe(() => {
-      this.getUser();
-    });
   }
 }

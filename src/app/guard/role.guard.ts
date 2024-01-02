@@ -6,13 +6,13 @@ import { WhatIsRoleUserService } from "../services/what-is-role-user.service";
   providedIn: 'root'
 })
 export class RoleGuard implements CanActivate {
-  whatIsRoleUser: string = "";
+  public whatIsRoleUser: string = "";
 
   constructor(private router: Router, private whatIsRoleUserService: WhatIsRoleUserService) {
     this.whatIsRoleUserService.currentStatus.subscribe(message => this.whatIsRoleUser = message);
   }
 
-  canActivate(): boolean {
+  public canActivate(): boolean {
     this.whatIsRoleUserService.currentStatus.subscribe(message => this.whatIsRoleUser = message);
     if (this.whatIsRoleUser === 'ADMIN') {
       return true;

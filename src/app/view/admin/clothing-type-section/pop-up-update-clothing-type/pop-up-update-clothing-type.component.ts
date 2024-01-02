@@ -29,12 +29,14 @@ export class PopUpUpdateClothingTypeComponent implements OnInit{
   }
 
   public updateClothingType(code:string): void{
-    this.clothingTypeService.getClothingTypeById(code).subscribe(item=>{
-      this.formClothingType.setValue({
-        type:item.type,
-        description: item.description
+    if (this.data.code != undefined) {
+      this.clothingTypeService.getClothingTypeById(code).subscribe(item => {
+        this.formClothingType.setValue({
+          type: item.type,
+          description: item.description
+        })
       })
-    })
+    }
   }
 
   public saveClothingType(): void {

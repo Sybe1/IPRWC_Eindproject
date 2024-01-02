@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef,} from "@angular/material/dialog";
-import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder} from "@angular/forms";
 import {ProductService} from "../../../services/product.service";
 import {OrderService} from "../../../services/order.service";
 import {Product} from "../../../models/product";
@@ -44,13 +44,15 @@ export class PopUpUpdateOrderComponent implements OnInit{
   }
 
   public updateProduct(code:any): void{
-    this.service.getOrdersById(code).subscribe(item=>{
-      this.myform.setValue({
-        amount:item.amount,
-        productId: item.product.id,
-        username: item.user.username
+    if (this.data.code != undefined) {
+      this.service.getOrdersById(code).subscribe(item => {
+        this.myform.setValue({
+          amount: item.amount,
+          productId: item.product.id,
+          username: item.user.username
+        })
       })
-    })
+    }
   }
 
   public saveProduct(): void {

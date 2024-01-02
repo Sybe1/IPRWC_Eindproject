@@ -31,12 +31,14 @@ export class PopUpUpdateTargetAudienceComponent {
   }
 
   public updateClothingType(code:string): void{
-    this.targetAudienceService.getTargetAudienceById(code).subscribe(item=>{
-      this.targetAudienceForm.setValue({
-        audience:item.audience,
-        description: item.description
+    if (this.data.code != undefined) {
+      this.targetAudienceService.getTargetAudienceById(code).subscribe(item => {
+        this.targetAudienceForm.setValue({
+          audience: item.audience,
+          description: item.description
+        })
       })
-    })
+    }
   }
 
   public saveTargetAudience(): void {

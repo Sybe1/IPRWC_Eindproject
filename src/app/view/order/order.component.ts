@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {OrderService} from "../../services/order.service";
 import {PopUpUpdateOrderComponent} from "./pop-up-update-order/pop-up-update-order.component";
 import {MatDialog} from "@angular/material/dialog";
+import {OpenPopUpService} from "../../services/open-pop-up.service";
 
 @Component({
   selector: 'app-order',
@@ -11,8 +12,10 @@ import {MatDialog} from "@angular/material/dialog";
 export class OrderComponent implements OnInit{
   public namePage: string = "Orders";
   public orders: any[] = [];
+  protected readonly PopUpUpdateOrderComponent = PopUpUpdateOrderComponent;
 
-  constructor(private orderService: OrderService, private dialog: MatDialog) {
+
+  constructor(private orderService: OrderService, public openPopUpService: OpenPopUpService) {
   }
 
   ngOnInit() {
@@ -38,18 +41,5 @@ export class OrderComponent implements OnInit{
         }
       );
     }
-  }
-
-  public openPopup(code:any, title :any): void{
-    const dialogRef = this.dialog.open(PopUpUpdateOrderComponent,{
-      width:'18%',
-      data: {
-        title: title,
-        code: code
-      }
-    });
-    dialogRef.componentInstance.onClose.subscribe(() => {
-      this.getOrders();
-    });
   }
 }

@@ -5,6 +5,7 @@ import {TargetAudienceService} from "../../../services/target-audience.service";
 import {
   PopUpUpdateTargetAudienceComponent
 } from "./pop-up-update-target-audience/pop-up-update-target-audience.component";
+import {OpenPopUpService} from "../../../services/open-pop-up.service";
 
 @Component({
   selector: 'app-target-audience-section',
@@ -13,8 +14,9 @@ import {
 })
 export class TargetAudienceSectionComponent {
   public targetAudiences: TargetAudience[] = [];
+  protected readonly PopUpUpdateTargetAudienceComponent = PopUpUpdateTargetAudienceComponent;
 
-  constructor(private targetAudienceService: TargetAudienceService, private dialog: MatDialog) {
+  constructor(private targetAudienceService: TargetAudienceService, public openPupUpService: OpenPopUpService) {
   }
 
   ngOnInit() {
@@ -39,18 +41,5 @@ export class TargetAudienceSectionComponent {
         }
       );
     }
-  }
-
-  public openPopup(code:string, title:string): void{
-    const dialogRef = this.dialog.open(PopUpUpdateTargetAudienceComponent,{
-      width:'18%',
-      data: {
-        title: title,
-        code: code
-      }
-    });
-    dialogRef.componentInstance.onClose.subscribe(() => {
-      this.getTargetAudiences();
-    });
   }
 }

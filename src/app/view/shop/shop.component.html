@@ -27,7 +27,7 @@
                 </a>
                 <div class="card-body">
                   <div *ngIf="whatIsRoleUser === 'ADMIN'" class="float-right btn-group btn-group-sm">
-                    <button class="bg-blue-800 w-8 h-9" data-original-title="edit" (click)="openPopup(product.id, 'Edit Product')">
+                    <button class="bg-blue-800 w-8 h-9" data-original-title="edit" (click)="openPopUpService.openPopupEdit(product.id, 'Edit Product', PopUpUpdateProductComponent)">
                       <span class="text-white"><mat-icon class="pt-1">edit</mat-icon></span>
                     </button>
                     <button class="bg-red-400 w-8 h-9" data-original-title="Delete" (click)="deleteProduct(product)">
@@ -42,7 +42,7 @@
 
       <div class="pl-14">
        <div *ngIf="whatIsRoleUser === 'ADMIN'">
-        <button class="text-white py-2 px-3 rounded-full bg-red-400 font-bold" (click)="openPopup(0, 'Add Product')">+</button>
+        <button class="text-white py-2 px-3 rounded-full bg-red-400 font-bold" (click)="openPopUpService.openPopupAdd('Add Product', PopUpUpdateProductComponent)">+</button>
        </div>
       </div>
 

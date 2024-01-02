@@ -25,7 +25,7 @@
           <p>{{order.user.username}}</p>
           <p>{{order.user.address}}</p>
           <p>
-            <button (click)="openPopup(order.id, 'Edit Order')" class="pl-4 pr-4"><mat-icon>edit</mat-icon></button>
+            <button (click)="openPopUpService.openPopupEdit(order.id, 'Edit Order', PopUpUpdateOrderComponent)" class="pl-4 pr-4"><mat-icon>edit</mat-icon></button>
             <button (click)="deleteOrder(order.id)"><mat-icon>delete</mat-icon></button>
           </p>
         </div>

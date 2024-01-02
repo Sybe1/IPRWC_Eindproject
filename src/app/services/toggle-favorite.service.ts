@@ -26,7 +26,7 @@ export class ToggleFavoriteService {
   }
 
   private loadLikedItems(): void {
-    const likedItemsString = localStorage.getItem('liked');
+    const likedItemsString: string = localStorage.getItem('liked') ?? '';
     this.likedItems = likedItemsString ? JSON.parse(likedItemsString) : [];
   }
 
