@@ -14,17 +14,22 @@ export class IsUserLoggedInService {
   tokenJWT: string = ""
   constructor(private userService: UserService) { }
 
-  public isUserLoggedOut():boolean{
+  public isUserLoggedOut():any{
     if (localStorage.getItem("loginToken")) {
       this.tokenJWT = localStorage.getItem("loginToken")!
       const decodedJWT = jwtDecode(this.tokenJWT) as JwtPayload
       this.userService.getAllUsers().subscribe((response: User[]) => {
         for (let i = 0; i < response.length; i++) {
-          return decodedJWT.sub !== response[i].username;
+          if (decodedJWT.sub === response[i].username){
+            return false;
+          }
         }
+        return true;
       })
     }
-    return true;
+    else {
+      return true;
+    }
   }
   public changeStatus(isLoggedOut: boolean):void{
     this.isLoggedOut.next(isLoggedOut)
