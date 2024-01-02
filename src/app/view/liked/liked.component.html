@@ -1,6 +1,6 @@
 <!--liked.component.html-->
 
-<app-header-page [namePage]=NAMEPAGE></app-header-page>
+<app-header-page [nameOfPage]=TITLE_OF_PAGE></app-header-page>
 
 
 <div class="flex flex-col items-center justify-center pt-12">
@@ -8,9 +8,8 @@
     <div class="space-y-4 p-8">
       <p class="text-xl text-center">Liked</p>
 
-      <div *ngIf="likedItems.length === 0">
-        <p>No items liked.</p>
-      </div>
+      <app-no-information-found [titleOfInformationNotFound]=TITLE_OF_PAGE [listOfInformationNotFound]=likedItems></app-no-information-found>
+
 
       <div *ngIf="likedItems.length > 0">
         <div *ngFor="let product of itemInformation">

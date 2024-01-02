@@ -11,7 +11,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class LikedComponent implements OnInit{
   public likedItems: any[] = [];
   public itemInformation: any[] = [];
-  public NAMEPAGE: string = "Liked";
+  public TITLE_OF_PAGE: string = "Liked";
 
   constructor(private productService: ProductService) {
   }

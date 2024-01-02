@@ -14,6 +14,7 @@ import {OpenPopUpService} from "../../../services/open-pop-up.service";
 })
 export class UserInformationComponent {
   public user: User | undefined;
+  public userInList: User[] = []
   public username: string = '';
   protected readonly PopUpUpdateUserComponent = PopUpUpdateUserComponent;
 
@@ -21,14 +22,15 @@ export class UserInformationComponent {
   }
 
   ngOnInit() {
-    const tokenJWT = jwtDecode(localStorage.getItem("loginToken")!) as JwtPayload;
+    const tokenJWT: JwtPayload = jwtDecode(localStorage.getItem("loginToken")!) as JwtPayload;
     this.username = tokenJWT.sub;
     this.getUser();
   }
 
   public getUser(): void{
     this.userService.getUserByUsername(this.username).subscribe((response: User) => {
-      this.user = response
+      this.user = response;
+      this.userInList = [response];
     })
   }
 }

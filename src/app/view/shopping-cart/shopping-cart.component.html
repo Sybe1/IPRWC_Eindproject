@@ -1,9 +1,9 @@
-<app-header-page [namePage]=NAMEPAGE></app-header-page>
+<app-header-page [nameOfPage]=NAMEPAGE></app-header-page>
 <div class="flex flex-col items-center justify-center pt-12">
   <div class="w-full rounded-lg shadow border max-w-2xl border-gray-700">
     <div class="space-y-4 p-8">
       <p class="text-xl text-center">Shopping Cart</p>
-      <app-empty-shopping-cart [shoppingCartItems]="shoppingCartItems"></app-empty-shopping-cart>
+      <app-no-information-found [titleOfInformationNotFound]="'items in your shopping cart'" [listOfInformationNotFound]=shoppingCartItems></app-no-information-found>
 
       <div *ngIf="shoppingCartItems.length > 0">
         <app-top-of-table></app-top-of-table>

@@ -1,8 +1,8 @@
 <div *ngIf="isLoggedOut">
-  <app-header-page [namePage]="namePageLogin"></app-header-page>
+  <app-header-page [nameOfPage]="namePageLogin"></app-header-page>
 </div>
 <div *ngIf="!isLoggedOut">
-  <app-header-page [namePage]="namePageLogout"></app-header-page>
+  <app-header-page [nameOfPage]="namePageLogout"></app-header-page>
 </div>
 
 <div class="flex flex-col items-center justify-center pt-12">

@@ -22,9 +22,8 @@
         </div>
       </div>
 
-      <div *ngIf="targetAudiences.length === 0">
-        <p>No Target Audiences.</p>
-      </div>
+      <app-no-information-found [titleOfInformationNotFound]="'Target audiences'" [listOfInformationNotFound]=targetAudiences></app-no-information-found>
+
     </div>
   </div>
 </div>

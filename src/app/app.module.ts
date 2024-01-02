@@ -43,7 +43,6 @@ import {ProductThumbnailComponent} from "./view/product/product-thumbnail/produc
 import { ChoosingAmountProductComponent } from './view/product/choosing-amount-product/choosing-amount-product.component';
 import { EditDeleteProductComponent } from './view/shop/edit-delete-product/edit-delete-product.component';
 import { AddProductComponent } from './view/shop/add-product/add-product.component';
-import { EmptyShoppingCartComponent } from './view/shopping-cart/empty-shopping-cart/empty-shopping-cart.component';
 import { TopOfTableComponent } from './view/shopping-cart/top-of-table/top-of-table.component';
 import { InformationProductShoppingCartComponent } from './view/shopping-cart/information-product-shopping-cart/information-product-shopping-cart.component';
 import { PriceAccumulatedComponent } from './view/shopping-cart/price-accumulated/price-accumulated.component';
@@ -59,6 +58,7 @@ import {PopUpUpdateUserComponent} from "./view/user/pop-up-update-user/pop-up-up
 import {UserComponent} from "./view/user/user.component";
 import {UserInformationComponent} from "./view/user/user-information/user-information.component";
 import {UserInformationAdminComponent} from "./view/user/user-information-admin/user-information-admin.component";
+import {NoInformationFoundComponent} from "./view/no-information-found/no-information-found.component";
 
 
 @NgModule({
@@ -92,7 +92,6 @@ import {UserInformationAdminComponent} from "./view/user/user-information-admin/
     ChoosingAmountProductComponent,
     EditDeleteProductComponent,
     AddProductComponent,
-    EmptyShoppingCartComponent,
     TopOfTableComponent,
     InformationProductShoppingCartComponent,
     PriceAccumulatedComponent,
@@ -126,6 +125,7 @@ import {UserInformationAdminComponent} from "./view/user/user-information-admin/
         NgbModule,
         NgOptimizedImage,
         RecaptchaModule,
+        NoInformationFoundComponent,
     ],
   providers: [
     {

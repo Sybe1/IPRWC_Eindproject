@@ -10,7 +10,7 @@ import {OpenPopUpService} from "../../services/open-pop-up.service";
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit{
-  public namePage: string = "Orders";
+  public TITLE_OF_PAGE: string = "Orders";
   public orders: any[] = [];
   protected readonly PopUpUpdateOrderComponent = PopUpUpdateOrderComponent;
 

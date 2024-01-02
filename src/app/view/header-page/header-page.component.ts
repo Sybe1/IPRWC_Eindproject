@@ -7,5 +7,5 @@ import {Product} from "../../models/product";
   styleUrls: ['./header-page.component.scss']
 })
 export class HeaderPageComponent {
-  @Input() public namePage: string | undefined;
+  @Input() public nameOfPage: string | undefined;
 }

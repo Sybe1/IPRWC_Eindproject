@@ -22,9 +22,8 @@
         </div>
       </div>
 
-      <div *ngIf="clothingTypes.length === 0">
-        <p>No Clothing Types.</p>
-      </div>
+      <app-no-information-found [titleOfInformationNotFound]="'Clothing types'" [listOfInformationNotFound]=clothingTypes></app-no-information-found>
+
     </div>
   </div>
 </div>

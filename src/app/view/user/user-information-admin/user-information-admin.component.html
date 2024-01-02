@@ -1,6 +1,5 @@
-<div *ngIf="users.length === 0">
-  <p>No users.</p>
-</div>
+<app-no-information-found [titleOfInformationNotFound]="'users'" [listOfInformationNotFound]=users></app-no-information-found>
+
 
 <div *ngIf="users.length > 0">
   <div class="grid grid-cols-5 gap-4 content-start">
