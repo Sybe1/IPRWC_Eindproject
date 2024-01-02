@@ -59,6 +59,12 @@ import {UserComponent} from "./view/user/user.component";
 import {UserInformationComponent} from "./view/user/user-information/user-information.component";
 import {UserInformationAdminComponent} from "./view/user/user-information-admin/user-information-admin.component";
 import {NoInformationFoundComponent} from "./view/no-information-found/no-information-found.component";
+import {
+  TargetAudienceInformationComponent
+} from "./view/admin/target-audience-section/target-audience-information/target-audience-information.component";
+import {
+  ClothingTypeInformationComponent
+} from "./view/admin/clothing-type-section/clothing-type-information/clothing-type-information.component";
 
 
 @NgModule({
@@ -107,26 +113,28 @@ import {NoInformationFoundComponent} from "./view/no-information-found/no-inform
     UserInformationComponent,
     UserInformationAdminComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatIconModule,
-        FormsModule,
-        HttpClientModule,
-        MatCheckboxModule,
-        MatDialogModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        NoopAnimationsModule,
-        MatOptionModule,
-        MatSelectModule,
-        NgbModule,
-        NgOptimizedImage,
-        RecaptchaModule,
-        NoInformationFoundComponent,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    FormsModule,
+    HttpClientModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    NoopAnimationsModule,
+    MatOptionModule,
+    MatSelectModule,
+    NgbModule,
+    NgOptimizedImage,
+    RecaptchaModule,
+    NoInformationFoundComponent,
+    TargetAudienceInformationComponent,
+    ClothingTypeInformationComponent,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

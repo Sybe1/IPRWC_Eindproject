@@ -26,18 +26,4 @@ export class ClothingTypeSectionComponent implements OnInit{
       this.clothingTypes = response
     })
   }
-
-  public deleteClothingType(clothingTypeId: string): void {
-    if(confirm('Are you sure you want to delete this clothing type?')) {
-      this.clothingTypeService.deleteClothingType(clothingTypeId).subscribe(
-        (resp) => {
-          console.log(resp)
-          this.getClothingTypes();
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-    }
-  }
 }

@@ -12,18 +12,11 @@
       </div>
       <hr>
       <div *ngIf="clothingTypes.length > 0">
-        <div *ngFor="let clothingType of clothingTypes" class="grid grid-cols-3">
-          <p>{{clothingType.type}}</p>
-          <p>{{clothingType.description}}</p>
-          <p>
-            <button (click)="openPupUpService.openPopupEdit(clothingType.id, 'Edit ClothingType', PopUpUpdateClothingTypeComponent)" class="pl-20 pr-6"><mat-icon>edit</mat-icon></button>
-            <button (click)="deleteClothingType(clothingType.id)"><mat-icon>delete</mat-icon></button>
-          </p>
+        <div *ngFor="let clothingType of clothingTypes">
+         <app-clothing-type-information [clothingType]="clothingType"></app-clothing-type-information>
         </div>
       </div>
-
       <app-no-information-found [titleOfInformationNotFound]="'Clothing types'" [listOfInformationNotFound]=clothingTypes></app-no-information-found>
-
     </div>
   </div>
 </div>

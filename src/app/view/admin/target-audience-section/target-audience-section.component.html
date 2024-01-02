@@ -12,18 +12,11 @@
       </div>
       <hr>
       <div *ngIf="targetAudiences.length > 0">
-        <div *ngFor="let targetAudience of targetAudiences" class="grid grid-cols-3">
-          <p>{{targetAudience.audience}}</p>
-          <p>{{targetAudience.description}}</p>
-          <p>
-            <button (click)="openPupUpService.openPopupEdit(targetAudience.id, 'Edit ClothingType', PopUpUpdateTargetAudienceComponent)" class="pl-20 pr-6"><mat-icon>edit</mat-icon></button>
-            <button (click)="deleteTargetAudience(targetAudience.id)"><mat-icon>delete</mat-icon></button>
-          </p>
+        <div *ngFor="let targetAudience of targetAudiences">
+          <app-target-audience-information [targetAudience]="targetAudience"></app-target-audience-information>
         </div>
       </div>
-
       <app-no-information-found [titleOfInformationNotFound]="'Target audiences'" [listOfInformationNotFound]=targetAudiences></app-no-information-found>
-
     </div>
   </div>
 </div>

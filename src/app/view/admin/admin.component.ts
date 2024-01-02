@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './admin.component.scss'
 })
 export class AdminComponent {
-  public NAME_PAGE: string = "Admin";
+  public TITLE_OF_PAGE: string = "Admin";
 }

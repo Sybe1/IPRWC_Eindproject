@@ -8,7 +8,7 @@ import {WhatIsRoleUserService} from "../../services/what-is-role-user.service";
   styleUrl: './user.component.scss'
 })
 export class UserComponent implements OnInit{
-  public NAMEPAGE: string = "User";
+  public TITLE_OF_PAGE: string = "User";
   public whatIsRoleUser: string = "";
 
   constructor(private whatIsRoleUserService: WhatIsRoleUserService) {
