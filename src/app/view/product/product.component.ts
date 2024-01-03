@@ -4,10 +4,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Product} from "../../models/product";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
-import {ItemAddedToShoppingCartComponent} from "./item-added-to-shopping-cart/item-added-to-shopping-cart.component";
 import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
-import {LoginToDoActionComponent} from "./login-to-do-action/login-to-do-action.component";
-import {ToggleFavoriteService} from "../../services/toggle-favorite.service";
 
 @Component({
   selector: 'app-product',
@@ -16,10 +13,10 @@ import {ToggleFavoriteService} from "../../services/toggle-favorite.service";
 })
 export class ProductComponent implements OnInit{
   public product: Product = <Product>{};
-  public NAMEPAGE: string = "Product";
+  public TITLE_OF_PAGE: string = "Product";
   public isUserLoggedIn: boolean = false;
   public isFavorite: boolean = true;
-  public isProductOutOfStock: boolean = false;
+  public amountShoppingCart: number = 0;
 
   constructor(private productService: ProductService, public route: ActivatedRoute,
               public dialog: MatDialog, private isUserLoggedInService: IsUserLoggedInService){
@@ -27,7 +24,7 @@ export class ProductComponent implements OnInit{
 
   public ngOnInit(): void {
     this.isUserLoggedInService.currentStatus.subscribe(message => this.isUserLoggedIn = !message)
-    const productId = this.route.snapshot.paramMap.get('id');
+    const productId: string = this.route.snapshot.paramMap.get('id') ?? '';
     this.getProduct(productId);
     this.isFavorite = this.checkIfLiked(productId);
   }
@@ -41,10 +38,20 @@ export class ProductComponent implements OnInit{
   public getProduct(id:any): void{
     this.productService.getProductsById(id).subscribe((response: Product) => {
         this.product = response;
+        this.getAmountProductShoppingCart();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
       })
+  }
+
+  public getAmountProductShoppingCart(): void{
+    const shoppingCartString:any[] = JSON.parse(<string>localStorage.getItem("shoppingCart"));
+    for (let i:number = 0; i < shoppingCartString.length; i++){
+      if (shoppingCartString[i].id == this.product.id){
+        this.amountShoppingCart = shoppingCartString[i].amount;
+      }
+    }
   }
 }
 

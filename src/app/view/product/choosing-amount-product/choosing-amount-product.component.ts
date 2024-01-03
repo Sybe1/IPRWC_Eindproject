@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ItemAddedToShoppingCartComponent} from "../item-added-to-shopping-cart/item-added-to-shopping-cart.component";
 import {LoginToDoActionComponent} from "../login-to-do-action/login-to-do-action.component";
 import {MatDialog} from "@angular/material/dialog";
 import {ActivatedRoute} from "@angular/router";
@@ -10,22 +9,12 @@ import {Product} from "../../../models/product";
   templateUrl: './choosing-amount-product.component.html',
   styleUrls: ['./choosing-amount-product.component.scss']
 })
-export class ChoosingAmountProductComponent implements OnInit{
-  public shoppingCartItems: any[] = [];
-  public amountProduct:number = 0;
+export class ChoosingAmountProductComponent{
   @Input() public isUserLoggedIn: boolean | undefined;
   @Input() public product: Product = <Product>{};
+  @Input() public amountShoppingCart: number = 0;
+  public amountProduct:number = 0
   constructor(public dialog: MatDialog, public route: ActivatedRoute) {
-  }
-
-  ngOnInit() {
-    const shoppingCartString = localStorage.getItem("shoppingCart") ?? '';
-    this.shoppingCartItems = JSON.parse(shoppingCartString);
-    for (let i = 0; i < this.shoppingCartItems.length; i++){
-      if (this.shoppingCartItems[i].id == this.product.id){
-        this.amountProduct = this.shoppingCartItems[i].amount;
-      }
-    }
   }
 
   public minProduct(): void {
@@ -36,23 +25,23 @@ export class ChoosingAmountProductComponent implements OnInit{
 
   public maxProduct(): void {
      if (this.product.stock != this.amountProduct){
-       if (this.product.stock >= this.amountProduct + 1){
+       if (this.product.stock >= this.amountProduct + this.amountShoppingCart + 1){
          this.amountProduct += 1;
        }
     }
   }
 
   public addAmount(): void {
-    const productId = this.route.snapshot.paramMap.get('id') ?? '';
+    const productId:string = <string>this.route.snapshot.paramMap.get('id');
     if (this.amountProduct != 0 && this.isUserLoggedIn) {
       this.pushProductInEmptyShoppingCart(productId);
       this.pushProductInFullShoppingCart(productId)
-      this.dialog.open(ItemAddedToShoppingCartComponent);
       this.amountProduct = 0;
     }
     else if (!this.isUserLoggedIn){
       this.dialog.open(LoginToDoActionComponent);
     }
+    window.location.reload();
   }
 
   public pushProductInEmptyShoppingCart(productId: string): void{
@@ -67,7 +56,7 @@ export class ChoosingAmountProductComponent implements OnInit{
 
   public pushProductInFullShoppingCart(productId: string): void{
     if (localStorage.getItem("shoppingCart") != null) {
-      const currentCartValue = JSON.parse(localStorage.getItem("shoppingCart") ?? "[]");
+      const currentCartValue = JSON.parse(<string>localStorage.getItem("shoppingCart"));
       const existingProduct = currentCartValue.find((item: { id: string; }) => item.id === productId);
       if (existingProduct) {
         existingProduct.amount += this.amountProduct;

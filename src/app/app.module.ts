@@ -28,7 +28,6 @@ import {CustomerInterceptorInterceptor} from "./conf/customer-interceptor.interc
 import { LatestProductComponent } from './view/home/latest-product/latest-product.component';
 import { ProductComponent } from './view/product/product.component';
 import {NgOptimizedImage} from "@angular/common";
-import {ItemAddedToShoppingCartComponent} from "./view/product/item-added-to-shopping-cart/item-added-to-shopping-cart.component";
 import { BoughtItemsComponent } from './view/shopping-cart/bought-items/bought-items.component';
 import { ProductThumbnailShopComponent } from './view/shop/product-thumbnail-shop/product-thumbnail-shop.component';
 import { ProductShopInformationComponent } from './view/shop/product-shop-information/product-shop-information.component';
@@ -82,7 +81,6 @@ import {OrderInformationComponent} from "./view/order/order-information/order-in
     LoginComponent,
     LatestProductComponent,
     ProductComponent,
-    ItemAddedToShoppingCartComponent,
     BoughtItemsComponent,
     ProductThumbnailComponent,
     ProductShopInformationComponent,

@@ -18,7 +18,7 @@ export class ProductInformationComponent {
   }
   public toggleFavoriteProductInformation(): void{
     if (this.isUserLoggedIn) {
-      const productId = <string>this.route.snapshot.paramMap.get('id');
+      const productId:string = <string>this.route.snapshot.paramMap.get('id');
       this.toggleFavorite(productId)
       this.isFavorite = !this.isFavorite;
     }

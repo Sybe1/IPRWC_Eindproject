@@ -1,6 +1,6 @@
 <!--product.component.html-->
 
-<app-header-page [titleOfPage]=NAMEPAGE></app-header-page>
+<app-header-page [titleOfPage]=TITLE_OF_PAGE></app-header-page>
 <div class="mb-4 pt-16">
   <div class="flex flex-wrap items-center justify-center">
     <button class="pr-14" [routerLink]="'/shop'" routerLinkActive="router-link-active">
@@ -9,8 +9,8 @@
     <app-product-thumbnail [product]="product"></app-product-thumbnail>
     <div class="ml-3 width-tekst">
       <app-product-information [product]=product [isUserLoggedIn]="isUserLoggedIn" [isFavorite]="isFavorite"></app-product-information>
-      <app-choosing-amount-product [isUserLoggedIn]="isUserLoggedIn" [product]="product"></app-choosing-amount-product>
-      <div class="flex" *ngIf="isProductOutOfStock">
+      <app-choosing-amount-product [isUserLoggedIn]="isUserLoggedIn" [product]="product" [amountShoppingCart]="amountShoppingCart"></app-choosing-amount-product>
+      <div class="flex" *ngIf="product.stock === 0">
         <p class="text-red-400"> Product is out of stock! </p>
       </div>
     </div>
