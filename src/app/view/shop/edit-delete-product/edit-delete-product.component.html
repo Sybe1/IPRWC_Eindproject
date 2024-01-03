@@ -1,1 +1,10 @@
-<p>edit-delete-product works!</p>
+<div class="card-body">
+  <div *ngIf="whatIsRoleUser === 'ADMIN'" class="float-right btn-group btn-group-sm">
+    <button class="bg-blue-800 w-8 h-9" data-original-title="edit" (click)="openPopUpService.openPopupEdit(product.id, 'Edit Product', PopUpUpdateProductComponent)">
+      <span class="text-white"><mat-icon class="pt-1">edit</mat-icon></span>
+    </button>
+    <button class="bg-red-400 w-8 h-9" data-original-title="Delete" (click)="deleteProduct(product)">
+      <span class="text-white"><mat-icon class="pt-1">delete</mat-icon></span>
+    </button>
+  </div>
+</div>

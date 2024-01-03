@@ -1,6 +1,6 @@
 <!--shop.component.html-->
 <body>
-  <app-header-page [titleOfPage]=NAMEPAGE></app-header-page>
+  <app-header-page [titleOfPage]=TITLE_OF_PAGE></app-header-page>
 
   <div class="container mx-auto mt-8">
     <div class="flex flex-wrap">
@@ -25,17 +25,8 @@
                   <app-product-thumbnail-shop [product]="product"></app-product-thumbnail-shop>
                   <app-product-shop-information [product]="product"></app-product-shop-information>
                 </a>
-                <div class="card-body">
-                  <div *ngIf="whatIsRoleUser === 'ADMIN'" class="float-right btn-group btn-group-sm">
-                    <button class="bg-blue-800 w-8 h-9" data-original-title="edit" (click)="openPopUpService.openPopupEdit(product.id, 'Edit Product', PopUpUpdateProductComponent)">
-                      <span class="text-white"><mat-icon class="pt-1">edit</mat-icon></span>
-                    </button>
-                    <button class="bg-red-400 w-8 h-9" data-original-title="Delete" (click)="deleteProduct(product)">
-                      <span class="text-white"><mat-icon class="pt-1">delete</mat-icon></span>
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <app-edit-delete-product [whatIsRoleUser]="whatIsRoleUser" [product]="product"></app-edit-delete-product>
+            </div>
           </div>
         </div>
       </div>

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Product } from '../../models/product';
-import {MatDialog} from "@angular/material/dialog";
 import {PopUpUpdateProductComponent} from "./pop-up-update-product/pop-up-update-product.component";
 import {WhatIsRoleUserService} from "../../services/what-is-role-user.service";
 import {ClothingTypeService} from "../../services/clothing-type.service";
@@ -17,8 +16,7 @@ import {OpenPopUpService} from "../../services/open-pop-up.service";
 })
 export class ShopComponent implements OnInit{
   public products: Product[] = [];
-  public NAMEPAGE: string = "Shop";
-  public role: boolean = false;
+  public TITLE_OF_PAGE: string = "Shop";
   public whatIsRoleUser: string = "";
   protected readonly PopUpUpdateProductComponent = PopUpUpdateProductComponent;
 
@@ -37,16 +35,13 @@ export class ShopComponent implements OnInit{
     this.getClothingTypes();
     this.getTargetAudiences();
     this.getProducts();
-    if (localStorage.getItem('role') === 'ADMIN'){
-      this.role = true;
-    }
     this.whatIsRoleUserService.currentStatus.subscribe(message => this.whatIsRoleUser = message)
   }
 
   public getClothingTypes(): void{
     this.clothingTypeService.getClothingTypes().subscribe((response: any[]) => {
       const clothingTypes: ClothingType[] = response
-      for (let i = 0; i < clothingTypes.length; i++) {
+      for (let i:number = 0; i < clothingTypes.length; i++) {
         this.selectedClothingTypes.push(clothingTypes[i].type);
         this.allClothingTypes.push(clothingTypes[i].type);
       }
@@ -56,7 +51,7 @@ export class ShopComponent implements OnInit{
   public getTargetAudiences(): void{
     this.targetAudienceService.getTargetAudiences().subscribe((response: any[]) => {
       const targetAudiences: TargetAudience[] = response
-      for (let i = 0; i < targetAudiences.length; i++) {
+      for (let i:number = 0; i < targetAudiences.length; i++) {
         this.selectedTargetAudience.push(targetAudiences[i].audience)
         this.allTargetAudience.push(targetAudiences[i].audience)
       }
@@ -84,19 +79,5 @@ export class ShopComponent implements OnInit{
         alert(error.message);
       }
     );
-  }
-
-  public deleteProduct(product: Product): void{
-    if(confirm('Are you sure you want to delete this shop?')) {
-      this.productService.deleteProduct(product.id).subscribe(
-        (resp) => {
-          console.log(resp)
-          this.getProducts();
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-    }
   }
 }
