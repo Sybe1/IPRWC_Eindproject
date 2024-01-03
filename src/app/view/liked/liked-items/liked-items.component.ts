@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { Product } from "../../../models/product";
 import {ToggleFavoriteService} from "../../../services/toggle-favorite.service";
 import {LikedItem} from "../../../models/liked-item";

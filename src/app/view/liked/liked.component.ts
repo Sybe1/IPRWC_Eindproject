@@ -23,7 +23,7 @@ export class LikedComponent implements OnInit{
 
 
   public getInformationItems(items: any[]): void {
-    for (let i = 0; i < items.length; i++) {
+    for (let i:number = 0; i < items.length; i++) {
       const itemId = items[i].id;
       this.productService.getProductsById(itemId).subscribe(
         (response: Product) => {

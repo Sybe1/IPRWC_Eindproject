@@ -12,13 +12,10 @@ import {OpenPopUpService} from "../../services/open-pop-up.service";
 export class OrderComponent implements OnInit{
   public TITLE_OF_PAGE: string = "Orders";
   public orders: any[] = [];
-  protected readonly PopUpUpdateOrderComponent = PopUpUpdateOrderComponent;
-
-
-  constructor(private orderService: OrderService, public openPopUpService: OpenPopUpService) {
+  constructor(private orderService: OrderService) {
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.getOrders()
   }
 
@@ -27,19 +24,5 @@ export class OrderComponent implements OnInit{
       this.orders = response
       console.log(this.orders)
     })
-  }
-
-  public deleteOrder(orderId: string): void{
-    if(confirm('Are you sure you want to delete this order?')) {
-      this.orderService.deleteOrder(orderId).subscribe(
-        (resp) => {
-          console.log(resp)
-          this.getOrders();
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-    }
   }
 }

@@ -14,11 +14,8 @@ export class AuthenticationComponent implements OnInit{
   public isLoginMode: boolean = true;
   public isLoggedOut: boolean = true;
   public captcha: string = ""
-  public roleUser: string = "";
   private usernameHelp: string = "";
   private passwordHelp: string = "";
-  public namePageLogin: string = "Login";
-  public namePageLogout: string = "Logout";
 
 
   public loginObj: any = {
@@ -41,12 +38,11 @@ export class AuthenticationComponent implements OnInit{
               private whatIsRoleUserService: WhatIsRoleUserService) {
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.isUserLoggedInService.currentStatus.subscribe(message => this.isLoggedOut = message)
-    this.whatIsRoleUserService.currentStatus.subscribe(message => this.roleUser = message)
   }
 
-  public changeValueLoginOrLogout(isLoggedOut: boolean): void{
+  public isUserLoggedOut(isLoggedOut: boolean): void{
     this.isUserLoggedInService.changeStatus(isLoggedOut)
   }
 
@@ -74,9 +70,8 @@ export class AuthenticationComponent implements OnInit{
   public userLogin():void{
     this.loginService.postUser(this.loginObj).subscribe((res: any) => {
       localStorage.setItem('loginToken', res.token);
-      this.changeValueLoginOrLogout(false);
-      this.roleUser = this.whatIsRoleUserService.whatIsRoleUser();
-      this.changeValueRoleUser(this.roleUser);
+      this.isUserLoggedOut(false);
+      this.changeValueRoleUser(this.whatIsRoleUserService.whatIsRoleUser());
       this.router.navigateByUrl('/home');
     })
   }

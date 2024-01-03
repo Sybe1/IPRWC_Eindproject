@@ -1,0 +1,10 @@
+<div class="grid grid-cols-5 gap-4 content-start">
+  <p>{{order.amount}}</p>
+  <p>{{order.product.productName}}</p>
+  <p>{{order.user.username}}</p>
+  <p>{{order.user.address}}</p>
+  <p>
+    <button (click)="openPopUpService.openPopupEdit(order.id, 'Edit Order', PopUpUpdateOrderComponent)" class="pl-4 pr-4"><mat-icon>edit</mat-icon></button>
+    <button (click)="deleteOrder(order.id)"><mat-icon>delete</mat-icon></button>
+  </p>
+</div>

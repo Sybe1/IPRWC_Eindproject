@@ -6,5 +6,5 @@ import {Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent{
-  public BACKGROUNDIMAGE: string = 'assets/images/achtergrondBlauw.jpg';
+  public BACKGROUND_IMAGE: string = 'assets/images/achtergrondBlauw.jpg';
 }

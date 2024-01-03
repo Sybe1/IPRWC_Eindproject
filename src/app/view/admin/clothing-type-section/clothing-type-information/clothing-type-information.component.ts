@@ -2,9 +2,7 @@ import {Component, Input} from '@angular/core';
 import {MatIconModule} from "@angular/material/icon";
 import {PopUpUpdateClothingTypeComponent} from "../pop-up-update-clothing-type/pop-up-update-clothing-type.component";
 import {ClothingType} from "../../../../models/clothing-type";
-import {TargetAudienceService} from "../../../../services/target-audience.service";
 import {OpenPopUpService} from "../../../../services/open-pop-up.service";
-import {TargetAudienceSectionComponent} from "../../target-audience-section/target-audience-section.component";
 import {ClothingTypeService} from "../../../../services/clothing-type.service";
 import {ClothingTypeSectionComponent} from "../clothing-type-section.component";
 

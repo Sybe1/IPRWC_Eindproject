@@ -9,7 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./latest-product.component.scss']
 })
 export class LatestProductComponent implements OnInit {
-  products: Product | undefined;
+  public products: Product | undefined;
 
   constructor(private service: ProductService) {}
 

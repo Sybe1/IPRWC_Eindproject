@@ -1,8 +1,6 @@
 import {Component, EventEmitter, Inject, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {ClothingTypeService} from "../../../../services/clothing-type.service";
-import {ClothingType} from "../../../../models/clothing-type";
 import {TargetAudienceService} from "../../../../services/target-audience.service";
 import {TargetAudience} from "../../../../models/target-audience";
 
@@ -22,7 +20,7 @@ export class PopUpUpdateTargetAudienceComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data:any, private ref:MatDialogRef<PopUpUpdateTargetAudienceComponent>,
               private buildr:FormBuilder, private targetAudienceService: TargetAudienceService) {
   }
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.updateClothingType(this.data.code);
   }
   public closePopup(): void{
