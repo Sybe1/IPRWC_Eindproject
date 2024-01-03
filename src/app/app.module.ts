@@ -65,6 +65,7 @@ import {
   ClothingTypeInformationComponent
 } from "./view/admin/clothing-type-section/clothing-type-information/clothing-type-information.component";
 import {OrderInformationComponent} from "./view/order/order-information/order-information.component";
+import {UserItemsTableComponent} from "./view/user/user-items-table/user-items-table.component";
 
 
 @NgModule({
@@ -134,6 +135,7 @@ import {OrderInformationComponent} from "./view/order/order-information/order-in
     TargetAudienceInformationComponent,
     ClothingTypeInformationComponent,
     OrderInformationComponent,
+    UserItemsTableComponent,
   ],
   providers: [
     {

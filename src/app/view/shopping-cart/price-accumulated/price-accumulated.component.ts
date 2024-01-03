@@ -20,11 +20,11 @@ export class PriceAccumulatedComponent {
 
   constructor(private orderService: OrderService, public dialog: MatDialog, private productService: ProductService) {
   }
-  public boughtProducts(): void {
-    const itemsShoppingCart:string = localStorage.getItem('shoppingCart') ?? '';
-    const loginToken:string = localStorage.getItem("loginToken") ?? '';
+  public customerBoughtProducts(): void {
+    const itemsShoppingCart:string = <string>localStorage.getItem('shoppingCart');
+    const loginToken:string = <string>localStorage.getItem("loginToken");
     if (itemsShoppingCart != null && loginToken != null){
-      const decodedJWT = jwtDecode(loginToken) as JwtPayload
+      const decodedJWT:JwtPayload = jwtDecode(loginToken) as JwtPayload
       this.shoppingCartItems = JSON.parse(itemsShoppingCart);
       for (const item of this.shoppingCartItems) {
         this.order = {

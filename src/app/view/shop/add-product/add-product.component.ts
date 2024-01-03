@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {OpenPopUpService} from "../../../services/open-pop-up.service";
 import {PopUpUpdateProductComponent} from "../pop-up-update-product/pop-up-update-product.component";
-import {MatDialog} from "@angular/material/dialog";
+
 
 @Component({
   selector: 'app-add-product',
@@ -8,7 +9,9 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent {
-  @Input() role: boolean | undefined ;
+  @Input() public whatIsRoleUser: string = 'CUSTOMER';
 
+  constructor(public openPopUpService: OpenPopUpService){}
 
+  protected readonly PopUpUpdateProductComponent = PopUpUpdateProductComponent;
 }

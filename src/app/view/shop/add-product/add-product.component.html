@@ -1,5 +1,5 @@
-<!--<div class="pl-14">-->
-<!--  <div *ngIf="role">-->
-<!--    <button class="text-white py-2 px-3 rounded-full bg-red-400 font-bold" (click)="openPopUp()">+</button>-->
-<!--  </div>-->
-<!--</div>-->
+<div class="pl-14">
+  <div *ngIf="whatIsRoleUser === 'ADMIN'">
+    <button class="text-white py-2 px-3 rounded-full bg-red-400 font-bold" (click)="openPopUpService.openPopupAdd('Add Product', PopUpUpdateProductComponent)">+</button>
+  </div>
+</div>

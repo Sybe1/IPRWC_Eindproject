@@ -16,7 +16,7 @@ export class FilterClothingTypeComponent implements OnInit{
   constructor(private clothingTypeService: ClothingTypeService) {
   }
 
-  ngOnInit() {
+  public ngOnInit():void {
     this.getClothingTypes()
   }
 

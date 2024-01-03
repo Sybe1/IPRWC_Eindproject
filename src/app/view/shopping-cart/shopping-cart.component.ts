@@ -15,7 +15,7 @@ export class ShoppingCartComponent implements OnInit{
   public itemInformation: any[] = [];
   public order: Order | undefined;
   public priceAccumulated: number = 0;
-  public NAMEPAGE: string = "Shopping Cart";
+  public TITLE_OF_PAGE: string = "Shopping Cart";
 
   constructor(private productService: ProductService, public dialog: MatDialog) {
   }
