@@ -29,8 +29,6 @@ export class ChoosingAmountProductComponent{
          this.amountProduct += 1;
        }
     }
-    console.log(this.amountProduct)
-
   }
 
   public addAmount(): void {

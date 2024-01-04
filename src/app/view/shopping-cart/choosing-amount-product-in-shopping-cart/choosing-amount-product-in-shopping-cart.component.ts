@@ -45,7 +45,6 @@ export class ChoosingAmountProductInShoppingCartComponent {
     }
 
     localStorage.setItem("shoppingCart", JSON.stringify(updatedCartValue));
-    console.log("done");
   }
 
 
