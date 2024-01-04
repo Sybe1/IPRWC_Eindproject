@@ -15,6 +15,9 @@ import {WhatIsRoleUserService} from "../../../services/what-is-role-user.service
     MatIconModule,
     NgIf
   ],
+  providers: [
+    UserInformationAdminComponent
+  ],
   templateUrl: './user-items-table.component.html',
   styleUrl: './user-items-table.component.scss'
 })

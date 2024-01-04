@@ -9,15 +9,5 @@
     <b>Role</b>
   </div>
   <hr>
-  <div class="grid grid-cols-5 gap-4 content-start">
-    <p>{{user.username}}</p>
-    <p>{{user.address}}</p>
-    <p>{{user.postalCode}}</p>
-    <p>{{user.role}}</p>
-    <p>
-      <button (click)="openPopUpService.openPopupEdit(user.username, 'Edit User', PopUpUpdateUserComponent)" class="pl-4 pr-4"><mat-icon>edit</mat-icon></button>
-    </p>
-  </div>
-<!--  <app-user-items-table [user]="user"></app-user-items-table>-->
-
+  <app-user-items-table [user]="user"></app-user-items-table>
 </div>
