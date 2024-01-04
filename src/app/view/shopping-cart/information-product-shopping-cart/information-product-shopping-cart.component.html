@@ -1,6 +1,6 @@
 <div *ngIf="product && item" class="grid grid-cols-5 gap-4 content-start">
   <div>{{product.productName}} </div>
-  <div>{{item.amount}}</div>
+  <div><app-choosing-amoun-product-in-shopping-cart [amountProduct]="item.amount" [product]="product"></app-choosing-amoun-product-in-shopping-cart></div>
   <div>€{{product.price}}</div>
   <div>€{{item.amount * product.price}}</div>
   <div><button (click)="deleteProductFromShoppingCart(product.id)"><mat-icon>delete</mat-icon></button></div>

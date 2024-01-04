@@ -29,7 +29,7 @@ export class PopUpUpdateOrderComponent implements OnInit{
               private userService: UserService) {
   }
   public ngOnInit(): void {
-    this.updateProduct(this.data.code);
+    this.updateOrder(this.data.code);
     this.productService.getProducts().subscribe((response: any) => {
       this.products = response;
     });
@@ -43,7 +43,7 @@ export class PopUpUpdateOrderComponent implements OnInit{
     this.onClose.emit();
   }
 
-  public updateProduct(code:any): void{
+  public updateOrder(code:any): void{
     if (this.data.code != undefined) {
       this.service.getOrdersById(code).subscribe(item => {
         this.myform.setValue({
@@ -55,7 +55,7 @@ export class PopUpUpdateOrderComponent implements OnInit{
     }
   }
 
-  public saveProduct(): void {
+  public saveOrder(): void {
     const orderData: Order = {
       id: this.data.code || '',
       amount: this.myform.value.amount || 0,

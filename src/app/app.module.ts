@@ -66,6 +66,9 @@ import {
 } from "./view/admin/clothing-type-section/clothing-type-information/clothing-type-information.component";
 import {OrderInformationComponent} from "./view/order/order-information/order-information.component";
 import {UserItemsTableComponent} from "./view/user/user-items-table/user-items-table.component";
+import {
+  ChoosingAmountProductInShoppingCartComponent
+} from "./view/shopping-cart/choosing-amount-product-in-shopping-cart/choosing-amount-product-in-shopping-cart.component";
 
 
 @NgModule({
@@ -136,6 +139,7 @@ import {UserItemsTableComponent} from "./view/user/user-items-table/user-items-t
     ClothingTypeInformationComponent,
     OrderInformationComponent,
     UserItemsTableComponent,
+    ChoosingAmountProductInShoppingCartComponent,
   ],
   providers: [
     {

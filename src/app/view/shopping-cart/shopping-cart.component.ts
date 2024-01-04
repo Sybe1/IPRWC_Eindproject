@@ -25,8 +25,8 @@ export class ShoppingCartComponent implements OnInit{
   }
 
   public totalPrice(items: any[]): void{
-    for (let i = 0; i < items.length; i++) {
-      for (let j = 0; j < this.shoppingCartItems.length; j++) {
+    for (let i:number = 0; i < items.length; i++) {
+      for (let j:number = 0; j < this.shoppingCartItems.length; j++) {
         if (items[i].id == this.shoppingCartItems[j].id) {
           this.priceAccumulated += this.shoppingCartItems[j].amount * items[i].price;
         }
@@ -36,7 +36,7 @@ export class ShoppingCartComponent implements OnInit{
 
   public getInformationItems(items: any[]): void {
     this.itemInformation = [];
-    for (let i = 0; i < items.length; i++) {
+    for (let i:number = 0; i < items.length; i++) {
       const itemId = items[i].id;
       this.productService.getProductsById(itemId).subscribe(
         (response: Product) => {
@@ -53,11 +53,7 @@ export class ShoppingCartComponent implements OnInit{
   }
 
   public getShoppingCartItems(): any[] {
-    const shoppingCartString = localStorage.getItem("shoppingCart");
-    if (shoppingCartString) {
-      return JSON.parse(shoppingCartString);
-    } else {
-      return [];
-    }
+    const shoppingCartString:string = <string>localStorage.getItem("shoppingCart");
+    return JSON.parse(shoppingCartString);
   }
 }
