@@ -72,8 +72,7 @@
               "buildTarget": "iprwcEindproject:build:production"
             },
             "development": {
-              "buildTarget": "iprwcEindproject:build:development",
-              "proxyConfig": "src/proxy.conf.json"
+              "buildTarget": "iprwcEindproject:build:development"
             }
           },
           "defaultConfiguration": "development"
