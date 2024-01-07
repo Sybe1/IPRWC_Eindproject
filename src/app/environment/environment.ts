@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://websiteiprwc.site:8080'
+  apiBaseUrl: 'https://websiteiprwc.site'
 }
