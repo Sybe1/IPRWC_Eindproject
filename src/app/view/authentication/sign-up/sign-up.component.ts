@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {User} from "../../../models/user";
+import {ValidationService} from "../../../services/validation.service";
 
 @Component({
   selector: 'app-sign-up',
@@ -16,5 +17,8 @@ export class SignUpComponent {
     "email": "",
     "address": "",
     "postalCode": ""
+  }
+
+  constructor(public validationService: ValidationService) {
   }
 }

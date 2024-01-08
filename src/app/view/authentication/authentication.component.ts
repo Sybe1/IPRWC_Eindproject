@@ -4,6 +4,7 @@ import {LoginService} from "../../services/login.service";
 import {IsUserLoggedInService} from "../../services/is-user-logged-in.service";
 import {WhatIsRoleUserService} from "../../services/what-is-role-user.service";
 import {User} from "../../models/user";
+import {ValidationService} from "../../services/validation.service";
 
 @Component({
   selector: 'app-authentication',
@@ -35,7 +36,7 @@ export class AuthenticationComponent implements OnInit{
   }
 
   constructor(private router: Router, private loginService: LoginService, private isUserLoggedInService: IsUserLoggedInService,
-              private whatIsRoleUserService: WhatIsRoleUserService) {
+              private whatIsRoleUserService: WhatIsRoleUserService, private validationService: ValidationService) {
   }
 
   public ngOnInit(): void {
@@ -77,11 +78,16 @@ export class AuthenticationComponent implements OnInit{
   }
 
   public userRegister():void{
-    this.loginService.registerUser(this.signUpObj).subscribe()
-    this.usernameHelp = this.signUpObj.username;
-    this.passwordHelp = this.signUpObj.password;
-    this.onSwitchMode();
-    this.loginObj.username = this.usernameHelp;
-    this.loginObj.password = this.passwordHelp;
+    if (this.signUpObj.username && this.signUpObj.email &&
+    this.signUpObj.password && this.signUpObj.address && this.signUpObj.postalCode
+    && this.signUpObj.firstName && this.signUpObj.lastName &&
+    this.validationService.isEmailValid(this.signUpObj.email) && this.validationService.isPasswordValid(this.signUpObj.password)){
+      this.loginService.registerUser(this.signUpObj).subscribe()
+      this.usernameHelp = this.signUpObj.username;
+      this.passwordHelp = this.signUpObj.password;
+      this.onSwitchMode();
+      this.loginObj.username = this.usernameHelp;
+      this.loginObj.password = this.passwordHelp;
+    }
   }
 }
