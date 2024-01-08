@@ -8,14 +8,14 @@ import {BehaviorSubject} from "rxjs";
 })
 export class WhatIsRoleUserService {
   private roleUser = new BehaviorSubject<string>(this.whatIsRoleUser())
-  currentStatus = this.roleUser.asObservable()
-  tokenJWT: string = ""
+  public currentStatus = this.roleUser.asObservable()
+  public tokenJWT: string = ""
   constructor() { }
 
   public whatIsRoleUser():string{
     if (localStorage.getItem("loginToken")) {
       this.tokenJWT = localStorage.getItem("loginToken")!
-      const decodedJWT = jwtDecode(this.tokenJWT) as JwtPayload
+      const decodedJWT:JwtPayload = jwtDecode(this.tokenJWT) as JwtPayload
       return decodedJWT.role[0].authority
     }
     else{

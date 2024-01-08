@@ -13,7 +13,7 @@ export class CustomerInterceptorInterceptor implements HttpInterceptor {
     const getAllTargetAudiences: boolean = request.url.endsWith('/targetAudience/all');
     const getAllUsers: boolean = request.url.endsWith('/user/all');
     const getProductById: boolean = request.url.startsWith('http://localhost:8080/product/find');
-    const getProductsByIdOnline: boolean = request.url.startsWith('http://188.166.19.202:8080/product/find');
+    const getProductsByIdOnline: boolean = request.url.startsWith('https://websiteiprwc.site:8080//product/find');
 
     if (!isAuthenticationRequest && !getProduct && !getProductById && !isRegister && !getAllUsers && !getAllClothingTypes && !getAllTargetAudiences && !getProductsByIdOnline) {
       const token: string = localStorage.getItem('loginToken') ?? '';
