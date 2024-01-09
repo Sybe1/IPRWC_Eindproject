@@ -34,6 +34,7 @@ export class ChoosingAmountProductComponent{
   public addAmount(): void {
     const productId:string = <string>this.route.snapshot.paramMap.get('id');
     if (this.amountProduct != 0 && this.isUserLoggedIn) {
+      console.log(this.amountProduct)
       this.pushProductInEmptyShoppingCart(productId);
       this.pushProductInFullShoppingCart(productId)
       this.amountProduct = 0;

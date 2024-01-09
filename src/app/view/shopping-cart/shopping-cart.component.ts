@@ -20,8 +20,8 @@ export class ShoppingCartComponent implements OnInit{
   constructor(private productService: ProductService, public dialog: MatDialog) {
   }
   public ngOnInit(): void {
-    this.shoppingCartItems = this.getShoppingCartItems()
-    if (this.shoppingCartItems) {
+    if (localStorage.getItem("shoppingCart")) {
+      this.shoppingCartItems = this.getShoppingCartItems()
       this.getInformationItems(this.shoppingCartItems);
     }
   }
