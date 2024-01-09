@@ -3,7 +3,6 @@
   <div class="w-full rounded-lg shadow border max-w-2xl border-gray-700">
     <div class="space-y-4 p-8">
       <p class="text-xl text-center">Shopping Cart</p>
-      <app-no-information-found [titleOfInformationNotFound]="'items in your shopping cart'" [listOfInformationNotFound]=shoppingCartItems></app-no-information-found>
 
       <div *ngIf="shoppingCartItems !== []">
         <app-top-of-table></app-top-of-table>
