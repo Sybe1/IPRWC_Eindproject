@@ -43,6 +43,7 @@ export class ChoosingAmountProductComponent{
       this.dialog.open(LoginToDoActionComponent);
     }
     // window.location.reload();
+
   }
 
   public pushProductInEmptyShoppingCart(productId: string): void{
