@@ -46,11 +46,14 @@ export class ChoosingAmountProductComponent{
   }
 
   public pushProductInEmptyShoppingCart(productId: string): void{
+    console.log(this.amountProduct)
     if (localStorage.getItem("shoppingCart") == null) {
+      console.log(this.amountProduct)
       const obj = [{
         id: productId,
         amount: this.amountProduct
       }];
+      console.log(this.amountProduct)
       localStorage.setItem("shoppingCart", JSON.stringify(obj));
     }
   }

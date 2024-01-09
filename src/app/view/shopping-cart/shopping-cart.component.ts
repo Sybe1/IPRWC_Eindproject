@@ -11,7 +11,7 @@ import {Order} from "../../models/order";
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit{
-  public shoppingCartItems: any[] = [];
+  public shoppingCartItems: any[] = [] ;
   public itemInformation: any[] = [];
   public order: Order | undefined;
   public priceAccumulated: number = 0;

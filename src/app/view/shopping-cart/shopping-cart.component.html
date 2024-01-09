@@ -5,7 +5,7 @@
       <p class="text-xl text-center">Shopping Cart</p>
       <app-no-information-found [titleOfInformationNotFound]="'items in your shopping cart'" [listOfInformationNotFound]=shoppingCartItems></app-no-information-found>
 
-      <div *ngIf="shoppingCartItems">
+      <div *ngIf="shoppingCartItems !== []">
         <app-top-of-table></app-top-of-table>
         <div *ngFor="let product of itemInformation">
           <div *ngFor="let item of shoppingCartItems">
