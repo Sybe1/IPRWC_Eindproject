@@ -1,5 +1,7 @@
 <div *ngIf="product && item" class="grid grid-cols-5 gap-4 content-start">
-  <div>{{product.productName}} </div>
+  <a routerLink="/productinfo/{{product.id}}" class="no-underline text-black">
+    <div>{{product.productName}} </div>
+  </a>
   <div><app-choosing-amoun-product-in-shopping-cart [amountProduct]="item.amount" [product]="product"></app-choosing-amoun-product-in-shopping-cart></div>
   <div>€{{product.price}}</div>
   <div>€{{item.amount * product.price}}</div>

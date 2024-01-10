@@ -1,6 +1,8 @@
 <div class="grid grid-cols-3 gap-32 content-start">
+  <a routerLink="/productinfo/{{product?.id}}" class="no-underline text-black">
     <div>{{product?.productName}} </div>
-    <div>€{{product?.price}}</div>
+  </a>
+  <div>€{{product?.price}}</div>
   <div *ngIf="item && product">
     <button (click)="toggleFavoriteLiked(product.id)">
       <mat-icon>{{ item.isFavorite ? 'favorite' : 'favorite_outline' }}</mat-icon>

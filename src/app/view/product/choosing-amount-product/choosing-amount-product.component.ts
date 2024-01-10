@@ -34,27 +34,22 @@ export class ChoosingAmountProductComponent{
   public addAmount(): void {
     const productId:string = <string>this.route.snapshot.paramMap.get('id');
     if (this.amountProduct != 0 && this.isUserLoggedIn) {
-      console.log(this.amountProduct)
-      this.pushProductInEmptyShoppingCart(productId);
       this.pushProductInFullShoppingCart(productId)
+      this.pushProductInEmptyShoppingCart(productId);
       this.amountProduct = 0;
     }
     else if (!this.isUserLoggedIn){
       this.dialog.open(LoginToDoActionComponent);
     }
-    // window.location.reload();
-
+    window.location.reload();
   }
 
   public pushProductInEmptyShoppingCart(productId: string): void{
-    console.log(this.amountProduct)
     if (localStorage.getItem("shoppingCart") == null) {
-      console.log(this.amountProduct)
       const obj = [{
         id: productId,
         amount: this.amountProduct
       }];
-      console.log(this.amountProduct)
       localStorage.setItem("shoppingCart", JSON.stringify(obj));
     }
   }
