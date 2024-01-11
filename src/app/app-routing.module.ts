@@ -10,6 +10,7 @@ import {OrderComponent} from "./view/order/order.component";
 import {RoleGuard} from "./guard/role.guard";
 import {AdminComponent} from "./view/admin/admin.component";
 import {UserComponent} from "./view/user/user.component";
+import {LoggedInGuard} from "./guard/logged-in.guard";
 
 const routes: Routes = [
   { path:'login', component:AuthenticationComponent},
@@ -19,10 +20,10 @@ const routes: Routes = [
   { path: 'productinfo/:id', component: ProductComponent },
   { path: 'shoppingcart', component: ShoppingCartComponent},
   { path: 'liked', component: LikedComponent},
-  { path: 'orders', component: OrderComponent, canActivate: [RoleGuard]},
-  { path: 'admin', component: AdminComponent, canActivate: [RoleGuard]},
+  { path: 'orders', component: OrderComponent, canActivate: [RoleGuard, LoggedInGuard]},
+  { path: 'admin', component: AdminComponent, canActivate: [RoleGuard, LoggedInGuard]},
   { path: 'shop', component: ShopComponent},
-  { path: 'user', component: UserComponent},
+  { path: 'user', component: UserComponent, canActivate: [LoggedInGuard]},
   { path: '**', component: HomeComponent}
 ];
 

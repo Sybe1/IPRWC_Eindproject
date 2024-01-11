@@ -24,7 +24,7 @@ export class EditDeleteProductComponent {
       this.productService.deleteProduct(product.id).subscribe(
         (resp) => {
           console.log(resp)
-          this.shopComponent.getProducts();
+          this.shopComponent.getSelectedProducts();
         },
         (err) => {
           console.log(err);

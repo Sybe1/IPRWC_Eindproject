@@ -34,7 +34,7 @@ export class ShopComponent implements OnInit{
   public ngOnInit(): void{
     this.getClothingTypes();
     this.getTargetAudiences();
-    this.getProducts();
+    this.getAllProducts();
     this.whatIsRoleUserService.currentStatus.subscribe(message => this.whatIsRoleUser = message)
   }
 
@@ -60,20 +60,30 @@ export class ShopComponent implements OnInit{
 
   public onClothingTypeFilterChange(selectedClothingTypes: string[]): void {
     this.selectedClothingTypes = selectedClothingTypes;
-    this.getProducts();
+    this.getSelectedProducts();
   }
 
   public onCheckboxChangeTargetAudience(selectedTargetAudience: string[]): void {
     this.selectedTargetAudience = selectedTargetAudience;
-    this.getProducts();
+    this.getSelectedProducts();
   }
 
-  public getProducts(): void {
+  public getSelectedProducts(): void {
     this.productService.getProducts().subscribe((response: Product[]) => {
         this.products = response.filter(product =>
           this.selectedClothingTypes.includes(product.clothingType?.type ?? '') &&
           this.selectedTargetAudience.includes(product.targetAudience?.audience ?? '')
         );
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public getAllProducts(): void {
+    this.productService.getProducts().subscribe((response: Product[]) => {
+        this.products = response;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
