@@ -81,7 +81,8 @@ export class AuthenticationComponent implements OnInit{
     if (this.signUpObj.username && this.signUpObj.email &&
     this.signUpObj.password && this.signUpObj.address && this.signUpObj.postalCode
     && this.signUpObj.firstName && this.signUpObj.lastName &&
-    this.validationService.isEmailValid(this.signUpObj.email) && this.validationService.isPasswordValid(this.signUpObj.password)){
+    this.validationService.isEmailValid(this.signUpObj.email) && this.validationService.isPasswordValid(this.signUpObj.password)
+    && this.validationService.isPostalCodeValid(this.signUpObj.postalCode)){
       this.loginService.registerUser(this.signUpObj).subscribe()
       this.usernameHelp = this.signUpObj.username;
       this.passwordHelp = this.signUpObj.password;
