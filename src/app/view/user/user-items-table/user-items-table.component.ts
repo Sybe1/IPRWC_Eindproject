@@ -27,7 +27,6 @@ export class UserItemsTableComponent implements OnInit{
   @Input() public user: User = <User>{};
 
   constructor(public openPopUpService: OpenPopUpService, private userService: UserService,
-              private userInformationAdminComponent: UserInformationAdminComponent,
               private whatIsRoleUserService: WhatIsRoleUserService) {
   }
 
@@ -40,7 +39,7 @@ export class UserItemsTableComponent implements OnInit{
       this.userService.deleteUser(userId).subscribe(
         (resp) => {
           console.log(resp)
-          this.userInformationAdminComponent.getUsers();
+          window.location.reload();
         },
         (err) => {
           console.log(err);
