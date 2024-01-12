@@ -38,7 +38,7 @@ export class AuthenticationComponent implements OnInit{
 
   constructor(private router: Router, private loginService: LoginService, private isUserLoggedInService: IsUserLoggedInService,
               private whatIsRoleUserService: WhatIsRoleUserService, private validationService: ValidationService,
-              private signUpComponent: SignUpComponent) {
+              ) {
   }
 
   public ngOnInit(): void {
@@ -84,8 +84,8 @@ export class AuthenticationComponent implements OnInit{
     this.signUpObj.password && this.signUpObj.address && this.signUpObj.postalCode
     && this.signUpObj.firstName && this.signUpObj.lastName &&
     this.validationService.isEmailValid(this.signUpObj.email) && this.validationService.isPasswordValid(this.signUpObj.password)
-    && this.validationService.isPostalCodeValid(this.signUpObj.postalCode) && !this.signUpComponent.isEmailUsed(this.signUpObj.email)
-      && !this.signUpComponent.isUsernameUsed(this.signUpObj.username)){
+    && this.validationService.isPostalCodeValid(this.signUpObj.postalCode) && !this.validationService.isEmailUsed(this.signUpObj.email)
+      && !this.validationService.isUsernameUsed(this.signUpObj.username)){
       this.loginService.registerUser(this.signUpObj).subscribe()
       this.usernameHelp = this.signUpObj.username;
       this.passwordHelp = this.signUpObj.password;
