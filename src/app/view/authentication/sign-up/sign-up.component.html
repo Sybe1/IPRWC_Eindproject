@@ -12,8 +12,8 @@
             (click)="showPassword = !showPassword"
             [class.hide]="!showPassword"
             class="absolute inset-y-0 right-0 pr-2.5 top-1/2 transform -translate-y-1/2">
-      <mat-icon>remove_red_eye</mat-icon>
-    </button>
+      <mat-icon *ngIf="showPassword">visibility</mat-icon>
+      <mat-icon *ngIf="!showPassword">visibility_off</mat-icon>    </button>
   </div>
   <div *ngIf="!signUpObj.password || !validationService.isPasswordValid(signUpObj.password)" class="text-red-500">Password is required with following conditions: [8 characters; 1 captial letter; 1 number; 1 small letter]</div>
 </div>
