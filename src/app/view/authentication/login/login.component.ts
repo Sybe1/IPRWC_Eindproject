@@ -9,7 +9,7 @@ export class LoginComponent{
     "username": "",
     "password": "",
   }
-
+  public showPassword: boolean = false;
   @Output() captchaResolved: EventEmitter<string|null> = new EventEmitter<string | null>();
 
   public wasCaptchaSuccesful(captchaResponse: string | null): void {

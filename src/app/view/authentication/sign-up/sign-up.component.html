@@ -6,7 +6,15 @@
 </div>
 <div class="pb-1">
   <label>Password</label>
-  <input type="password" name="password" [(ngModel)]="signUpObj.password" placeholder="••••••••" class="bg-gray-50 border w-full p-2.5 border-red-200" required="">
+  <div class="relative">
+    <input [type]="showPassword ? 'text' : 'password'" name="password" [(ngModel)]="signUpObj.password" placeholder="••••••••" class="bg-gray-50 border w-full p-2.5 border-red-200" required>
+    <button alt="hide"
+            (click)="showPassword = !showPassword"
+            [class.hide]="!showPassword"
+            class="absolute inset-y-0 right-0 pr-2.5 top-1/2 transform -translate-y-1/2">
+      <mat-icon>remove_red_eye</mat-icon>
+    </button>
+  </div>
   <div *ngIf="!signUpObj.password || !validationService.isPasswordValid(signUpObj.password)" class="text-red-500">Password is required with following conditions: [8 characters; 1 captial letter; 1 number; 1 small letter]</div>
 </div>
 <div class="pb-1">

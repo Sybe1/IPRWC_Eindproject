@@ -20,6 +20,7 @@ export class SignUpComponent implements OnInit{
     "postalCode": ""
   }
   private users: User[] = [];
+  public showPassword: boolean = false;
 
 
   constructor(public validationService: ValidationService, private userService: UserService) {
