@@ -37,11 +37,11 @@ export class ChoosingAmountProductComponent{
       this.pushProductInFullShoppingCart(productId)
       this.pushProductInEmptyShoppingCart(productId);
       this.amountProduct = 0;
+      window.location.reload();
     }
     else if (!this.isUserLoggedIn){
       this.dialog.open(LoginToDoActionComponent);
     }
-    window.location.reload();
   }
 
   public pushProductInEmptyShoppingCart(productId: string): void{
